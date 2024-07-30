@@ -1,15 +1,5 @@
 package com.skillstorm.warehouse_management.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.skillstorm.warehouse_management.models.Warehouse;
-import com.skillstorm.warehouse_management.repositories.WarehouseRepository;
-import com.skillstorm.warehouse_management.services.WarehouseService;
-
-import jakarta.validation.Valid;
-
-import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -23,29 +13,38 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.skillstorm.warehouse_management.models.ProductInventory;
+import com.skillstorm.warehouse_management.services.ProductInventoryService;
+
+import jakarta.validation.Valid;
+
+
 
 @RestController
-@RequestMapping("/warehouse")
+@RequestMapping("/product_inventory")
 @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
-public class WarehouseController{
-    
-    private final Logger logger = LoggerFactory.getLogger(WarehouseController.class);
-    private WarehouseService service;
+public class ProductInventoryController {
 
-    public WarehouseController(WarehouseService service) {
+        
+    private final Logger logger = LoggerFactory.getLogger(ProductInventoryController.class);
+    private ProductInventoryService service;
+
+    public ProductInventoryController(ProductInventoryService service) {
         this.service = service;
     }
 
     @GetMapping
-    public Iterable<Warehouse> findAll() {
+    public Iterable<ProductInventory> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Warehouse> findById(@PathVariable int id) {
-        Optional<Warehouse> warehouse = service.findById(id);
+    public ResponseEntity<ProductInventory> findById(@PathVariable int id) {
+        Optional<ProductInventory> warehouse = service.findById(id);
         if (warehouse.isPresent())
             return ResponseEntity.ok(warehouse.get());
         else 
@@ -54,13 +53,13 @@ public class WarehouseController{
 
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Warehouse create(@Valid @RequestBody Warehouse warehouse) {
-        logger.debug("=== POST request to /warehouses with Warehouse of " + warehouse + " ===");
-        return service.save(warehouse);
+    public ProductInventory create(@Valid @RequestBody ProductInventory productInventory) {
+        logger.debug("=== POST request to /warehouses with ProductInventory of " + productInventory + " ===");
+        return service.save(productInventory);
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@PathVariable int id, @RequestBody Warehouse entity) {
+    public void putMethodName(@PathVariable int id, @RequestBody ProductInventory entity) {
 
     }
 
@@ -70,5 +69,4 @@ public class WarehouseController{
         service.deleteById(id);
     }
 
-    
 }

@@ -4,10 +4,6 @@ import { Warehouse } from "../Warehouse/Warehouse";
 
 
 const WarehouseList = () => {
-
-    // TODO fetch data from backend and display in table
-    // when the component is mounted
-
     const url = "http://localhost:8080/warehouse";
 
     const [warehouses, setWarehouses] = useState([]);
@@ -23,12 +19,8 @@ const WarehouseList = () => {
                 setLoaded(true);
             })
             .catch(err => { alert(err); console.log(err) })
-        // TODO instead show your own alert not builtin 
-        //  might MUI snackbar etc
-        //  Toast Messages
 
-
-    }, []) // only fetch when mounting
+    }, []) 
 
     return warehouses.map((warehouse, i) => (
         loaded ?

@@ -5,11 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.skillstorm.warehouse_management.models.Warehouse;
 import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.models.Category;
 
-import com.skillstorm.warehouse_management.repositories.WarehouseRepository;
 import com.skillstorm.warehouse_management.repositories.CategoryRepository;
 import com.skillstorm.warehouse_management.repositories.ProductRepository;
 
@@ -19,13 +17,10 @@ import jakarta.transaction.Transactional;
 public class ProductService {
 
     private ProductRepository repo;
-    private WarehouseRepository wRepo;
     private CategoryRepository cRepo;
 
-    // use dependency injection to get an instance of the ProductRepository
-    public ProductService(ProductRepository repo, WarehouseRepository wRepo, CategoryRepository cRepo) {
+    public ProductService(ProductRepository repo, CategoryRepository cRepo) {
         this.repo = repo;
-        this.wRepo = wRepo;
         this.cRepo = cRepo;
     }
 
@@ -39,21 +34,9 @@ public class ProductService {
 
     @Transactional
     public Product save(Product product) {
-        // Check if warehouse exists
-        Warehouse warehouse = product.getWarehouse();
-        if (wRepo.existsById(warehouse.getId())) {
-            warehouse = wRepo.findById(warehouse.getId()).get();
-            //check stocks/capacity
-            int stocks = warehouse.getProduct().stream().filter(p -> p.getStock() > 10).mapToInt(Product::getStock).sum();
-            if(warehouse.getCapacity() < stocks+1)
-            {
-
-            }
-            product.setWarehouse(warehouse);
-        }
         // Check if category exists
         Category category = product.getCategory();
-        if (wRepo.existsById(category.getId())) {
+        if (cRepo.existsById(category.getId())) {
             category = cRepo.findById(category.getId()).get();
             product.setCategory(category);
         }

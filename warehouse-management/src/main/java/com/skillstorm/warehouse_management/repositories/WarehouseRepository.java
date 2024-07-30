@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.skillstorm.warehouse_management.models.Warehouse;
 
 public interface WarehouseRepository extends JpaRepository<Warehouse, Integer> {
-    //special CRUD extending methods like special queries to find more specific results
+
 }

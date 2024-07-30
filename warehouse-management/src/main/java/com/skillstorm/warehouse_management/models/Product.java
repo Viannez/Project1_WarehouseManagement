@@ -1,9 +1,14 @@
 package com.skillstorm.warehouse_management.models;
 
+import java.util.List;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,12 +17,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "product")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Product.class)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +33,8 @@ public class Product {
     ) 
     private int id;
 
-    @Min(value = 0)
-    private int stock;
+    @Column(length=50)
+    private String name;
 
     @Min(value = 0)
     private int price;
@@ -35,16 +42,22 @@ public class Product {
     @ManyToOne
     @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
     @NotNull
-    @JoinColumn(name = "warehouse_id")
-    @JsonIdentityReference(alwaysAsId= true)
-    private Warehouse warehouse;
-
-    @ManyToOne
-    @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
-    @NotNull
     @JoinColumn(name = "category_id")
     @JsonIdentityReference(alwaysAsId= true)
     private Category category;
+
+    @OneToMany(mappedBy = "product", targetEntity = ProductInventory.class) 
+    @JsonBackReference 
+    List<ProductInventory> productInventories;
+
+    public Product(){}
+
+    public Product(int id, String name, int price)
+    {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
     public int getId() {
         return id;
@@ -54,12 +67,12 @@ public class Product {
         this.id = id;
     }
 
-    public int getStock() {
-        return stock;
+    public String setName() {
+        return name;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public String getName() {
+        return name;
     }
 
     public int getPrice() {
@@ -70,14 +83,6 @@ public class Product {
         this.price = price;
     }
 
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -86,9 +91,22 @@ public class Product {
         this.category = category;
     }
 
+    public List<ProductInventory> getProductInventories() {
+        return productInventories;
+    }
+
+    public void setProductInventories(List<ProductInventory> productInventories) {
+        this.productInventories = productInventories;
+    }
+    
+    public int getInventory() {
+        return (productInventories==null) ? 0 : (productInventories.stream().filter(product -> product.getStock() > 10).mapToInt(ProductInventory::getStock).sum());
+    }
+
+
     @Override
     public String toString() {
-        return "Product [id=" + id + ", stock=" + stock + ", price=" + price + ", warehouse: " + (warehouse == null ? null : warehouse.getName()) + ", category: " + (category == null ? null : category.getName()) + "]";
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", category: " + (category == null ? null : category.getName()) + "]";
     }
 
     

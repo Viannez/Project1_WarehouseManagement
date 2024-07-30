@@ -38,9 +38,9 @@ public class Warehouse {
     @Max(value = 1000)
     private int capacity;
 
-    @OneToMany(mappedBy = "warehouse", targetEntity = Product.class) 
+    @OneToMany(mappedBy = "warehouse", targetEntity = ProductInventory.class) 
     @JsonBackReference 
-    List<Product> products;
+    List<ProductInventory> productInventories;
 
     public Warehouse(){}
 
@@ -58,6 +58,10 @@ public class Warehouse {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String setName() {
+        return name;
     }
 
     public String getName() {
@@ -80,16 +84,16 @@ public class Warehouse {
         return capacity;
     }
 
-    public int getInventory() {
-        return (products==null) ? 0 : (products.stream().filter(product -> product.getStock() > 10).mapToInt(Product::getStock).sum());
+    public List<ProductInventory> getProductInventories() {
+        return productInventories;
     }
 
-    public List<Product> getProduct() {
-        return products;
+    public void setProductInventories(List<ProductInventory> productInventories) {
+        this.productInventories = productInventories;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public int getInventoryCapacity() {
+        return (productInventories==null) ? 0 : (productInventories.stream().filter(product -> product.getStock() > 10).mapToInt(ProductInventory::getStock).sum());
     }
 
     @Override
@@ -97,8 +101,8 @@ public class Warehouse {
         return "Warehouse [id=" + id + 
         ", name=" + name + 
         ", address=" + address + 
-        ", capacity=" +  this.getInventory() + "/" + capacity + 
-        ", products=" + products
+        ", capacity=" +  this.getInventoryCapacity() + "/" + capacity + 
+        ", productInventories=" + productInventories
                 + "]";
     }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRef } from "react";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link } from '@trussworks/react-uswds';
+import './Warehouse.css'
 
 export const Warehouse = ({id, name, address, capacity}) => {
     return (
@@ -26,7 +27,7 @@ export const Warehouse = ({id, name, address, capacity}) => {
                 </CardBody>
                 {/* <CardFooter>
                     <Link href={'#'} variant="unstyled" allowSpacebarActivation className="usa-button usa-button--outline">
-                    Give me good-dayssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                    Give me good-days
                     </Link>
                 </CardFooter> */}
             </Card>
