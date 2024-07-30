@@ -47,7 +47,6 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product", targetEntity = ProductInventory.class) 
-    @JsonBackReference 
     List<ProductInventory> productInventories;
 
     public Product(){}

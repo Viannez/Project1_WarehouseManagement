@@ -29,7 +29,6 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", targetEntity = Product.class) 
-    @JsonBackReference 
     List<Product> products;
 
     public Category(){

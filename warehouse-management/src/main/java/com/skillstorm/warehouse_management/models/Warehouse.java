@@ -39,7 +39,6 @@ public class Warehouse {
     private int capacity;
 
     @OneToMany(mappedBy = "warehouse", targetEntity = ProductInventory.class) 
-    @JsonBackReference 
     List<ProductInventory> productInventories;
 
     public Warehouse(){}
