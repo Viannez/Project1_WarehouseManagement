@@ -1,3 +1,5 @@
+import-normalize
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -66,3 +68,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.usa-card__container {
+  color:#1b1b1b;
+  background-color:#fff;
+  font-family:Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+  font-size:1.06rem;
+  line-height:1.5;
+  border-width:2px;
+  border-color:#dfe1e2;
+  border-style:solid;
+  display:flex;
+  flex-direction:row;
+  height:100%;
+  width: 100%;
+  flex-direction:column;
+  margin-left:.5rem;
+  margin-right:.5rem;
+  position:left;
+  border-radius:.5rem
+}
+.usa-card__body {
+  flex-direction: row;
+  padding:.5rem 1.5rem;
+  flex-basis:auto
+
+}
+
+/* removes bullet points from WarehouseList */
+li { list-style-type: none; }

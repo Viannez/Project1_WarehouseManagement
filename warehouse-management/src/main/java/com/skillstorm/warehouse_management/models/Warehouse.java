@@ -80,6 +80,10 @@ public class Warehouse {
         return capacity;
     }
 
+    public int getInventory() {
+        return (products==null) ? 0 : (products.stream().filter(product -> product.getStock() > 10).mapToInt(Product::getStock).sum());
+    }
+
     public List<Product> getProduct() {
         return products;
     }
@@ -90,11 +94,10 @@ public class Warehouse {
 
     @Override
     public String toString() {
-        String stocks = (products==null) ? "0" : String.valueOf(products.stream().filter(product -> product.getStock() > 10).mapToInt(Product::getStock).sum());
         return "Warehouse [id=" + id + 
         ", name=" + name + 
         ", address=" + address + 
-        ", capacity=" +  stocks + "/" + capacity + 
+        ", capacity=" +  this.getInventory() + "/" + capacity + 
         ", products=" + products
                 + "]";
     }
