@@ -99,10 +99,6 @@ public class Product {
         this.productInventories = productInventories;
     }
     
-    public int getInventory() {
-        return (productInventories==null) ? 0 : (productInventories.stream().filter(product -> product.getStock() > 10).mapToInt(ProductInventory::getStock).sum());
-    }
-
 
     @Override
     public String toString() {
