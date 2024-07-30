@@ -44,11 +44,11 @@ public class ProductService {
         if (wRepo.existsById(warehouse.getId())) {
             warehouse = wRepo.findById(warehouse.getId()).get();
             //check stocks/capacity
-            int stocks = warehouse.getProduct().stream().filter(p -> p.getStock() > 10).mapToInt(Product::getStock).sum();
-            if(warehouse.getCapacity() < stocks+1)
-            {
+            // int stocks = warehouse.getProduct().stream().filter(p -> p.getStock() > 10).mapToInt(Product::getStock).sum();
+            // if(warehouse.getCapacity() < stocks+1)
+            // {
 
-            }
+            // }
             product.setWarehouse(warehouse);
         }
         // Check if category exists
