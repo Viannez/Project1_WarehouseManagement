@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link } from '@trussworks/react-uswds';
 import './Warehouse.css'
 
-export const Warehouse = ({id, name, address, capacity}) => {
+export const Warehouse = ({warehouse}) => {
     return (
         <>
             <Card layout="flagMediaRight" gridLayout={{
@@ -14,15 +14,16 @@ export const Warehouse = ({id, name, address, capacity}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
-                    <h3 className="usa-card__heading">{name}</h3>
+                    <h3 className="usa-card__heading">{warehouse.name}</h3>
                 </CardHeader>
                 {/* <CardMedia className="flex-align-center" imageClass="circle-card margin-x-auto">
                     <img src={sparklerImage} alt="" />
                 </CardMedia> */}
                 <CardBody>
                     <tr>
-                        <td > {address} </td>
-                        <td > {capacity} </td>
+                        <td > {warehouse.address} </td>
+                        <td > {warehouse.inventoryCapacity} </td>
+                        <td > {warehouse.capacity} </td>
                     </tr>
                 </CardBody>
                 {/* <CardFooter>

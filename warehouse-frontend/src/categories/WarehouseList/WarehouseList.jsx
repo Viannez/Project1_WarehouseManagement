@@ -26,10 +26,7 @@ const WarehouseList = () => {
         loaded ?
         < Warehouse class='no-bullets'
             key={i+warehouse.id}
-            id={warehouse.id}
-            name={warehouse.name}
-            address={warehouse.address}
-            capacity={warehouse.capacity}
+            warehouse={warehouse}
         /> :
         (<tr><td colSpan='2'>Loading...</td></tr>)
     ));
