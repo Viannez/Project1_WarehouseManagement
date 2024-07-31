@@ -20,11 +20,16 @@ export const Product = ({product}) => {
                     <img src={sparklerImage} alt="" />
                 </CardMedia> */}
                 <CardBody>
-                    <tr>
-                        <td > {product.name} </td>
-                        <td > {product.categoryName} </td>
-                        <td > {'$ '}, {product.price} </td>
-                    </tr>
+                    <table>
+                    <tbody>
+                        <tr>
+                            <td > {product.name} </td>
+                            <td > {product.categoryName} </td>
+                            <td > {'$ '}, {product.price} </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    
                 </CardBody>
                 {/* <CardFooter>
                     <Link href={'#'} variant="unstyled" allowSpacebarActivation className="usa-button usa-button--outline">

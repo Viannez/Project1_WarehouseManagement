@@ -1,5 +1,4 @@
 import './App.css'
-import WarehouseList from './categories/WarehouseList/WarehouseList'
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
 import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
@@ -19,6 +18,7 @@ function App() {
           </nav> */}
           <Navigation/>
           <Routes>
+          <Route path='/' element={<WarehousePage />} />
             <Route path='/warehouse' element={<WarehousePage />} />
             <Route path='/product' element={<ProductPage />} />
             <Route />

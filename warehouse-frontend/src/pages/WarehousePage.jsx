@@ -1,16 +1,20 @@
-import WarehouseList from '../categories/WarehouseList/WarehouseList'
+import WarehouseList from '../categories/Warehouse/WarehouseList'
+import WarehouseForm from '../categories/Warehouse/WarehouseForm';
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
 
 function WarehousePage() {
-
+  
   return (
     <>
       <Header >
         <Title>
           <h1>Warehouses</h1>
           <h2>Display warehouses</h2>
+          
         </Title>
+        <WarehouseForm >
+        </WarehouseForm>
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">
@@ -18,6 +22,7 @@ function WarehousePage() {
           </WarehouseList>
         </GridContainer>
       </main>
+      
     </>
   )
 }

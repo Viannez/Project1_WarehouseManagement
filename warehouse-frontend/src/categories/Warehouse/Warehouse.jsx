@@ -20,11 +20,15 @@ export const Warehouse = ({warehouse}) => {
                     <img src={sparklerImage} alt="" />
                 </CardMedia> */}
                 <CardBody>
-                    <tr>
-                        <td > {warehouse.address} </td>
-                        <td > {warehouse.inventoryCapacity} </td>
-                        <td > {warehouse.capacity} </td>
-                    </tr>
+                    <table> 
+                        <tbody>
+                            <tr>
+                                <td > {warehouse.address} </td>
+                                <td > {warehouse.inventoryCapacity} </td>
+                                <td > {warehouse.capacity} </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </CardBody>
                 {/* <CardFooter>
                     <Link href={'#'} variant="unstyled" allowSpacebarActivation className="usa-button usa-button--outline">

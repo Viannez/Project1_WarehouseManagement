@@ -28,7 +28,7 @@ const ProductList = () => {
             key={i+product.id}
             product={product}
         /> :
-        (<tr><td colSpan='2'>Loading...</td></tr>)
+        (<td colSpan='2'>Loading...</td>)
     ));
 }
 
