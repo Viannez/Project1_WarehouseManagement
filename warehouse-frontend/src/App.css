@@ -41,4 +41,7 @@
   color: #888;
 }
 
-/* table { border-spacing: 30px; } */
+.usa-prose>table th[data-sortable][aria-sort=descending] .usa-table__header__button:hover {
+  color:#1a4480
+}
+

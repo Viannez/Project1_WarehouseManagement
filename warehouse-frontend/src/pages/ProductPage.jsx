@@ -1,25 +1,25 @@
-import WarehouseList from '../categories/WarehouseList/WarehouseList'
+import ProductList from '../categories/ProductList.jsx/ProductList'
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
 
-function WarehousePage() {
+function ProductPage() {
 
   return (
     <>
       <Header >
         <Title>
-          <h1>Warehouses</h1>
-          <h2>Display warehouses</h2>
+          <h1>Products</h1>
+          <h2>Display products</h2>
         </Title>
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">
-          <WarehouseList >
-          </WarehouseList>
+          <ProductList >
+          </ProductList>
         </GridContainer>
       </main>
     </>
   )
 }
 
-export default WarehousePage
+export default ProductPage

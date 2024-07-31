@@ -1,0 +1,16 @@
+
+import {Nav, Navbar, NavLink} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+function Navigation() {
+  return (
+    <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
+      <Nav>
+        <NavLink eventKey="1" as={Link} to="/warehouse">Warehouses</NavLink>
+        <NavLink eventKey="1" as={Link} to="/product">Products</NavLink>
+      </Nav>
+    </Navbar>
+  );
+}
+
+export default Navigation;

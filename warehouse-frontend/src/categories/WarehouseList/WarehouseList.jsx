@@ -28,7 +28,7 @@ const WarehouseList = () => {
             key={i+warehouse.id}
             warehouse={warehouse}
         /> :
-        (<tr><td colSpan='2'>Loading...</td></tr>)
+        (<p colSpan='2'>Loading...</p>)
     ));
 }
 

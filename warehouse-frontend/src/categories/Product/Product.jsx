@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useRef } from "react";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link } from '@trussworks/react-uswds';
-import './Warehouse.css'
+// import './Warehouse.css'
 
-export const Warehouse = ({warehouse}) => {
+export const Product = ({product}) => {
     return (
         <>
             <Card layout="flagMediaRight" gridLayout={{
@@ -14,16 +14,16 @@ export const Warehouse = ({warehouse}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
-                    <h3 className="usa-card__heading">{warehouse.name}</h3>
+                    <h3 className="usa-card__heading">{product.name}</h3>
                 </CardHeader>
                 {/* <CardMedia className="flex-align-center" imageClass="circle-card margin-x-auto">
                     <img src={sparklerImage} alt="" />
                 </CardMedia> */}
                 <CardBody>
                     <tr>
-                        <td > {warehouse.address} </td>
-                        <td > {warehouse.inventoryCapacity} </td>
-                        <td > {warehouse.capacity} </td>
+                        <td > {product.name} </td>
+                        <td > {product.categoryName} </td>
+                        <td > {'$ '}, {product.price} </td>
                     </tr>
                 </CardBody>
                 {/* <CardFooter>
