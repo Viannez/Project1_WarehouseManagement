@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Warehouse } from "./Warehouse";
-
+import './WarehouseList.css'
 
 const WarehouseList = () => {
     let url = "http://localhost:8080/warehouse";

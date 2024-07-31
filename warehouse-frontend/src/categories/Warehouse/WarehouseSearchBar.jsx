@@ -23,34 +23,33 @@ import { Row } from "react-bootstrap";
     <>
       <h4>Add New Warehouse</h4> 
       <Form 
-      class="usa-search"
+      className="usa-search"
       data-testid="form"
       role="search"
       onSubmit={handleSubmit}
       >
-        <div class="container">
-          <TextInput id="warehouse-name" class="usa-input" name="warehouseName" type="search" value=""/>
-          <Button class="usa-button" type="submit">Submit</Button>
+        <div className="container">
+          <TextInput id="warehouse-name" className="usa-input" name="warehouseName" type="search"/>
+          <Button className="usa-button" type="submit">Submit</Button>
           <Select
-        id="input-select"
-        class="usa-select"
-        onChange={(e) => setSearchType({searchType: e.target.value})}
-      >
-        <Fragment key=".0">
-          <option>
-            - Select way to search warehouses-{' '}
-          </option>
-          <option value="Id">
-            Find by ID
-          </option>
-          <option value="Name">
-            Search Names
-          </option>
-          <option value="Address">
-            Search Addresses
-          </option>
-        </Fragment>
-      </Select>
+          id="input-select"
+          className="usa-select"
+          onChange={(e) => setSearchType({searchType: e.target.value})}>
+            <Fragment key=".0">
+              <option>
+                - Select way to search warehouses-{' '}
+              </option>
+              <option value="Id">
+                Find by ID
+              </option>
+              <option value="Name">
+                Search Names
+              </option>
+              <option value="Address">
+                Search Addresses
+              </option>
+            </Fragment>
+          </Select>
         </div>
       </Form>
      

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useRef } from "react";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
-
+import WarehouseSinglePage from '../../pages/WarehouseDetails';
 import './Warehouse.css'
 
 export const Warehouse = ({warehouse}) => {
@@ -15,31 +16,21 @@ export const Warehouse = ({warehouse}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
+                    <div className="container">
                     <h3 className="usa-card__heading">{warehouse.name}</h3>
+                        <h3 className="usa-card__heading">ID: {warehouse.id}</h3>
+                        
+                    </div>
                 </CardHeader>
-                {/* <CardMedia className="flex-align-center" imageClass="circle-card margin-x-auto">
-                    <img src={sparklerImage} alt="" />
-                </CardMedia> */}
                 <CardBody>
-                    <table> 
-                        <tbody>
-                            <tr>
-                                <td > {warehouse.address} </td>
-                                <td > {warehouse.inventoryCapacity}/{warehouse.capacity} </td>
-                                <td>
-                                <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'#'}>
-                                    Open Warehouse 
-                                </Link>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="container">
+                        <p > {warehouse.address} </p>
+                        <p > {warehouse.inventoryCapacity}/{warehouse.capacity} </p>
+                        <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
+                            Open Warehouse 
+                        </Link>
+                    </div>
                 </CardBody>
-                {/* <CardFooter>
-                    <Link href={'#'} variant="unstyled" allowSpacebarActivation className="usa-button usa-button--outline">
-                    Give me good-days
-                    </Link>
-                </CardFooter> */}
             </Card>
         </>
     )
