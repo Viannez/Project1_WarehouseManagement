@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,13 +31,13 @@ public class ProductInventory {
     @Min(value = 0)
     private int stock;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "warehouse_id")
     @JsonIdentityReference(alwaysAsId= true)
     private Warehouse warehouse;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "product_id")
     @JsonIdentityReference(alwaysAsId= true)

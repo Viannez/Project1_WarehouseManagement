@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import { Warehouse } from "./Warehouse";
 
 
-const WarehouseList = ({warehouseAttribute}) => {
+const WarehouseList = () => {
     let url = "http://localhost:8080/warehouse";
-    console.log("within list: ", warehouseAttribute)
-    if(warehouseAttribute!="")
-    {
-        url = "http://localhost:8080/warehouse/" + warehouseAttribute;
-        console.log(url);
-    }
+    // console.log("within list: ", warehouseAttribute)
+    // if(warehouseAttribute!="")
+    // {
+    //     url = "http://localhost:8080/warehouse/" + warehouseAttribute;
+    //     console.log(url);
+    // }
 
     const [warehouses, setWarehouses] = useState([]);
     const [loaded, setLoaded] = useState(false);

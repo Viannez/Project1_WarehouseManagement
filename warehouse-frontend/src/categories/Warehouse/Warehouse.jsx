@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRef } from "react";
-import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link } from '@trussworks/react-uswds';
+import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
+
 import './Warehouse.css'
 
 export const Warehouse = ({warehouse}) => {
@@ -24,8 +25,12 @@ export const Warehouse = ({warehouse}) => {
                         <tbody>
                             <tr>
                                 <td > {warehouse.address} </td>
-                                <td > {warehouse.inventoryCapacity} </td>
-                                <td > {warehouse.capacity} </td>
+                                <td > {warehouse.inventoryCapacity}/{warehouse.capacity} </td>
+                                <td>
+                                <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'#'}>
+                                    Open Warehouse 
+                                </Link>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

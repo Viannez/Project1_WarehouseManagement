@@ -1,6 +1,7 @@
 import WarehouseList from '../categories/Warehouse/WarehouseList'
 import WarehouseForm from '../categories/Warehouse/WarehouseForm';
-import WarehouseSearch from '../categories/Warehouse/WarehouseSearch';
+import WarehouseSearchBar from '../categories/Warehouse/WarehouseSearchBar';
+import {SearchByID } from '../categories/Warehouse/WarehouseSearchBar';
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
 
@@ -13,7 +14,8 @@ function WarehousePage() {
           <h1>Warehouses</h1>
         </Title>
         <WarehouseForm/>
-        <WarehouseSearch/>
+        <WarehouseSearchBar/>
+        <SearchByID/>
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">
