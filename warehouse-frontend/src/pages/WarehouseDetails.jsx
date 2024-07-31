@@ -30,9 +30,10 @@ function WarehouseDetails() {
     <>
       <main className="container-center">
       <Title>
-          <h1>Warehouse {id}</h1>
-          <h1>{warehouse.name}  {warehouse.address}  {warehouse.inventoryCapacity}/{warehouse.capacity}</h1>
-        </Title>
+        <h1>Warehouse {id}: {warehouse.name}</h1>
+      </Title>
+        <h2> Location: {warehouse.address}</h2>
+        <h2>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h2>
       </main>
       
       
