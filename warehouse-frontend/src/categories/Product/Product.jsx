@@ -25,7 +25,7 @@ export const Product = ({product}) => {
                         <tr>
                             <td > {product.name} </td>
                             <td > {product.categoryName} </td>
-                            <td > {'$ '}, {product.price} </td>
+                            <td > {'$'}{product.price} </td>
                         </tr>
                     </tbody>
                     </table>
