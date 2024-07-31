@@ -17,8 +17,6 @@ function WarehousePage() {
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">
-          <WarehouseList >
-          </WarehouseList>
         </GridContainer>
       </main>
       

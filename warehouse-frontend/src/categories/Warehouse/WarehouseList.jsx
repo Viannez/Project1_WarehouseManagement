@@ -3,15 +3,19 @@ import { useEffect } from "react";
 import { Warehouse } from "./Warehouse";
 
 
-const WarehouseList = () => {
-    const url = "http://localhost:8080/warehouse";
+const WarehouseList = ({warehouseAttribute}) => {
+    let url = "http://localhost:8080/warehouse";
+    console.log("within list: ", warehouseAttribute)
+    if(warehouseAttribute!="")
+    {
+        url = "http://localhost:8080/warehouse/" + warehouseAttribute;
+        console.log(url);
+    }
 
     const [warehouses, setWarehouses] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-
-
         fetch(url)
             .then(data => data.json()) // arrow function notation rules 
             .then(returnedData => {
@@ -22,6 +26,7 @@ const WarehouseList = () => {
 
     }, []) 
 
+    console.log( warehouses)
     return warehouses.map((warehouse, i) => (
         loaded ?
         < Warehouse class='no-bullets'
