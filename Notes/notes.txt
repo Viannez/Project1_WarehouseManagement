@@ -1,0 +1,50 @@
+POST
+=========================================
+For Post: /warehouse
+{
+    	"name": "Spider",
+    	"address": "Port Orange, Florida",
+    	"capacity": 500
+}
+
+
+For Post: /product
+{
+    	"name": "To Kill a Mockingbird",
+    	"category": 
+        {
+            "id": 1
+        },
+        "price": 15
+}
+
+For Post: /product_inventory
+{
+    	"warehouse": 
+        {
+            "id": 1
+        },
+		"product": 
+        {
+            "id": 1
+        },
+        "stock": 50
+}
+
+For Post: /product_inventory also create new product
+{
+    	"warehouse": 
+        {
+            "id": 1
+        },
+		"product": 
+        {
+            "name": "Dune",
+            "category": 
+            {
+                "id": 1
+            },
+            "price": 20
+        },
+        "stock": 50
+}

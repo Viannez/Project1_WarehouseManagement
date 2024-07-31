@@ -1,0 +1,98 @@
+DROP TABLE IF EXISTS Warehouse CASCADE;
+DROP TABLE IF EXISTS Product_Inventory CASCADE;
+DROP TABLE IF EXISTS Product CASCADE;
+DROP TABLE IF EXISTS Category CASCADE;
+DROP TABLE IF EXISTS Book CASCADE;
+DROP TABLE IF EXISTS Furniture CASCADE;
+DROP TABLE IF EXISTS Clothing CASCADE;
+
+-- tables
+
+-- Table: Warehouse
+CREATE TABLE Warehouse (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    address VARCHAR(255),
+	capacity INTEGER,
+	UNIQUE (name)
+);
+
+-- Table: Category
+CREATE TABLE Category(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+-- Insert: Category
+INSERT INTO Category(name)
+	VALUES
+	('Book'),
+	('Furniture'),
+	('Clothing');
+
+-- Table: Product
+CREATE TABLE Product(
+    id SERIAL PRIMARY KEY,
+    category_id INTEGER, 
+	name VARCHAR(255),
+    price INTEGER,
+	CONSTRAINT fk_category
+		FOREIGN KEY(category_id)
+			REFERENCES Category(id)
+			ON DELETE SET NULL 
+);
+
+-- Table: Product_Inventory
+CREATE TABLE Product_Inventory(
+	id SERIAL PRIMARY KEY,
+    warehouse_id INTEGER,
+    product_id INTEGER, 
+    stock INTEGER,
+	CONSTRAINT fk_warehouse
+		FOREIGN KEY(warehouse_id)
+			REFERENCES Warehouse(id)
+			ON DELETE CASCADE,
+	CONSTRAINT fk_product
+		FOREIGN KEY(product_id)
+			REFERENCES Product(id)
+			ON DELETE CASCADE,
+	UNIQUE (warehouse_id, product_id)
+);
+
+
+
+-- -- Table: Book
+-- CREATE TABLE Book(
+--     product_id INTEGER,
+--     title VARCHAR(255),
+--     author VARCHAR(255),
+-- 	PRIMARY KEY(product_id),
+-- 	CONSTRAINT fk_product
+-- 		FOREIGN KEY(product_id)
+-- 			REFERENCES Product(id)
+-- 			ON DELETE SET NULL 
+-- );
+
+-- -- Table: Furniture
+-- CREATE TABLE Furniture(
+--     product_id INTEGER,
+--     name VARCHAR(255),
+-- 	material VARCHAR(255),
+-- 	PRIMARY KEY(product_id),
+-- 	CONSTRAINT fk_product
+-- 		FOREIGN KEY(product_id)
+-- 			REFERENCES Product(id)
+-- 			ON DELETE CASCADE
+-- );
+
+-- -- Table: Clothing
+-- CREATE TABLE Clothing(
+--     product_id INTEGER,
+--     name VARCHAR(255),
+-- 	size VARCHAR(255),
+-- 	PRIMARY KEY(product_id),
+-- 	CONSTRAINT fk_product
+-- 		FOREIGN KEY(product_id)
+-- 			REFERENCES Product(id)
+-- 			ON DELETE CASCADE
+-- );
