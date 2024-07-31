@@ -21,7 +21,6 @@ import { Row } from "react-bootstrap";
     }
     return (
     <>
-      <h4>Add New Warehouse</h4> 
       <Form 
       className="usa-search"
       data-testid="form"
