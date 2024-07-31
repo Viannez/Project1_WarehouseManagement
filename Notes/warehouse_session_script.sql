@@ -2,9 +2,6 @@ DROP TABLE IF EXISTS Warehouse CASCADE;
 DROP TABLE IF EXISTS Product_Inventory CASCADE;
 DROP TABLE IF EXISTS Product CASCADE;
 DROP TABLE IF EXISTS Category CASCADE;
-DROP TABLE IF EXISTS Book CASCADE;
-DROP TABLE IF EXISTS Furniture CASCADE;
-DROP TABLE IF EXISTS Clothing CASCADE;
 
 -- tables
 
@@ -58,41 +55,3 @@ CREATE TABLE Product_Inventory(
 			ON DELETE CASCADE,
 	UNIQUE (warehouse_id, product_id)
 );
-
-
-
--- -- Table: Book
--- CREATE TABLE Book(
---     product_id INTEGER,
---     title VARCHAR(255),
---     author VARCHAR(255),
--- 	PRIMARY KEY(product_id),
--- 	CONSTRAINT fk_product
--- 		FOREIGN KEY(product_id)
--- 			REFERENCES Product(id)
--- 			ON DELETE SET NULL 
--- );
-
--- -- Table: Furniture
--- CREATE TABLE Furniture(
---     product_id INTEGER,
---     name VARCHAR(255),
--- 	material VARCHAR(255),
--- 	PRIMARY KEY(product_id),
--- 	CONSTRAINT fk_product
--- 		FOREIGN KEY(product_id)
--- 			REFERENCES Product(id)
--- 			ON DELETE CASCADE
--- );
-
--- -- Table: Clothing
--- CREATE TABLE Clothing(
---     product_id INTEGER,
---     name VARCHAR(255),
--- 	size VARCHAR(255),
--- 	PRIMARY KEY(product_id),
--- 	CONSTRAINT fk_product
--- 		FOREIGN KEY(product_id)
--- 			REFERENCES Product(id)
--- 			ON DELETE CASCADE
--- );
