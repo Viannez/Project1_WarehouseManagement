@@ -10,7 +10,6 @@ function WarehousePage() {
       <Header >
         <Title>
           <h1>Warehouses</h1>
-          <h2>Display warehouses</h2>
           
         </Title>
         <WarehouseForm >

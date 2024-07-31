@@ -38,7 +38,7 @@ const WarehouseForm = () => {
 
   return (
     <>
-      <h1>Form Submission Demo</h1>
+      <h4>Add New Warehouse</h4>
       <Form onSubmit={handleSubmit}>
         <Label htmlFor="warehouse-name">Warehouse Name</Label>
         <TextInput id="warehouse-name" name="warehouseName" type="text" />
