@@ -3,8 +3,11 @@ package com.skillstorm.warehouse_management.models;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,6 +22,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ProductInventory.class)
 @Table(name = "product_inventory", uniqueConstraints = { @UniqueConstraint(columnNames = { "warehouse_id", "product_id" }) })
 public class ProductInventory {
     @Id
@@ -32,13 +36,15 @@ public class ProductInventory {
     private int stock;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
+    @Cascade({CascadeType.MERGE})
+    @NotNull
     @JoinColumn(name = "warehouse_id")
     @JsonIdentityReference(alwaysAsId= true)
     private Warehouse warehouse;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
+    @Cascade({CascadeType.MERGE})
+    @NotNull
     @JoinColumn(name = "product_id")
     @JsonIdentityReference(alwaysAsId= true)
     private Product product;

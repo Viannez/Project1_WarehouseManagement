@@ -42,14 +42,12 @@ public class ProductInventoryService {
         Warehouse warehouse = productInventory.getWarehouse();
         if (wRepo.existsById(warehouse.getId())) {
             warehouse = wRepo.findById(warehouse.getId()).get();
-            System.out.print(warehouse);
             productInventory.setWarehouse(warehouse);
         }
         // Check if product exists
         Product product = productInventory.getProduct();
         if (wRepo.existsById(product.getId())) {
             product = pRepo.findById(product.getId()).get();
-            System.out.print(warehouse);
             productInventory.setProduct(product);
         }
         return repo.save(productInventory); 
