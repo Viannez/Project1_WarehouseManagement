@@ -1,54 +1,92 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
+import { useParams } from "react-router-dom";
 
-const WarehouseAddProduct = () => {
+export const WarehouseAddProduct = (capacity) => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+
+    const [products, setProducts] = useState([]);
+    const { id } = useParams()
+
+    const url = "http://localhost:8080/product";
+    useEffect(() => {
+
+        fetch(url)
+            .then(data => data.json()) // arrow function notation rules 
+            .then(returnedData => {
+                setProducts(returnedData);
+                // setLoaded(true);
+            })
+            .catch(err => { alert(err); console.log(err) })
+
+    }, []) 
+
+    console.log("products: ", products)
+    //submit data to add new product inventory to 
     function handleSubmit(e) {
-        const url = "http://localhost:8080/warehouse"; 
+        const url = "http://localhost:8080/product_inventory"; 
         e.preventDefault();
         const data = new FormData(e.target);
 
-        const newWarehouse = {
-        name: data.get("warehouseName"),
-        address: data.get("warehouseAddress"),
-        capacity: data.get("warehouseCapacity")
-        }
-
-        e.target.reset();
-
-        fetch(url, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
+        const newProductInventory = {
+        warehouse: {
+          id:id
         },
-        body: JSON.stringify(newWarehouse)
-        })
-        .then(data => data.json())
-        .then((returnedData) => {
-            console.log(returnedData)
-            setMessage("Succesfully created new movie with id " + returnedData?.id)
-        })
-        .catch(err => {
-            console.log(err);
-            setError(err)
-        });
+        product: {
+          id:data.get("productID")
+        },
+        stock: data.get("productInventoryStock")
+        }
+        console.log("id: ", id)
+        console.log("p_id: ", data.get("productID"))
+        console.log("stock: ", data.get("productInventoryStock"))
+
+        if(capacity+data.get("productInventoryStock") > capacity){
+          //alert
+          console.log("Too many products!")
+          //window.location.reload();
+        }
+        else
+        {
+          fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newProductInventory)
+            })
+            .then(data => data.json())
+            .then((returnedData) => {
+                console.log(returnedData)
+                setMessage("Succesfully created new movie with id " + returnedData?.id)
+            })
+            .catch(err => {
+                console.log(err);
+                setError(err)
+            });
+        }
+        
     }
 
   return (
     <>
-      <h4>Add New Warehouse</h4>
+      <h4>Add New Product to Warehouse</h4>
       <Form onSubmit={handleSubmit}>
-        <Label htmlFor="warehouse-name">Warehouse Name</Label>
-        <TextInput id="warehouse-name" name="warehouseName" type="text" />
-        <div>
-          <Label htmlFor="warehouse-address">Warehouse Address</Label>
-          <TextInput id="warehouse-address" name="warehouseAddress" type="text" />
+      <div>
+        <Label>Product ID</Label>
+            <Select id="product-id" name="productID" required>
+                <option>- Select -</option>
+                {
+                  products.map( ({id, name}) => 
+                    <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                }
+            </Select>
         </div>
         <div>
-          <Label htmlFor="warehouse-capacity">Warehouse Cacpacity</Label>
-          <TextInput id="warehouse-capacity" name="warehouseCapacity" type="number" />
+          <Label>Product Stock in this warehouse</Label>
+          <TextInput id="inputs" name="productInventoryStock" type="number" />
         </div>
         <Button type="submit">Submit</Button>
       </Form>
@@ -63,5 +101,3 @@ const WarehouseAddProduct = () => {
     </>
   )
 }
-
-export default WarehouseAddProduct

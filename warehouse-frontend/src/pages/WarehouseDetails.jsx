@@ -2,10 +2,11 @@ import {SearchByID } from '../categories/Warehouse/WarehouseSearchBar';
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import { useState } from "react";
 import { useEffect } from "react";
-import { Route, useParams, Routes } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import '@trussworks/react-uswds/lib/index.css'
 import WarehouseProductList from '../categories/Warehouse/WarehouseDetails/WarehouseProductList';
+import {WarehouseAddProduct} from '../categories/Warehouse/WarehouseDetails/WarehouseAddProduct';
 
 function WarehouseDetails() {
 
@@ -37,6 +38,7 @@ function WarehouseDetails() {
       </Title>
         <h2> Location: {warehouse.address}</h2>
         <h2>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h2>
+        <WarehouseAddProduct capacity={warehouse.capacity}/>
       </main>
       {
         loaded ?

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Product } from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 
 
 const ProductList = () => {
@@ -24,7 +24,7 @@ const ProductList = () => {
 
     return products.map((product, i) => (
         loaded ?
-        < Product class='no-bullets'
+        < ProductCard class='no-bullets'
             key={i+product.id}
             product={product}
         /> :

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 
-const WarehouseForm = () => {
+const AddWarehouse = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     function handleSubmit(e) {
@@ -64,4 +64,4 @@ const WarehouseForm = () => {
   )
 }
 
-export default WarehouseForm
+export default AddWarehouse

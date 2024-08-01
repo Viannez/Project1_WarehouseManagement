@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Fragment } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import WarehouseList from "./WarehouseList";
-import { Warehouse } from "./WarehouseCard";
+import { WarehouseCard } from "./WarehouseCard";
 import { Row } from "react-bootstrap";
 
  export default function WarehouseSearchBar(){

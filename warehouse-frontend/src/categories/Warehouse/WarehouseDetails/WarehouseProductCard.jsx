@@ -18,8 +18,6 @@ export const WarehouseProductCard = ({productInventory}) => {
     }, []) 
 
     function handleClick(e) {
-
-
         const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
 
         fetch(url, {

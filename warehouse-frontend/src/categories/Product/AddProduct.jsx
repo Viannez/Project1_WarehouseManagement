@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 
-const ProductForm = () => {
+const AddProduct = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     function handleSubmit(e) {
@@ -78,4 +78,4 @@ const ProductForm = () => {
   )
 }
 
-export default ProductForm
+export default AddProduct

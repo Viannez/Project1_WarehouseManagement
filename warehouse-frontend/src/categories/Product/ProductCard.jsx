@@ -5,7 +5,7 @@ import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '
 // import ProductSinglePage from '../../pages/ProductDetails';
 // import './Product.css'
 
-export const Product = ({product}) => {
+export const ProductCard = ({product}) => {
     
     function handleClick(e) {
 

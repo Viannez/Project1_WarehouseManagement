@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Warehouse } from "./WarehouseCard";
+import { WarehouseCard } from "./WarehouseCard";
 import './WarehouseList.css'
 
 const WarehouseList = () => {
@@ -29,7 +29,7 @@ const WarehouseList = () => {
     console.log( warehouses)
     return warehouses.map((warehouse, i) => (
         loaded ?
-        < Warehouse class='no-bullets'
+        < WarehouseCard class='no-bullets'
             key={i+warehouse.id}
             warehouse={warehouse}
         /> :

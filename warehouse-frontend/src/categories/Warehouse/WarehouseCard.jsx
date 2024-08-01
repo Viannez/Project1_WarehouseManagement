@@ -5,7 +5,7 @@ import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '
 import WarehouseSinglePage from '../../pages/WarehouseDetails';
 import './Warehouse.css'
 
-export const Warehouse = ({warehouse}) => {
+export const WarehouseCard = ({warehouse}) => {
     
     function handleClick(e) {
 
