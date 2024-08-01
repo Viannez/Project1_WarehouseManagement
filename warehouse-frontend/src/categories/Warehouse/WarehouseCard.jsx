@@ -3,7 +3,8 @@ import { useRef } from "react";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
 import WarehouseSinglePage from '../../pages/WarehouseDetails';
-import './Warehouse.css'
+import '../styles/Card.css'
+import '../styles/Button.css'
 
 export const WarehouseCard = ({warehouse}) => {
     
@@ -43,9 +44,9 @@ export const WarehouseCard = ({warehouse}) => {
                         <div className="container-element" > {warehouse.address} </div>
                         <div className="container-element" > {warehouse.inventoryCapacity}/{warehouse.capacity} </div >
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
-                            Open Warehouse 
+                            View
                         </Link>
-                        <Button onClick={handleClick} className="usa-button">Delete</Button>
+                        <Button onClick={handleClick} >Delete</Button>
                     </div>
                 </CardHeader>
             </Card>

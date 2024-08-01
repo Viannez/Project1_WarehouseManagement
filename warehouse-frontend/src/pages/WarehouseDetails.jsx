@@ -1,9 +1,8 @@
-import {SearchByID } from '../categories/Warehouse/WarehouseSearchBar';
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.css'; 
 import '@trussworks/react-uswds/lib/index.css'
 import WarehouseProductList from '../categories/Warehouse/WarehouseDetails/WarehouseProductList';
 import {WarehouseAddProduct} from '../categories/Warehouse/WarehouseDetails/WarehouseAddProduct';
@@ -28,16 +27,16 @@ function WarehouseDetails() {
         .catch(err => { alert(err); console.log(err) })
 
   }, []) 
-  console.log(warehouse.id)
-  console.log(warehouse.productInventories)
+
   return (
     <>
       <main className="container-center">
       <Title>
-        <h1>Warehouse {id}: {warehouse.name}</h1>
+        <h1>Warehouse {id}</h1>
       </Title>
-        <h2> Location: {warehouse.address}</h2>
-        <h2>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h2>
+        <h3>Name: {warehouse.name}</h3>
+        <h3> Location: {warehouse.address}</h3>
+        <h3>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h3>
         <WarehouseAddProduct inventoryCapacity={warehouse.inventoryCapacity} capacity={warehouse.capacity}/>
       </main>
       {

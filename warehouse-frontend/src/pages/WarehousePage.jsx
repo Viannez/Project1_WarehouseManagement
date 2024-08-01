@@ -1,9 +1,8 @@
-import WarehouseList from '../categories/Warehouse/WarehouseList'
-import AddWarehouse from '../categories/Warehouse/AddWarehouse';
 import WarehouseSearchBar from '../categories/Warehouse/WarehouseSearchBar';
 import {SearchByID } from '../categories/Warehouse/WarehouseSearchBar';
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
+import AddWarehouseModal from '../categories/Warehouse/AddWarehouseModal';
 
 function WarehousePage() {
   
@@ -13,7 +12,7 @@ function WarehousePage() {
         <Title>
           <h1>Warehouses</h1>
         </Title>
-        <AddWarehouse/>
+        <AddWarehouseModal/>
         {/* <WarehouseSearchBar/> */}
         <SearchByID/>
       </Header>

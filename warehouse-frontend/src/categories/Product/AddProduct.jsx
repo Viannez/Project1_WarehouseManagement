@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
+import GetCategories from "../util/GetCategories";
 
 const AddProduct = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+
+    const categories = GetCategories();
+
     function handleSubmit(e) {
         const url = "http://localhost:8080/product"; 
-        e.preventDefault();
+        // e.preventDefault();
         const data = new FormData(e.target);
 
         const newProduct = {
@@ -19,37 +23,29 @@ const AddProduct = () => {
         }
 
         console.log(newProduct.category)
-        
 
-        if(newProduct.category.length>1)
-        {
-            //alert
-            console.log("why am i here")
-        }
-        else{
-            fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newProduct)
-            })
-            .then(data => data.json())
-            .then((returnedData) => {
-                console.log(returnedData)
-                setMessage("Succesfully created new movie with id " + returnedData?.id)
-            })
-            .catch(err => {
-                console.log(err);
-                setError(err)
-            });
-        }
+        fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newProduct)
+        })
+        .then(data => data.json())
+        .then((returnedData) => {
+            console.log(returnedData)
+            setMessage("Succesfully created new movie with id " + returnedData?.id)
+        })
+        .catch(err => {
+            console.log(err);
+            setError(err)
+        });
+        
         
     }
 
   return (
     <>
-      <h4>Add New Product</h4>
       <Form onSubmit={handleSubmit}>
         <Label htmlFor="product-name">Product Name</Label>
         <TextInput id="product-name" name="productName" type="text" />
@@ -57,9 +53,10 @@ const AddProduct = () => {
             <Label htmlFor="product-category">Category</Label>
                 <Select id="product-category" name="productCategory" required>
                     <option>- Select -</option>
-                    <option value="1">Book</option>
-                    <option value="2">Furniture</option>
-                    <option value="3">Clothing</option>
+                {
+                  categories.map( ({id, name}) => 
+                    <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                }
                 </Select>
         </div>
         <div>

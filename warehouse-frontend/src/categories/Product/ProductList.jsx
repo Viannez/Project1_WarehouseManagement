@@ -1,34 +1,20 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { ProductCard } from "./ProductCard";
-
+import GetProducts from "../util/GetProducts";
 
 const ProductList = () => {
-    const url = "http://localhost:8080/product";
+    const products= GetProducts();
 
-    const [products, setProducts] = useState([]);
-    const [loaded, setLoaded] = useState(false);
-
-    useEffect(() => {
-
-
-        fetch(url)
-            .then(data => data.json()) // arrow function notation rules 
-            .then(returnedData => {
-                setProducts(returnedData);
-                setLoaded(true);
-            })
-            .catch(err => { alert(err); console.log(err) })
-
-    }, []) 
-
+    const found = products.length;
+    console.log( found)
     return products.map((product, i) => (
-        loaded ?
+        found>0 ?
         < ProductCard class='no-bullets'
             key={i+product.id}
             product={product}
         /> :
-        (<td colSpan='2'>Loading...</td>)
+        (<p colSpan='2'>Found no Products</p>)
     ));
 }
 

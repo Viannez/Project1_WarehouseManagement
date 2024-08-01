@@ -50,7 +50,7 @@ export const WarehouseProductCard = ({productInventory}) => {
                         <div className="container-element">Stock: {productInventory.stock}</div>
                         <div className="container-element"> {product.name} </div>
                         <div className="container-element"> ${product.price}</div>
-                        <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/productInventory/'+product.id} >
+                        <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                             Open Product 
                         </Link>
                         <Button onClick={handleClick} className="usa-button">Delete</Button>

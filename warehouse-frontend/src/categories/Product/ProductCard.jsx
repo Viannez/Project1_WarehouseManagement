@@ -6,9 +6,8 @@ import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '
 
 export const ProductCard = ({product}) => {
     
+    //DELETE Product from DB
     function handleClick(e) {
-
-
         const url = "http://localhost:8080/product/"+product.id; 
 
         fetch(url, {
@@ -40,7 +39,7 @@ export const ProductCard = ({product}) => {
                         <div className="container-element">{product.name}</div>
                         <div className="container-element">ID: {product.id}</div>
                         <div className="container-element"> ${product.price} </div>
-                        <div className="container-element"> {product.categoryName} </div>
+                        <div className="container-element">Size: {product.categoryName} </div>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                             Open Product 
                         </Link>

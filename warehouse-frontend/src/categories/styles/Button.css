@@ -1,0 +1,25 @@
+
+button:hover {
+    color: #646cff;
+}
+  
+.usa-button {
+    font-family: Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    font-size: 1.06rem;
+    line-height: .9;
+    color: #fff;
+    background-color: #65c7e2;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    max-width:100px;
+    max-height: 60px;
+    overflow:hidden;
+}

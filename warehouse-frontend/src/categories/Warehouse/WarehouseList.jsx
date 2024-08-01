@@ -1,38 +1,20 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { WarehouseCard } from "./WarehouseCard";
+import GetWarehouses from "../util/GetWarehouses";
 
 const WarehouseList = () => {
-    let url = "http://localhost:8080/warehouse";
-    // console.log("within list: ", warehouseAttribute)
-    // if(warehouseAttribute!="")
-    // {
-    //     url = "http://localhost:8080/warehouse/" + warehouseAttribute;
-    //     console.log(url);
-    // }
+    const warehouses= GetWarehouses()
 
-    const [warehouses, setWarehouses] = useState([]);
-    const [loaded, setLoaded] = useState(false);
-
-    useEffect(() => {
-        fetch(url)
-            .then(data => data.json()) // arrow function notation rules 
-            .then(returnedData => {
-                setWarehouses(returnedData);
-                setLoaded(true);
-            })
-            .catch(err => { alert(err); console.log(err) })
-
-    }, []) 
-
-    console.log( warehouses)
+    const found = warehouses.length;
+    console.log( found)
     return warehouses.map((warehouse, i) => (
-        loaded ?
+        found>0 ?
         < WarehouseCard class='no-bullets'
             key={i+warehouse.id}
             warehouse={warehouse}
         /> :
-        (<p colSpan='2'>Loading...</p>)
+        (<p colSpan='2'>Found no Warehouses</p>)
     ));
 }
 
