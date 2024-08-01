@@ -41,7 +41,7 @@ public class Product {
     private int price;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
+    @Cascade({CascadeType.MERGE})
     @NotNull
     @JoinColumn(name = "category_id")
     @JsonIdentityReference(alwaysAsId= true)

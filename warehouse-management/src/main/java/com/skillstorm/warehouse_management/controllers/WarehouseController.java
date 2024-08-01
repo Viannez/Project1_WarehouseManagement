@@ -60,8 +60,8 @@ public class WarehouseController{
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@PathVariable int id, @RequestBody Warehouse entity) {
-
+    public void putMethodName(@PathVariable int id, @RequestBody Warehouse warehouse) {
+        service.update(id, warehouse);
     }
 
     @DeleteMapping("/{id}")

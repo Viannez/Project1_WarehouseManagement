@@ -32,6 +32,7 @@ public class WarehouseService {
         return repo.save(warehouse);
     }
 
+    @Transactional
     public void update(int id, Warehouse warehouse) {
         if (!repo.existsById(id)) 
             throw new NoSuchElementException("Warehouse with id " + id + " does not exist");

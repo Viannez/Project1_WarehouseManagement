@@ -53,6 +53,7 @@ public class ProductInventoryService {
         return repo.save(productInventory); 
     }
 
+    @Transactional
     public void update(int id, ProductInventory productInventory) {
         if (!repo.existsById(id)) 
             throw new NoSuchElementException("ProductInventory with id " + id + " does not exist");
