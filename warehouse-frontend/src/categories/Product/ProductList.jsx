@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Product } from "../Product/Product";
+import { Product } from "./Product";
 
 
 const ProductList = () => {

@@ -14,7 +14,7 @@ function WarehousePage() {
           <h1>Warehouses</h1>
         </Title>
         <WarehouseForm/>
-        <WarehouseSearchBar/>
+        {/* <WarehouseSearchBar/> */}
         <SearchByID/>
       </Header>
       <main className="container-center">

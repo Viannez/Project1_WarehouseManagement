@@ -19,7 +19,7 @@ const WarehouseDetailsAdd = () => {
         e.target.reset();
 
         fetch(url, {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },

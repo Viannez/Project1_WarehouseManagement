@@ -65,3 +65,7 @@
   justify-content: space-around;
   padding: 10px 10px;
 }
+
+button:hover {
+  border-color: #646cff;
+}

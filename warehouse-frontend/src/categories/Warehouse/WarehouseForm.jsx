@@ -7,7 +7,7 @@ const WarehouseForm = () => {
     const [error, setError] = useState("");
     function handleSubmit(e) {
         const url = "http://localhost:8080/warehouse"; 
-        e.preventDefault();
+        // e.preventDefault();
         const data = new FormData(e.target);
 
         const newWarehouse = {

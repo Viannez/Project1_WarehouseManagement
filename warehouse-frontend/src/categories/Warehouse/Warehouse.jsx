@@ -40,7 +40,7 @@ export const Warehouse = ({warehouse}) => {
                     <div className="container">
                         <h3 className="usa-card__heading">{warehouse.name}</h3>
                         <h3 className="usa-card__heading">ID: {warehouse.id}</h3>
-                        <Button onClick={handleClick}>Delete</Button>
+                        <Button onClick={handleClick} className="usa-button">Delete</Button>
                     </div>
                 </CardHeader>
                 <CardBody>

@@ -29,7 +29,7 @@ import { Row } from "react-bootstrap";
       >
         <div className="container">
           <TextInput id="warehouse-name" className="usa-input" name="warehouseName" type="search"/>
-          <Button className="usa-button" type="submit">Submit</Button>
+          <Button className="usa-button" type="submit">Search</Button>
           <Select
           id="input-select"
           className="usa-select"

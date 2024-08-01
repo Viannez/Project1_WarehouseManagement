@@ -1,6 +1,7 @@
-import ProductList from '../categories/ProductList.jsx/ProductList'
+import ProductList from '../categories/Product/ProductList'
 import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
+import ProductForm from '../categories/Product/ProductForm'
 
 function ProductPage() {
 
@@ -9,8 +10,8 @@ function ProductPage() {
       <Header >
         <Title>
           <h1>Products</h1>
-          <h2>Display products</h2>
         </Title>
+        <ProductForm/>
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">
