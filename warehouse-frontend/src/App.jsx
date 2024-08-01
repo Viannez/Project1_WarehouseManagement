@@ -17,7 +17,7 @@ function App() {
             <Link to="/warehouse">Warehouse</Link>
             <Link to="/product">Product</Link>
           </nav> */}
-          <Navigation/>
+          <Navigation className='nav'/>
           <Routes>
             <Route path='/' element={<WarehousePage />} />
             <Route path='/warehouse/:id/*' element={<WarehouseDetails />} />
