@@ -8,67 +8,73 @@ export const WarehouseUpdate = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     const { id } = useParams()
-
+    let newWarehouseInventory;
     //get warehouses for selection box
-    const warehouse = GetWarehouses();
+    const warehouse = GetWarehouses(id);
     
 
     // submit data to add new warehouse inventory to 
-    // function handleSubmit(e) {
-    //     const url = "http://localhost:8080/warehouse/"+id; 
-    //     e.preventDefault();
-    //     const data = new FormData(e.target);
+    function handleSubmit(e) {
+        const url = "http://localhost:8080/warehouse/"+id; 
+        e.preventDefault();
 
-    //     const newWarehouseInventory = {
-    //       "name": 
-    //     }
-    //     console.log("id: ", id)
-    //     console.log("p_id: ", data.get("warehouseID"))
-    //     console.log("stock: ", typeof data.get("warehouseInventoryStock"))
+        const data = new FormData(e.target);
 
-    //     if(Number(inventoryCapacity)+Number(data.get("warehouseInventoryStock")) > capacity){
-    //       console.log(inventoryCapacity+Number(data.get("warehouseInventoryStock")))
-    //       //alert
-    //       console.log("Too many warehouses!")
-    //       //window.location.reload();
-    //     }
-    //     else
-    //     {
-    //       fetch(url, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(newWarehouseInventory)
-    //         })
-    //         .then(data => data.json())
-    //         .then((returnedData) => {
-    //             console.log(returnedData)
-    //             setMessage("Succesfully created new movie with id " + returnedData?.id)
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //             setError(err)
-    //         });
-    //     }
+        newWarehouseInventory = {
+          name: data.get("warehouseName"),
+          address: data.get("warehouseAddress"),
+          capacity: data.get("warehouseCapacity") 
+        }
         
-    // }
+        if(newWarehouseInventory.name==""){
+          console.log("set name to: ", warehouse.name)
+          newWarehouseInventory.name=warehouse.name;
+        }
+        if(newWarehouseInventory.address==""){
+          console.log("set address to: ", warehouse.address)
+          newWarehouseInventory.address=warehouse.address;
+        }
+        if(newWarehouseInventory.capacity==""){
+          console.log("set capacity to: ", JSON.parse(warehouse.capacity))
+          newWarehouseInventory.capacity=JSON.parse(warehouse.capacity);
+        }
+
+        //PUT request body for updating warehouse
+        fetch(url, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newWarehouseInventory)
+          })
+          .then(data => data.json())
+          .then((returnedData) => {
+              console.log(returnedData)
+              setMessage("Succesfully created new movie with id " + returnedData?.id)
+          })
+          .catch(err => {
+              console.log(err);
+              setError(err)
+          });
+        
+        
+    }
 
   return (
     <>
       <h4>Add New Warehouse to Warehouse</h4>
-      <Form>
+      <Form onSubmit={handleSubmit}>
       <div>
         <Label>Update Name</Label>
-        <TextInput id="inputs" name="warehouseName" type="text" />
+        <TextInput id="warehouse-name" name="warehouseName" type="text" />
         </div>
         <div>
           <Label>Update Address</Label>
-          <TextInput id="inputs" name="warehouseAddress" type="number" value={warehouse.address}/>
+          <TextInput id="warehouse-address" name="warehouseAddress" type="text"/>
         </div>
         <div>
           <Label>Update Capacity</Label>
-          <TextInput id="inputs" name="warehouseCapacity" type="number" defaultValue={warehouse.capacity}/>
+          <TextInput id="warehouse-capacity" name="warehouseCapacity" type="number"/>
         </div>
         <Button type="submit">Submit</Button>
       </Form>

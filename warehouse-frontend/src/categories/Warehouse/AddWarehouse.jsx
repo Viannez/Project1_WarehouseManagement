@@ -7,7 +7,7 @@ const AddWarehouse = () => {
     const [error, setError] = useState("");
     function handleSubmit(e) {
         const url = "http://localhost:8080/warehouse"; 
-        // e.preventDefault();
+        e.preventDefault();
         const data = new FormData(e.target);
 
         const newWarehouse = {
@@ -15,6 +15,8 @@ const AddWarehouse = () => {
         address: data.get("warehouseAddress"),
         capacity: data.get("warehouseCapacity")
         }
+        
+        console.log(newWarehouse)
 
         e.target.reset();
 

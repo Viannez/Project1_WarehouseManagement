@@ -5,7 +5,7 @@ export default function GetWarehouses(id){
 
     let url = "";
     if(id!=undefined){
-        url = "http://localhost:8080/warehouse"+id;
+        url = "http://localhost:8080/warehouse/"+id;
     }
     else{
         console.log("warehouse found no id");
