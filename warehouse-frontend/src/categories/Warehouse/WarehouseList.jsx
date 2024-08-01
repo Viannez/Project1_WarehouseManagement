@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { WarehouseCard } from "./WarehouseCard";
-import './WarehouseList.css'
 
 const WarehouseList = () => {
     let url = "http://localhost:8080/warehouse";

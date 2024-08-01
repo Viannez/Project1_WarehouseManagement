@@ -46,20 +46,16 @@ export const WarehouseProductCard = ({productInventory}) => {
             }}>
                 <CardHeader>
                     <div className="container">
-                        <h3 className="usa-card__heading">ID: {productInventory.id}</h3>
-                        <h3 className="usa-card__heading">Stock: {productInventory.stock}</h3>
-                        <Button onClick={handleClick} className="usa-button">Delete</Button>
-                    </div>
-                </CardHeader>
-                <CardBody>
-                    <div className="container">
-                        <p > {product.name} </p>
-                        <p > ${product.price}</p>
+                        <div className="container-element">ID: {productInventory.id}</div>
+                        <div className="container-element">Stock: {productInventory.stock}</div>
+                        <div className="container-element"> {product.name} </div>
+                        <div className="container-element"> ${product.price}</div>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/productInventory/'+product.id} >
                             Open Product 
                         </Link>
+                        <Button onClick={handleClick} className="usa-button">Delete</Button>
                     </div>
-                </CardBody>
+                </CardHeader>
             </Card>
         </>
     )

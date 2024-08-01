@@ -38,20 +38,16 @@ export const WarehouseCard = ({warehouse}) => {
             }}>
                 <CardHeader>
                     <div className="container">
-                        <h3 className="usa-card__heading">{warehouse.name}</h3>
-                        <h3 className="usa-card__heading">ID: {warehouse.id}</h3>
-                        <Button onClick={handleClick} className="usa-button">Delete</Button>
-                    </div>
-                </CardHeader>
-                <CardBody>
-                    <div className="container">
-                        <p > {warehouse.address} </p>
-                        <p > {warehouse.inventoryCapacity}/{warehouse.capacity} </p>
+                        <div className="container-element">{warehouse.name}</div>
+                        <div className="container-element">ID: {warehouse.id}</div>
+                        <div className="container-element" > {warehouse.address} </div>
+                        <div className="container-element" > {warehouse.inventoryCapacity}/{warehouse.capacity} </div >
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
                             Open Warehouse 
                         </Link>
+                        <Button onClick={handleClick} className="usa-button">Delete</Button>
                     </div>
-                </CardBody>
+                </CardHeader>
             </Card>
         </>
     )
