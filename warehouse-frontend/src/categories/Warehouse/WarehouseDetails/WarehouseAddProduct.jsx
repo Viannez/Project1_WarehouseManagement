@@ -2,28 +2,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
+import GetProducts from "../../util/GetProducts";
 
-export const WarehouseAddProduct = ({inventoryCapacity, capacity}) => {
+export const WarehouseAddProduct = ({capacityNums}) => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-
-    const [products, setProducts] = useState([]);
     const { id } = useParams()
 
-    const url = "http://localhost:8080/product";
-    useEffect(() => {
+    //get products for selection box
+    const products = GetProducts();
 
-        fetch(url)
-            .then(data => data.json()) // arrow function notation rules 
-            .then(returnedData => {
-                setProducts(returnedData);
-                // setLoaded(true);
-            })
-            .catch(err => { alert(err); console.log(err) })
-
-    }, []) 
-
-    console.log("products: ", products)
     //submit data to add new product inventory to 
     function handleSubmit(e) {
         const url = "http://localhost:8080/product_inventory"; 
@@ -41,10 +29,11 @@ export const WarehouseAddProduct = ({inventoryCapacity, capacity}) => {
         }
         console.log("id: ", id)
         console.log("p_id: ", data.get("productID"))
-        console.log("stock: ", data.get("productInventoryStock"))
+        console.log("capacity: ",  capacityNums)
 
-        if(inventoryCapacity+Number(data.get("productInventoryStock")) > capacity){
-          console.log(inventoryCapacity+Number(data.get("productInventoryStock")))
+        console.log(capacityNums.inventoryCapacity+Number(data.get("productInventoryStock")))
+
+        if(Number(capacityNums.inventoryCapacity)+Number(data.get("productInventoryStock")) > capacityNums.capacity){
           //alert
           console.log("Too many products!")
           //window.location.reload();

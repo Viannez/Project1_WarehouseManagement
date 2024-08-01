@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css'; 
 import '@trussworks/react-uswds/lib/index.css'
 import WarehouseProductList from '../categories/Warehouse/WarehouseDetails/WarehouseProductList';
-import {WarehouseAddProduct} from '../categories/Warehouse/WarehouseDetails/WarehouseAddProduct';
+import WarehouseAddProductModal from '../categories/Warehouse/WarehouseDetails/WarehouseAddProductModal';
+import WarehouseUpdateModal from '../categories/Warehouse/WarehouseDetails/WarehouseUpdateModal';
 
 function WarehouseDetails() {
 
@@ -13,6 +14,11 @@ function WarehouseDetails() {
   const [loaded, setLoaded] = useState(false);
 
   const { id } = useParams()
+  const capacityNums = {
+    "inventoryCapacity":warehouse.inventoryCapacity,
+     "capacity":warehouse.capacity
+
+  }
 
   const url = "http://localhost:8080/warehouse/"+id;
 
@@ -37,7 +43,8 @@ function WarehouseDetails() {
         <h3>Name: {warehouse.name}</h3>
         <h3> Location: {warehouse.address}</h3>
         <h3>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h3>
-        <WarehouseAddProduct inventoryCapacity={warehouse.inventoryCapacity} capacity={warehouse.capacity}/>
+        <WarehouseUpdateModal/>
+        <WarehouseAddProductModal capacityNums={capacityNums}/>
       </main>
       {
         loaded ?
