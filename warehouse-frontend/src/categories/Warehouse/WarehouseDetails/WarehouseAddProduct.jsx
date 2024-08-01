@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
 
-export const WarehouseAddProduct = (capacity) => {
+export const WarehouseAddProduct = ({inventoryCapacity, capacity}) => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
@@ -43,7 +43,8 @@ export const WarehouseAddProduct = (capacity) => {
         console.log("p_id: ", data.get("productID"))
         console.log("stock: ", data.get("productInventoryStock"))
 
-        if(capacity+data.get("productInventoryStock") > capacity){
+        if(inventoryCapacity+Number(data.get("productInventoryStock")) > capacity){
+          console.log(inventoryCapacity+Number(data.get("productInventoryStock")))
           //alert
           console.log("Too many products!")
           //window.location.reload();

@@ -38,7 +38,7 @@ function WarehouseDetails() {
       </Title>
         <h2> Location: {warehouse.address}</h2>
         <h2>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h2>
-        <WarehouseAddProduct capacity={warehouse.capacity}/>
+        <WarehouseAddProduct inventoryCapacity={warehouse.inventoryCapacity} capacity={warehouse.capacity}/>
       </main>
       {
         loaded ?
