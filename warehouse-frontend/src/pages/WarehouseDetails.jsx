@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Route, useParams, Routes } from "react-router-dom";
 
 import '@trussworks/react-uswds/lib/index.css'
+import WarehouseProductList from '../categories/Warehouse/WarehouseDetails/WarehouseProductList';
 
 function WarehouseDetails() {
 
@@ -25,7 +26,9 @@ function WarehouseDetails() {
         })
         .catch(err => { alert(err); console.log(err) })
 
-}, []) 
+  }, []) 
+  console.log(warehouse.id)
+  console.log(warehouse.productInventories)
   return (
     <>
       <main className="container-center">
@@ -35,7 +38,11 @@ function WarehouseDetails() {
         <h2> Location: {warehouse.address}</h2>
         <h2>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h2>
       </main>
-      
+      {
+        loaded ?
+        <WarehouseProductList productInventory={warehouse.productInventories}/> 
+        : (<p colSpan='2'>Loading...</p>)
+      }
       
     </>
   )

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Warehouse } from "./Warehouse";
+import { Warehouse } from "./WarehouseCard";
 import './WarehouseList.css'
 
 const WarehouseList = () => {
