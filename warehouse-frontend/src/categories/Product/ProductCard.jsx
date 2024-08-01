@@ -39,8 +39,8 @@ export const ProductCard = ({product}) => {
                     <div className="container">
                         <div className="container-element">{product.name}</div>
                         <div className="container-element">ID: {product.id}</div>
-                        <div className="container-element"> {product.address} </div>
-                        <div className="container-element"> {product.price} </div>
+                        <div className="container-element"> ${product.price} </div>
+                        <div className="container-element"> {product.categoryName} </div>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                             Open Product 
                         </Link>

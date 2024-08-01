@@ -58,8 +58,8 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@PathVariable int id, @RequestBody Product entity) {
-
+    public void putMethodName(@Valid @PathVariable int id, @RequestBody Product product) {
+        service.update(id, product);
     }
 
     @DeleteMapping("/{id}")

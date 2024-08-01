@@ -43,6 +43,7 @@ public class ProductService {
         return repo.save(product); 
     }
 
+    @Transactional
     public void update(int id, Product product) {
         if (!repo.existsById(id)) 
             throw new NoSuchElementException("Product with id " + id + " does not exist");
