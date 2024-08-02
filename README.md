@@ -53,6 +53,11 @@ The warehouse management components are grouped by relations to one another.
 #### Pages
 [Pages](warehouse-frontend/src/pages) have the important components are are routed by the react-router-dom
 
+#### Important constraints
+- Cannot make a warehouse capacity smaller than it's current total inventory
+- Cannot overfill warehouse
+- Cannot make duplicate product records in warehouse
+- Cannot name two warehouses the same name
 
 
 
