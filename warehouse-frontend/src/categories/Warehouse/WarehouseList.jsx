@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { WarehouseCard } from "./WarehouseCard";
 import GetWarehouses from "../Util/GetWarehouses";
 
+//list of warehouse cards
 const WarehouseList = () => {
     const warehouses= GetWarehouses()
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { ProductWarehouseCard } from "./ProductWarehouseCard";
 
+//list of warehouse the product exists in
 const ProductWarehouseList = (productInventories) => {
 
     console.log( productInventories.productInventory)

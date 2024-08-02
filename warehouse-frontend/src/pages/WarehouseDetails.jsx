@@ -9,6 +9,7 @@ import WarehouseAddProductModal from '../categories/Warehouse/WarehouseDetails/W
 import WarehouseUpdateModal from '../categories/Warehouse/WarehouseDetails/WarehouseUpdateModal';
 import { Col, Row } from 'react-bootstrap';
 
+//one warehouse details linked from card
 function WarehouseDetails() {
 
   const [warehouse, setWarehouse] = useState([]);

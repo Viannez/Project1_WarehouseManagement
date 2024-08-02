@@ -4,6 +4,7 @@ import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react
 import { useParams } from "react-router-dom";
 import GetProducts from "../../Util/GetProducts";
 
+//add product to warehouse
 export const WarehouseAddProduct = ({capacityNums}) => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");

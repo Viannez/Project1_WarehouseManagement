@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import GetCategories from "../Util/GetCategories";
 
+//add new product inventory to warehouse
 const AddProduct = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");

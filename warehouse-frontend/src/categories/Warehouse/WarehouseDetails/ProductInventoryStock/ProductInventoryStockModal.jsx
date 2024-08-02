@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { ProductInventoryStock} from './ProductInventoryStock';
 import { FaPen } from "react-icons/fa";
 
+//update stock form in modal
 function ProductInventoryStockModal({info}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

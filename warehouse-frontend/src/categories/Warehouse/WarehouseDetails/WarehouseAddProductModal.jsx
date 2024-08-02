@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { WarehouseAddProduct } from './WarehouseAddProduct';
 import { FaRegPlusSquare } from "react-icons/fa";
 
+//add product form in modal
 function WarehouseAddProductModal({capacityNums}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

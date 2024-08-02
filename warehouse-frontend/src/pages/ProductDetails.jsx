@@ -8,6 +8,7 @@ import '@trussworks/react-uswds/lib/index.css'
 import ProductWarehouseList from '../categories/Product/ProductDetails/ProductWarehouseList';
 import { Row, Col } from 'react-bootstrap';
 
+//Page about one product linked from card
 function ProductDetails() {
 
   const [product, setProduct] = useState([]);

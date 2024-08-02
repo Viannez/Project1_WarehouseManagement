@@ -4,6 +4,7 @@ import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react
 import { useParams } from "react-router-dom";
 import GetWarehouses from "../../Util/GetWarehouses";
 
+//update warehouse details
 export const WarehouseUpdate = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");

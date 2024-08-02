@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import AddWarehouse from './AddWarehouse';
 import { FaRegPlusSquare } from "react-icons/fa";
 
+//create new warehouse form in modal
 function AddWarehouseModal
 () {
   const [show, setShow] = useState(false);

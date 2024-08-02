@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 
+//create new warehouse
 const AddWarehouse = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");

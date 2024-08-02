@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import GetCategories from "../../Util/GetCategories";
 import GetProducts from "../../Util/GetProducts";
 
+//update product details
 export const ProductUpdate = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
@@ -58,6 +59,7 @@ export const ProductUpdate = () => {
         console.log(result)
         console.log("set category name to: ", result[0].name)
 
+        setMessage("Success!")
         console.log("updateProduct: ", updateProduct)
         // PUT request body for updating product
         fetch(url, {
@@ -69,15 +71,10 @@ export const ProductUpdate = () => {
           })
           .then(data => data.json())
           .then((returnedData) => {
-            console.log("return:", returnedData)
-            if(returnedData.status!='500')
-              {
-                setMessage("Success!")
-              }
-              else
+            if(returnedData.status=='500')
               {
                 setMessage("Failed, price cannot be below 0.")
-              } 
+              }
           })
           .catch(err => {
               console.log(err);

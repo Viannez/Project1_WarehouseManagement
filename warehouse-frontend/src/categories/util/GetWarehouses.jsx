@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
+//get all warehouses or one warehouse by id
 export default function GetWarehouses(id){
 
     let url = "";

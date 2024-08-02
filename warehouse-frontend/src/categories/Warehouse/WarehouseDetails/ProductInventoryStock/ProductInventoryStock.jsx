@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetProducts from "../../../Util/GetProducts";
 import GetWarehouses from "../../../Util/GetWarehouses";
-import GetProductInventories from "../../../Util/GetProductInventories";
 
+//Update stock of product in warehouse
 export const ProductInventoryStock = ({info}) => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");

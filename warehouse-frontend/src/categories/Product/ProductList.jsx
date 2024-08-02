@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { ProductCard } from "./ProductCard";
 import GetProducts from "../Util/GetProducts";
 
+//List of total products
 const ProductList = () => {
     const products= GetProducts();
 

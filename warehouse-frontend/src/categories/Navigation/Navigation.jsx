@@ -1,8 +1,9 @@
 
 import {Nav, Navbar, NavLink} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import './Navigation.css'
+import './Navigation.css'
 
+//Navigation bar
 function Navigation() {
   return (
     <Navbar fixed="top" expand="lg" className="bg-body-tertiary" style={{}}>

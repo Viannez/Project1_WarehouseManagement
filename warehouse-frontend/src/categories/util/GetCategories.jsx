@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
+//get all categories or one category by id
 export default function GetCategories(id){
     const [categories, setCategories] = useState([]);
 

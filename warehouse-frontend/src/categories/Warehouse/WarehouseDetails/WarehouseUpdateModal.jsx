@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { WarehouseUpdate } from './WarehouseUpdate';
 import { FaPen } from 'react-icons/fa';
 
+//update warehouse form in modal
 function WarehouseUpdateModal(inventoryCapacity, capacity) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

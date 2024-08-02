@@ -3,6 +3,7 @@ import GetWarehouses from "../../Util/GetWarehouses";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
+//Shows warehouse that product exists in
 export const ProductWarehouseCard = ({productInventory}) => {
     
     const warehouse = GetWarehouses(productInventory.warehouse)

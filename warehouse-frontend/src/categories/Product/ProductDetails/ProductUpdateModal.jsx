@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { ProductUpdate } from './ProductUpdate';
 import { FaPen } from "react-icons/fa";
 
+//Displays Product update form in Modal
 function ProductUpdateModal() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

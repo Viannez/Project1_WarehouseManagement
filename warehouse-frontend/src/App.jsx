@@ -9,6 +9,8 @@ import ProductDetails from './pages/ProductDetails';
 import Navigation from './categories/Navigation/Navigation';
 import { FaBox } from "react-icons/fa";
 
+
+//base app 
 function App() {
 
   return (
@@ -24,7 +26,7 @@ function App() {
           <FaBox size={70}/>
         </div>
         <div className='banner-element'>
-          <h1>Mystery Box Warehouse </h1> 
+          <h1>Mystery Box Warehouses </h1> 
         </div>
         <div className='banner-element' style={{color: 'lightblue'}}>
           <FaBox size={70}/>

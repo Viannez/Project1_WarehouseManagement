@@ -3,6 +3,7 @@ import '@trussworks/react-uswds/lib/index.css'
 import AddWarehouseModal from '../categories/Warehouse/AddWarehouseModal';
 import WarehouseList from '../categories/Warehouse/WarehouseList';
 
+//all warehouses and their cards
 function WarehousePage() {
   
   return (
@@ -12,7 +13,6 @@ function WarehousePage() {
           <h1>Warehouses</h1>
         </Title>
         <AddWarehouseModal/>
-        {/* <WarehouseSearchBar/> */}
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">

@@ -5,6 +5,7 @@ import ProductInventoryStockModal from "./ProductInventoryStock/ProductInventory
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
+//a product within warehouse with stock
 export const WarehouseProductCard = ({productInventory}) => {
 
     //get product from productInventory

@@ -3,6 +3,8 @@ import { GridContainer, Header, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
 import AddProduct from '../categories/Product/AddProduct'
 import AddProductModal from '../categories/Product/AddProductModal'
+
+//All products page
 function ProductPage() {
 
   return (

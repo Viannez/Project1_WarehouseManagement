@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
+//get all products or one product by id
 export default function GetProducts(id){
     const [products, setProducts] = useState([]);
 

@@ -2,6 +2,7 @@ import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
+//Product with product information 
 export const ProductCard = ({product}) => {
     
     //DELETE Product from DB

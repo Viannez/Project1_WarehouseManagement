@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import AddProduct from './AddProduct';
 import { FaRegPlusSquare } from "react-icons/fa";
 
+//display add product form in modal
 function AddProductModal
 () {
   const [show, setShow] = useState(false);

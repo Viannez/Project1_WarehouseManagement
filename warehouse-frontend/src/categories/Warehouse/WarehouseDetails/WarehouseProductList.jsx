@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { WarehouseProductCard } from "./WarehouseProductCard";
 
+//List of products in warehouse
 const WarehouseProductList = (productInventories) => {
 
     console.log( productInventories.productInventory)

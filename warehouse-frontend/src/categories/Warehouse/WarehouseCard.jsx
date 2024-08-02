@@ -5,6 +5,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 import { FaRegTrashAlt } from "react-icons/fa";
 
+//warehouse information on a card
 export const WarehouseCard = ({warehouse}) => {
     
     //DELETE Warehouse
