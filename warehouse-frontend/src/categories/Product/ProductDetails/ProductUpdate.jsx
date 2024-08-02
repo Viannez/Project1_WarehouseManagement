@@ -69,8 +69,15 @@ export const ProductUpdate = () => {
           })
           .then(data => data.json())
           .then((returnedData) => {
-              console.log(returnedData)
-              setMessage("Succesfully created new movie with id " + returnedData?.id)
+            console.log("return:", returnedData)
+            if(returnedData.status!='500')
+              {
+                setMessage("Success!")
+              }
+              else
+              {
+                setMessage("Failed, price cannot be below 0.")
+              } 
           })
           .catch(err => {
               console.log(err);
@@ -102,9 +109,7 @@ export const ProductUpdate = () => {
         <Button type="submit">Submit</Button>
       </Form>
       {
-        // TODO choose a nicer alert with a close button
-        // make sure to reset the message and error state
-        message && <Alert type="success" heading="Success status" headingLevel="h4">
+        message && <Alert type="success" headingLevel="h4">
           {message}
         </Alert>
       }

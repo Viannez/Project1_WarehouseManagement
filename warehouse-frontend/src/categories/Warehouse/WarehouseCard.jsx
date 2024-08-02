@@ -7,9 +7,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 export const WarehouseCard = ({warehouse}) => {
     
+    //DELETE Warehouse
     function handleClick(e) {
-
-
         const url = "http://localhost:8080/warehouse/"+warehouse.id; 
 
         fetch(url, {

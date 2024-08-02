@@ -35,7 +35,7 @@ export const ProductInventoryStock = ({info}) => {
 
         const data = new FormData(e.target);
         
-
+        //request body
         updateProductInventory = {
           warehouse: {
             id: warehouse.id,
@@ -55,7 +55,7 @@ export const ProductInventoryStock = ({info}) => {
           },
           stock: data.get("productInventoryStock") 
         }
-
+        //
         if(data.get("productInventoryStock")==""){
           updateProductInventory.stock=0;
         }

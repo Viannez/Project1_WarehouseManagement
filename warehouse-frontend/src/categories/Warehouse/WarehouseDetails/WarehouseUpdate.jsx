@@ -85,8 +85,6 @@ export const WarehouseUpdate = () => {
         <Button type="submit">Submit</Button>
       </Form>
       {
-        // TODO choose a nicer alert with a close button
-        // make sure to reset the message and error state
         message && <Alert type="success" headingLevel="h4">
           {message}
         </Alert>

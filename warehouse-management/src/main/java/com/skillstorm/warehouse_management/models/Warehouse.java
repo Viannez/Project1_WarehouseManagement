@@ -34,8 +34,7 @@ public class Warehouse {
     private String address;
 
     @Column
-    @Min(value = 100)
-    @Max(value = 1000)
+    @Min(value = 1)
     private int capacity;
 
     @OneToMany(mappedBy = "warehouse", targetEntity = ProductInventory.class) 

@@ -68,7 +68,7 @@ const AddProduct = () => {
         <Button type="submit">Submit</Button>
       </Form>
       {
-        message && <Alert type="success" heading="Success status" headingLevel="h4">
+        message && <Alert type="success"  headingLevel="h4">
           {message}
         </Alert>
       }
