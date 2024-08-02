@@ -39,23 +39,30 @@ export const WarehouseUpdate = () => {
           updateWarehouse.capacity=JSON.parse(warehouse.capacity);
         }
 
-        //PUT request body for updating warehouse
-        fetch(url, {
-          method: "PUT",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(updateWarehouse)
-          })
-          .then(data => data.json())
-          .then((returnedData) => {
-              console.log(returnedData)
-              setMessage("Succesfully created new movie with id " + returnedData?.id)
-          })
-          .catch(err => {
-              console.log(err);
-              setError(err)
-          });
+        if(updateWarehouse.capacity < warehouse.inventoryCapacity)
+        {
+          setMessage("Capacity is not enough to hold products!")
+        }
+        else{
+          //PUT request body for updating warehouse
+          setMessage("Succesfully successfully updated Warehouse!")
+          fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updateWarehouse)
+            })
+            .then(data => data.json())
+            .then((returnedData) => {
+                console.log(returnedData)
+            })
+            .catch(err => {
+                console.log(err);
+                setError(err)
+            });
+
+        }
         
         
     }
@@ -81,7 +88,7 @@ export const WarehouseUpdate = () => {
       {
         // TODO choose a nicer alert with a close button
         // make sure to reset the message and error state
-        message && <Alert type="success" heading="Success status" headingLevel="h4">
+        message && <Alert type="success" headingLevel="h4">
           {message}
         </Alert>
       }
