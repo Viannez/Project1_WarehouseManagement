@@ -1,5 +1,14 @@
 # Project1_Warehouse_Management
 Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities.
+
+## How to Run:
+- Clone repository
+- First run spring boot maven app warehouse-management
+- run warehouse-frontend:
+```terminal
+npm run dev
+```
+
 ## Java with Spring Boot
 Created Spring Boot with Maven project in Java to build backend.
 

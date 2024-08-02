@@ -19,20 +19,14 @@ function App() {
         <div className='banner-element' style={{color:'lightskyblue'}}>
           <FaBox size={70}/>
         </div>
-        <div className='banner-element'>
-          <h1>???</h1> 
-        </div>
         <div className='banner-element' style={{color: 'lightblue'}}>
           <FaBox size={70}/>
         </div>
         <div className='banner-element'>
-          <h1>Mystery Box Warehouses </h1> 
+          <h2>Mystery Box Warehouses </h2> 
         </div>
         <div className='banner-element' style={{color: 'lightblue'}}>
           <FaBox size={70}/>
-        </div>
-        <div className='banner-element'>
-          <h1>???</h1> 
         </div>
         <div className='banner-element' style={{color:'lightskyblue'}}>
           <FaBox size={70}/>
