@@ -1,15 +1,15 @@
 # Project1_Warehouse_Management
 Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can:
-- View and sort list of all warehouses by ID and capacity
-- View and sort list of all products by ID and price
-- Create and delete warehouse from warehouse list
-- Create and delete product from product list, includes drop down for size category selection
+- View and sort list of all warehouses by ID and capacity.
+- View and sort list of all products by ID and price.
+- Create and delete warehouse from warehouse list, cannot have two warehouses with the same name.
+- Create and delete product from product list, includes drop down for size category selection.
 - View individual warehouse details magnifying glass button, routed '/warehouse/{id}'
   - Update warehouse details with pen button. Empty inputs will just keep the fields' previous values. Capacity cannot be lower than total products stocked in the warehouse.
   - Add new product inventory to warehouse with drop down of all products, cannot add product already in warehouse.
-  - View what products exist in each warehouse and the stock of the product
-  - Edit stock of each product listed in warehouse with pen button
-  - Delete product inventory from that specific warehouse.
+  - View what products exist in each warehouse and the stock of the product.
+  - Edit stock of each product listed in warehouse with pen button.
+  - Delete product inventory from that specific warehouse..
   - Go to view individual products' details with door button
 - View individual product details with magnifying glass button, routed '/product/{id}'
   - Update product details with pen button, includes drop down for size category selection
