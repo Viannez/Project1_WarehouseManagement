@@ -1,11 +1,16 @@
-import { GridContainer, Header, Title } from '@trussworks/react-uswds'
+import { GridContainer, Header, Label, Select, Title } from '@trussworks/react-uswds'
 import '@trussworks/react-uswds/lib/index.css'
 import AddWarehouseModal from '../categories/Warehouse/AddWarehouseModal';
 import WarehouseList from '../categories/Warehouse/WarehouseList';
+import { useState } from 'react';
 
 //all warehouses and their cards
 function WarehousePage() {
-  
+  let  [index, setIndex] = useState(1)
+  function getIndex(e)
+  {
+    setIndex(e.target.value)
+  }
   return (
     <>
       <Header >
@@ -13,10 +18,15 @@ function WarehousePage() {
           <h1>Warehouses</h1>
         </Title>
         <AddWarehouseModal/>
+        <Label htmlFor="product-category">Sort warehouses by:</Label>
+            <Select onChange={getIndex} id="product-category" name="productCategory" required>
+                <option value={1}> By ID</option>
+                <option value={2}> By Capacity</option>
+            </Select>
       </Header>
       <main className="container-center">
         <GridContainer containerSize="desktop">
-        <WarehouseList/>
+        <WarehouseList index={index}/>
         </GridContainer>
       </main>
       

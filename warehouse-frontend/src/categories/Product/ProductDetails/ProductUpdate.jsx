@@ -92,13 +92,13 @@ export const ProductUpdate = () => {
         <TextInput id="product-name" name="productName" type="text" />
         </div>
         <Label htmlFor="product-category">Update Category</Label>
-                <Select id="product-category" name="productCategory" required>
-                    <option>- Select -</option>
-                {
-                  categories.map( ({id, name}) => 
-                    <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
-                }
-                </Select>
+            <Select id="product-category" name="productCategory" required>
+                <option>- Select -</option>
+            {
+              categories.map( ({id, name}) => 
+                <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+            }
+            </Select>
         <div>
           <Label>Update Price</Label>
           <TextInput id="product-price" name="productPrice" type="number"/>

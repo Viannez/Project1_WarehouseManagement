@@ -4,10 +4,22 @@ import { WarehouseCard } from "./WarehouseCard";
 import GetWarehouses from "../Util/GetWarehouses";
 
 //list of warehouse cards
-const WarehouseList = () => {
+const WarehouseList = ({index}) => {
     const warehouses= GetWarehouses()
+
+    console.log("index: ", typeof index)
+    switch(index)
+    {
+        case '1':
+            console.log("inside 1")
+            warehouses.sort((a, b) => a.id - b.id);
+            break;
+        case '2':
+            console.log("inside 2")
+            warehouses.sort((a, b) => a.capacity - b.capacity);
+            break;
+    }
     
-    warehouses.sort((a, b) => a.id - b.id);
     const found = warehouses.length;
     console.log( found)
     return warehouses.map((warehouse, i) => (
