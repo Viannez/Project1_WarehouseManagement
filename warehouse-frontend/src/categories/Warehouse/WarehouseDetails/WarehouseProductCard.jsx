@@ -3,19 +3,21 @@ import GetProducts from "../../Util/GetProducts";
 import ProductInventoryStockModal from "./ProductInventoryStock/ProductInventoryStockModal";
 
 import { FaRegTrashAlt } from "react-icons/fa";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 export const WarehouseProductCard = ({productInventory}) => {
 
     //get product from productInventory
     const product = GetProducts(productInventory.product)
 
+    //pass info to modal
     const passToStock =
     {
         product:product,
         productInventory:productInventory
     }
-
     console.log("info: ", passToStock)
+
     function handleDelete(e) {
         const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
 
@@ -45,17 +47,20 @@ export const WarehouseProductCard = ({productInventory}) => {
             }}>
                 <CardHeader>
                     <div className="container">
-                    <div className="container-element"> {product.name} </div>
-                    <div className="container-element"> ${product.price}</div>
-                    <div className="container-element">Stock: {productInventory.stock}</div>
-                    <ProductInventoryStockModal info={passToStock}/>
-                    <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
-                        Open Product 
-                    </Link>
-                    <Button onClick={handleDelete} className="usa-button">
-                        <FaRegTrashAlt />
-                    </Button>
-                </div>
+                        <div className="container-element"> {product.name} </div>
+                        <div className="container-element"> ${product.price}</div>
+                        <div className="container-element"> Size:{product.categoryName}</div>
+                        <div className="container-element">Stock: {productInventory.stock}</div>
+                        <ProductInventoryStockModal info={passToStock}/>
+                        <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
+                            <div className='container-button' style={{textAlign:'left'}}>
+                                <FaArrowRightToBracket />
+                            </div>
+                        </Link>
+                        <Button onClick={handleDelete} className="usa-button">
+                            <FaRegTrashAlt />
+                        </Button>
+                    </div>
                 </CardHeader>
             </Card>
         </>

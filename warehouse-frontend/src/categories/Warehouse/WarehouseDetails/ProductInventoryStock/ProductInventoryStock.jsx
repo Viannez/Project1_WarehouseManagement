@@ -61,6 +61,7 @@ export const ProductInventoryStock = ({info}) => {
         }
         console.log("ALL INFO: ", updateProductInventory)
 
+        
         const inventoryCapacityNow =  warehouse.inventoryCapacity-productInventory.stock+parseInt(updateProductInventory.stock);
         console.log("inventoryCapacity now: ",  inventoryCapacityNow)
 
@@ -92,10 +93,9 @@ export const ProductInventoryStock = ({info}) => {
 
   return (
     <>
-      <h4>UpdateStock</h4>
       <Form onSubmit={handleSubmit}>
       <div>
-          <Label>Update Stock</Label>
+          <Label>Stock</Label>
           <TextInput id="productInventory-price" name="productInventoryStock" type="number"/>
         </div>
         <Button type="submit">Submit</Button>

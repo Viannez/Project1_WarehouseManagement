@@ -7,6 +7,7 @@ import '@trussworks/react-uswds/lib/index.css'
 import WarehouseProductList from '../categories/Warehouse/WarehouseDetails/WarehouseProductList';
 import WarehouseAddProductModal from '../categories/Warehouse/WarehouseDetails/WarehouseAddProductModal';
 import WarehouseUpdateModal from '../categories/Warehouse/WarehouseDetails/WarehouseUpdateModal';
+import { Col, Row } from 'react-bootstrap';
 
 function WarehouseDetails() {
 
@@ -19,6 +20,7 @@ function WarehouseDetails() {
     "capacity":warehouse.capacity,
   }
 
+  console.log("cap:", capacityNums)
   const url = "http://localhost:8080/warehouse/"+id;
 
 
@@ -39,13 +41,24 @@ function WarehouseDetails() {
       <Title>
         <h1>Warehouse {id}</h1>
       </Title>
-        <h3>Name: {warehouse.name}</h3>
-        <h3> Location: {warehouse.address}</h3>
-        <h3>Capacity filled: {warehouse.inventoryCapacity}/{warehouse.capacity}</h3>
+      <Row>
+        <Col>
+          <h3>Name: </h3>
+          <h3> Location: </h3>
+          <h3>Capacity filled: </h3>
+        </Col>
+        <Col>
+          <h3> {warehouse.name}</h3>
+          <h3> {warehouse.address}</h3>
+          <h3> {warehouse.inventoryCapacity}/{warehouse.capacity}</h3>
+        </Col>
+        <Col></Col>
+        <Col></Col>
+      </Row>
         <WarehouseUpdateModal/>
         <WarehouseAddProductModal capacityNums={capacityNums}/>
       </main>
-      <h2>This warehouse has the following products in stock</h2>
+      <h3>This warehouse has the following products in stock:</h3>
       {
         loaded ?
         <WarehouseProductList productInventory={warehouse.productInventories}/> 

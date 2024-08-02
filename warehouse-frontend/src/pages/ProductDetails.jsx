@@ -6,6 +6,7 @@ import ProductUpdateModal from '../categories/Product/ProductDetails/ProductUpda
 
 import '@trussworks/react-uswds/lib/index.css'
 import ProductWarehouseList from '../categories/Product/ProductDetails/ProductWarehouseList';
+import { Row, Col } from 'react-bootstrap';
 
 function ProductDetails() {
 
@@ -34,12 +35,25 @@ function ProductDetails() {
       <Title>
         <h1>Product {id}</h1>
       </Title>
-        <h3>Name: {product.name}</h3>
-        <h3>Size: {product.categoryName}</h3>
-        <h3>Price: ${product.price}</h3>
-        <ProductUpdateModal/>
+      <Row>
+      <Col>
+          <h3>Name: </h3>
+          <h3>Size: </h3>
+          <h3>Price: </h3>
+        </Col>
+        <Col>
+          <h3>{product.name}</h3>
+          <h3>{product.categoryName}</h3>
+          <h3>${product.price}</h3>
+        </Col>
+        <Col>
+        </Col>
+        <Col>
+        </Col>
+      </Row>
+      <ProductUpdateModal/>
       </main>
-      <h2>This Product is located in the following warehouses</h2>
+      <h3>This product is located in the following warehouses:</h3>
       {
         loaded ?
         <ProductWarehouseList productInventory={product.productInventories}/> 

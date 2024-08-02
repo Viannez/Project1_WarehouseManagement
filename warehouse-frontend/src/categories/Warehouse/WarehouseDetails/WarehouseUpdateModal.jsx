@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@trussworks/react-uswds';
 import Modal from 'react-bootstrap/Modal';
 import { WarehouseUpdate } from './WarehouseUpdate';
+import { FaPen } from 'react-icons/fa';
 
 function WarehouseUpdateModal(inventoryCapacity, capacity) {
   const [show, setShow] = useState(false);
@@ -9,8 +10,8 @@ function WarehouseUpdateModal(inventoryCapacity, capacity) {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Update Warehouse
+      <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+        <FaPen/>
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

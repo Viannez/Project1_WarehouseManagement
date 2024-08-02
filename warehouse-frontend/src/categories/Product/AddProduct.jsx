@@ -35,11 +35,12 @@ const AddProduct = () => {
         .then(data => data.json())
         .then((returnedData) => {
             console.log(returnedData)
-            setMessage("Succesfully created new movie with id " + returnedData?.id)
+            setMessage("Success!")
         })
         .catch(err => {
             console.log(err);
             setError(err)
+            setMessage("Check inputs for error")
         });
         
         

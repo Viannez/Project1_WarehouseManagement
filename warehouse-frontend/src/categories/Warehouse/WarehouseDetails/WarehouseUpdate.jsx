@@ -45,7 +45,7 @@ export const WarehouseUpdate = () => {
         }
         else{
           //PUT request body for updating warehouse
-          setMessage("Succesfully successfully updated Warehouse!")
+          setMessage("Success!")
           fetch(url, {
             method: "PUT",
             headers: {
@@ -69,7 +69,6 @@ export const WarehouseUpdate = () => {
 
   return (
     <>
-      <h4>Add New Warehouse to Warehouse</h4>
       <Form onSubmit={handleSubmit}>
       <div>
         <Label>Update Name</Label>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@trussworks/react-uswds';
 import Modal from 'react-bootstrap/Modal';
 import AddWarehouse from './AddWarehouse';
+import { FaRegPlusSquare } from "react-icons/fa";
 
 function AddWarehouseModal
 () {
@@ -10,8 +11,8 @@ function AddWarehouseModal
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add Warehouse
+      <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+        <FaRegPlusSquare />
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

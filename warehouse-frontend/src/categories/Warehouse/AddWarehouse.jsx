@@ -29,12 +29,17 @@ const AddWarehouse = () => {
         })
         .then(data => data.json())
         .then((returnedData) => {
-            console.log(returnedData)
-            setMessage("Succesfully created new movie with id " + returnedData?.id)
+            if(returnedData.status=='500')
+            {
+              setMessage("Failed, warehouse name already taken.")
+            }
+            else{
+              setMessage("Success!")
+            } 
         })
         .catch(err => {
             console.log(err);
-            setError(err)
+            setError("error: ", err)
         });
     }
 
@@ -56,7 +61,7 @@ const AddWarehouse = () => {
       {
         // TODO choose a nicer alert with a close button
         // make sure to reset the message and error state
-        message && <Alert type="success" heading="Success status" headingLevel="h4">
+        message && <Alert type="success" headingLevel="h4">
           {message}
         </Alert>
       }
