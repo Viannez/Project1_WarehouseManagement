@@ -20,8 +20,9 @@ function WarehousePage() {
         <AddWarehouseModal/>
         <Label htmlFor="sort-warehouses">Sort warehouses by:</Label>
             <Select onChange={getIndex} id="sort-warehouse" name="sortWarehouse" required>
-                <option value={1}> By ID</option>
-                <option value={2}> By Capacity</option>
+              <option >- Select -</option>
+              <option value={1}> By ID</option>
+              <option value={2}> By Capacity</option>
             </Select>
       </Header>
       <main className="container-center">

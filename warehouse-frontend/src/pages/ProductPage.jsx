@@ -21,8 +21,9 @@ function ProductPage() {
         <AddProductModal/>
           <Label htmlFor="sort-products">Sort products by:</Label>
             <Select onChange={getIndex} id="sort-product" name="sortProduct" required>
-                <option value={1}> By ID</option>
-                <option value={2}> By Price</option>
+              <option >- Select -</option>
+              <option value={1}> By ID</option>
+              <option value={2}> By Price</option>
             </Select>
       </Header>
       <main className="container-center">
