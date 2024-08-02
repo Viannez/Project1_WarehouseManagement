@@ -3,7 +3,7 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
 - View and sort list of all warehouses by ID and capacity
 - View and sort list of all products by ID and price
 - Create and Delete warehouse from warehouse list
-- Create and delete product from product list, uses drop down for size category selection
+- Create and delete product from product list, includes drop down for size category selection
 - View individual warehouse details magnifying glass button, routed '/warehouse/{id}'
   - Update warehouse details with pen button. Null values will just keep previous values. Capacity cannot be lower than total products stocked in the warehouse.
   - Add new product inventory to warehouse with drop down of all products, cannot add product already in warehouse.
@@ -12,12 +12,10 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
   - Delete product inventory from that specific warehouse.
   - Go to view individual products' details with door button
 - View individual product details with magnifying glass button, routed '/product/{id}'
-  - Update product details with pen button.
+  - Update product details with pen button, includes drop down for size category selection
   - View what warehouses the product is in and the stock in each warehouse.
   - Delete product inventory from that specific warehouse.
   - Go to view individual warehouses' details with door button
-
-update all properties of warehouse and product, as well as product inventory stock for each warehouse. 
 
 ## How to Run:
 - Clone repository
