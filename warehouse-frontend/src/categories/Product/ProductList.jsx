@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { ProductCard } from "./ProductCard";
-import GetProducts from "../util/GetProducts";
+import GetProducts from "../Util/GetProducts";
 
 const ProductList = () => {
     const products= GetProducts();

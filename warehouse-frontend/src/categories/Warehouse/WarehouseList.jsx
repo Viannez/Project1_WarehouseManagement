@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { WarehouseCard } from "./WarehouseCard";
-import GetWarehouses from "../util/GetWarehouses";
+import GetWarehouses from "../Util/GetWarehouses";
 
 const WarehouseList = () => {
     const warehouses= GetWarehouses()

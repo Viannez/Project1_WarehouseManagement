@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
-import GetCategories from "../util/GetCategories";
+import GetCategories from "../Util/GetCategories";
 
 const AddProduct = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
+    //get categories to select from
     const categories = GetCategories();
 
     function handleSubmit(e) {

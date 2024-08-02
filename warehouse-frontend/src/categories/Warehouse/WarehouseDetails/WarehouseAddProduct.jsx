@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetProducts from "../../util/GetProducts";
+import GetProducts from "../../Util/GetProducts";
 
 export const WarehouseAddProduct = ({capacityNums}) => {
     const [message, setMessage] = useState("");

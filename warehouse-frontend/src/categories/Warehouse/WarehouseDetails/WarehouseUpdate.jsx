@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetWarehouses from "../../util/GetWarehouses";
+import GetWarehouses from "../../Util/GetWarehouses";
 
 export const WarehouseUpdate = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     const { id } = useParams()
-    let newWarehouseInventory;
-    //get warehouses for selection box
+    let updateWarehouse;
+    //get warehouses to keep set null attributes to previous values
     const warehouse = GetWarehouses(id);
     
 
@@ -20,23 +20,23 @@ export const WarehouseUpdate = () => {
 
         const data = new FormData(e.target);
 
-        newWarehouseInventory = {
+        updateWarehouse = {
           name: data.get("warehouseName"),
           address: data.get("warehouseAddress"),
           capacity: data.get("warehouseCapacity") 
         }
-        
-        if(newWarehouseInventory.name==""){
+
+        if(updateWarehouse.name==""){
           console.log("set name to: ", warehouse.name)
-          newWarehouseInventory.name=warehouse.name;
+          updateWarehouse.name=warehouse.name;
         }
-        if(newWarehouseInventory.address==""){
+        if(updateWarehouse.address==""){
           console.log("set address to: ", warehouse.address)
-          newWarehouseInventory.address=warehouse.address;
+          updateWarehouse.address=warehouse.address;
         }
-        if(newWarehouseInventory.capacity==""){
+        if(updateWarehouse.capacity==""){
           console.log("set capacity to: ", JSON.parse(warehouse.capacity))
-          newWarehouseInventory.capacity=JSON.parse(warehouse.capacity);
+          updateWarehouse.capacity=JSON.parse(warehouse.capacity);
         }
 
         //PUT request body for updating warehouse
@@ -45,7 +45,7 @@ export const WarehouseUpdate = () => {
           headers: {
               "Content-Type": "application/json"
           },
-          body: JSON.stringify(newWarehouseInventory)
+          body: JSON.stringify(updateWarehouse)
           })
           .then(data => data.json())
           .then((returnedData) => {
