@@ -24,7 +24,7 @@ const WarehouseList = ({index}) => {
     return warehouses.map((warehouse, i) => (
         found>0 ?
         < WarehouseCard class='no-bullets'
-            key={i+warehouse.id}
+            key={i+warehouse.name}
             warehouse={warehouse}
         /> :
         (<p colSpan='2'>Found no Warehouses</p>)
