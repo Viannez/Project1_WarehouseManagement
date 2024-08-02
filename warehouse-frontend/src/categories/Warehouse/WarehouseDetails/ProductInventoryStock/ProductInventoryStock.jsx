@@ -63,9 +63,11 @@ export const ProductInventoryStock = ({info}) => {
         const inventoryCapacityNow =  warehouse.inventoryCapacity-productInventory.stock+parseInt(updateProductInventory.stock);
         console.log("inventoryCapacity now: ",  inventoryCapacityNow)
 
+        setMessage("Success!")
+        //check for products inventory total
         if(inventoryCapacityNow> warehouse.capacity)
         {
-          setMessage("Too many products")
+          setMessage("Failed, too many products!")
         }
         else{
           setMessage("Success!")
@@ -79,6 +81,10 @@ export const ProductInventoryStock = ({info}) => {
             .then(data => data.json())
             .then((returnedData) => {
                 console.log(returnedData)
+                if(returnedData.status=='500')
+                  {
+                    setMessage("Failed, price cannot be below 0.")
+                  }
             })
             .catch(err => {
                 console.log(err);
