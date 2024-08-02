@@ -42,6 +42,11 @@ export const ProductUpdate = () => {
           console.log("set name to: ", product.name)
           updateProduct.name=product.name;
         }
+        console.log("category id: ", updateProduct.category.id)
+        if(updateProduct.category.id=="- Select -"){
+          console.log("set category to: ", JSON.parse(product.category))
+          updateProduct.category.id=JSON.parse(product.category);
+        }
         if(updateProduct.price==""){
           console.log("set price to: ", JSON.parse(product.price))
           updateProduct.price=JSON.parse(product.price);

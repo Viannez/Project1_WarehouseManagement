@@ -6,7 +6,8 @@ import GetWarehouses from "../Util/GetWarehouses";
 //list of warehouse cards
 const WarehouseList = () => {
     const warehouses= GetWarehouses()
-
+    
+    warehouses.sort((a, b) => a.id - b.id);
     const found = warehouses.length;
     console.log( found)
     return warehouses.map((warehouse, i) => (
