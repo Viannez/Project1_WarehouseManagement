@@ -1,5 +1,5 @@
 # Project1_Warehouse_Management
-Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can view and sort warehouses by ID and capacity, view and sort products by ID and price, create and delete warehouse and product, view warehouse and product individual details, view what products exist in warehousev and what warehouses a product is in, update all properties of warehouse and product as well as product inventory stock for each warehouse. 
+Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can view and sort warehouses by ID and capacity, view and sort products by ID and price, create and delete warehouse and product, view warehouse and product individual details, view what products exist in each warehouse and what warehouses a product is in, update all properties of warehouse and product, as well as product inventory stock for each warehouse. 
 
 ## How to Run:
 - Clone repository
