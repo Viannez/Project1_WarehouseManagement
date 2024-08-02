@@ -3,12 +3,21 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
 import GetProducts from "../../Util/GetProducts";
+import ProductInventoryStockModal from "./ProductInventoryStock/ProductInventoryStockModal";
 
 export const WarehouseProductCard = ({productInventory}) => {
-    
+
+    //get product from productInventory
     const product = GetProducts(productInventory.product)
 
-    function handleClick(e) {
+    const passToStock =
+    {
+        product:product,
+        productInventory:productInventory
+    }
+
+    console.log("info: ", passToStock)
+    function handleDelete(e) {
         const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
 
         fetch(url, {
@@ -40,10 +49,11 @@ export const WarehouseProductCard = ({productInventory}) => {
                     <div className="container-element"> {product.name} </div>
                     <div className="container-element"> ${product.price}</div>
                     <div className="container-element">Stock: {productInventory.stock}</div>
+                    <ProductInventoryStockModal info={passToStock}/>
                     <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                         Open Product 
                     </Link>
-                    <Button onClick={handleClick} className="usa-button">Delete</Button>
+                    <Button onClick={handleDelete} className="usa-button">Delete</Button>
                 </div>
                 </CardHeader>
             </Card>

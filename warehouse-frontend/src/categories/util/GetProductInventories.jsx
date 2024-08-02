@@ -12,7 +12,6 @@ export default function GetProductInventories(id){
         console.log("warehouse found no id");
         url = "http://localhost:8080/product_inventory";
     }
-    
     useEffect(() => {
         fetch(url)
             .then(data => data.json()) // arrow function notation rules 
@@ -22,7 +21,7 @@ export default function GetProductInventories(id){
             .catch(err => { alert(err); console.log(err) })
 
     }, []) 
-
-    console.log( productInventories)
+    
+    console.log(productInventories)
     return productInventories;
 }

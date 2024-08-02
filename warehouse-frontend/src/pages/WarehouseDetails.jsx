@@ -16,8 +16,7 @@ function WarehouseDetails() {
   const { id } = useParams()
   const capacityNums = {
     "inventoryCapacity":warehouse.inventoryCapacity,
-     "capacity":warehouse.capacity
-
+    "capacity":warehouse.capacity,
   }
 
   const url = "http://localhost:8080/warehouse/"+id;
