@@ -30,14 +30,17 @@ Created database with entities in PostgreSQL to manage server data.
 - ProductInventory
 - Category
 
-[SQL Script to create entities](Notes/create_entities.sql)
+[SQL Script to create entities](Notes/create_entities.sql) 
 
 ## React
 UI framework that helps build the user interface with components and functional programming. 
 ### Often used Node.js modules
+```terminal
+npm install react-router-dom
+npm install react-boostrap
+```
 - react-router-dom: routes components by router path
 - react-bootstrap: UI library with pre-built components
-### react 
 ### Component setup
 The warehouse management components are grouped by relations to one another.
 #### Categories
