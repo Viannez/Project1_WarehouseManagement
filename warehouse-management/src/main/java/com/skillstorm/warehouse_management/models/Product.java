@@ -2,53 +2,61 @@ package com.skillstorm.warehouse_management.models;
 
 import java.util.List;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "warehouse")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Warehouse.class)
-public class Warehouse {
+@Table(name = "product")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Product.class)
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
         columnDefinition = "SERIAL"
-    )
+    ) 
     private int id;
 
     @Column(length=50)
     private String name;
 
-    @Column(length=50)
-    private String address;
+    @Min(value = 0)
+    private int price;
 
-    @Column
-    @Min(value = 100)
-    @Max(value = 1000)
-    private int capacity;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @Cascade({CascadeType.MERGE})
+    @NotNull
+    @JoinColumn(name = "category_id")
+    @JsonIdentityReference(alwaysAsId= true)
+    private Category category;
 
-    @OneToMany(mappedBy = "warehouse", targetEntity = ProductInventory.class) 
+    @OneToMany(mappedBy = "product", targetEntity = ProductInventory.class) 
     List<ProductInventory> productInventories;
 
-    public Warehouse(){}
+    public Product(){}
 
-    public Warehouse(int id, String name, String address, int capacity)
+    public Product(int id, String name, int price)
     {
         this.id = id;
         this.name = name;
-        this.address = address;
-        this.capacity = capacity;
+        this.price = price;
     }
 
     public int getId() {
@@ -67,20 +75,24 @@ public class Warehouse {
         return name;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public int getPrice() {
+        return price;
     }
 
-    public String getAddress() {
-        return address;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public Category getCategory() {
+        return category;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public String getCategoryName() {
+        return category.getName();
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public List<ProductInventory> getProductInventories() {
@@ -90,18 +102,12 @@ public class Warehouse {
     public void setProductInventories(List<ProductInventory> productInventories) {
         this.productInventories = productInventories;
     }
-
-    public int getInventoryCapacity() {
-        return (productInventories==null) ? 0 : (productInventories.stream().filter(product -> product.getStock() > 10).mapToInt(ProductInventory::getStock).sum());
-    }
+    
 
     @Override
     public String toString() {
-        return "Warehouse [id=" + id + 
-        ", name=" + name + 
-        ", address=" + address + 
-        ", capacity=" +  this.getInventoryCapacity() + "/" + capacity + 
-        ", productInventories=" + productInventories
-                + "]";
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", category: " + (category == null ? null : category.getName()) + "]";
     }
+
+    
 }

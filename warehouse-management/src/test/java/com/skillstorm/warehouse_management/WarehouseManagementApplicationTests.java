@@ -1,10 +1,10 @@
-package com.skillstorm.project1vz;
+package com.skillstorm.warehouse_management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Project1vzApplicationTests {
+class WarehouseManagementApplicationTests {
 
 	@Test
 	void contextLoads() {

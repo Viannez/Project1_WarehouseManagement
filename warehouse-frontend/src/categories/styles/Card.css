@@ -1,0 +1,57 @@
+
+
+.usa-card__container {
+  color:#1b1b1b;
+  background-color:#fff;
+  font-family:Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+  font-size:1.06rem;
+  line-height:1.5;
+  border-width:2px;
+  border-color:#dfe1e2;
+  border-style:solid;
+  display:flex;
+  height:100%;
+  width: 100%;
+  flex-direction:column;
+  margin-top:.5rem;
+  margin-bottom:.5rem;
+  position:center;
+  border-radius:.5rem
+}
+
+.usa-card__header {
+  background-color:aliceblue;
+  flex-direction: row;
+  padding:.5rem 1.5rem;
+  flex-basis:auto
+}
+
+.usa-input {
+  border-width: 1px;
+  border-color: #565c65;
+  border-style: solid;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  color: #1b1b1b;
+  display: flex;
+  height: 2rem;
+  padding: .5rem;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  column-gap: 40px;
+  justify-content: space-between; 
+  
+}
+.container-element {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+  text-align:left ;
+  margin-top:.5rem;
+  margin-bottom:.5rem;
+  width: 200px;
+}
