@@ -24,7 +24,7 @@ const ProductList = ({index}) => {
     return products.map((product, i) => (
         found>0 ?
         < ProductCard class='no-bullets'
-            key={i+product.id}
+            key={i+product.name}
             product={product}
         /> :
         (<p colSpan='2'>Found no Products</p>)
