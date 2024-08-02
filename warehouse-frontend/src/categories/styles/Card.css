@@ -3,7 +3,7 @@
 .usa-card__container {
   color:#1b1b1b;
   background-color:#fff;
-  font-family:Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size:1.06rem;
   line-height:1.5;
   border-width:2px;
@@ -48,10 +48,12 @@
   
 }
 .container-element {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: larger;
   text-align:left ;
   margin-top:.5rem;
   margin-bottom:.5rem;
   width: 200px;
 }
+
+

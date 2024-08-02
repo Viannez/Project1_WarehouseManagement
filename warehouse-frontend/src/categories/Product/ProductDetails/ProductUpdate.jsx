@@ -82,7 +82,6 @@ export const ProductUpdate = () => {
 
   return (
     <>
-      <h4>Add New Product to Product</h4>
       <Form onSubmit={handleSubmit}>
       <div>
         <Label>Update Name</Label>

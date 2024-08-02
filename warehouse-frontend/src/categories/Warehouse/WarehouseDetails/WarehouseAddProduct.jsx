@@ -34,9 +34,7 @@ export const WarehouseAddProduct = ({capacityNums}) => {
         console.log(capacityNums.inventoryCapacity+Number(data.get("productInventoryStock")))
 
         if(Number(capacityNums.inventoryCapacity)+Number(data.get("productInventoryStock")) > capacityNums.capacity){
-          //alert
-          console.log("Too many products!")
-          //window.location.reload();
+          setMessage("Too many products!")
         }
         else
         {
@@ -49,8 +47,13 @@ export const WarehouseAddProduct = ({capacityNums}) => {
             })
             .then(data => data.json())
             .then((returnedData) => {
-                console.log(returnedData)
-                setMessage("Succesfully created new movie with id " + returnedData?.id)
+              if(returnedData.status=='500')
+                {
+                  setMessage("Failed, the product exists in warehouse.")
+                }
+                else{
+                  setMessage("Success!")
+                } 
             })
             .catch(err => {
                 console.log(err);
@@ -62,7 +65,6 @@ export const WarehouseAddProduct = ({capacityNums}) => {
 
   return (
     <>
-      <h4>Add New Product to Warehouse</h4>
       <Form onSubmit={handleSubmit}>
       <div>
         <Label>Product ID</Label>
@@ -83,7 +85,7 @@ export const WarehouseAddProduct = ({capacityNums}) => {
       {
         // TODO choose a nicer alert with a close button
         // make sure to reset the message and error state
-        message && <Alert type="success" heading="Success status" headingLevel="h4">
+        message && <Alert type="success" headingLevel="h4">
           {message}
         </Alert>
       }

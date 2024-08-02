@@ -1,7 +1,7 @@
 import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
 import GetWarehouses from "../../Util/GetWarehouses";
-
 import { FaRegTrashAlt } from "react-icons/fa";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 export const ProductWarehouseCard = ({productInventory}) => {
     
@@ -40,10 +40,12 @@ export const ProductWarehouseCard = ({productInventory}) => {
                     <div className="container-element"> ID: {warehouse.id}</div>
                     <div className="container-element">Stock: {productInventory.stock}</div>
                     <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
-                        Open Warehouse 
+                        <div className='container-button' style={{textAlign:'left'}}>
+                            <FaArrowRightToBracket />
+                        </div>
                     </Link>
                     <Button onClick={handleClick} className="usa-button">
-                    <FaRegTrashAlt />
+                        <FaRegTrashAlt />
                     </Button>
                 </div>
                 </CardHeader>

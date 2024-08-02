@@ -92,7 +92,7 @@ public class Warehouse {
     }
 
     public int getInventoryCapacity() {
-        return (productInventories==null) ? 0 : (productInventories.stream().filter(product -> product.getStock() > 10).mapToInt(ProductInventory::getStock).sum());
+        return (productInventories==null) ? 0 : (productInventories.stream().filter(product -> product.getStock() > 0).mapToInt(ProductInventory::getStock).sum());
     }
 
     @Override

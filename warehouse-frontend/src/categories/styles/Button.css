@@ -4,7 +4,7 @@ button:hover {
 }
   
 .usa-button {
-    font-family: Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-size: 1.06rem;
     line-height: .9;
     color: #fff;
@@ -16,10 +16,19 @@ button:hover {
     border-radius: .25rem;
     cursor: pointer;
     display: inline-block;
-    font-weight: 700;
     text-align: center;
     width: 100%;
     max-width:100px;
     max-height: 60px;
     overflow:hidden;
 }
+
+.container-button {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: larger;
+    text-align:left ;
+    margin-top:.75rem;
+    margin-bottom:.5rem;
+    margin-left:2.5rem;
+    width: 200px;
+  }

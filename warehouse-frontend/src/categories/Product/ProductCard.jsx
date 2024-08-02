@@ -1,5 +1,6 @@
 import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
 import { FaRegTrashAlt } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export const ProductCard = ({product}) => {
     
@@ -38,10 +39,12 @@ export const ProductCard = ({product}) => {
                         <div className="container-element"> ${product.price} </div>
                         <div className="container-element">Size: {product.categoryName} </div>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
-                            Open Product 
+                            <div className='container-button' style={{textAlign:'left'}}>
+                                <FaMagnifyingGlass/>
+                            </div>
                         </Link>
                         <Button onClick={handleClick} className="usa-button">
-                        <FaRegTrashAlt />
+                            <FaRegTrashAlt />
                         </Button>
                     </div>
                 </CardHeader>
