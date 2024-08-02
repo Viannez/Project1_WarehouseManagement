@@ -7,12 +7,37 @@ import WarehouseDetails from './pages/WarehouseDetails';
 import ProductPage from './pages/ProductPage';
 import ProductDetails from './pages/ProductDetails';
 import Navigation from './categories/Navigation/Navigation';
+import { FaBox } from "react-icons/fa";
 
 function App() {
 
   return (
     <div>
-
+      <div className='banner'>
+        <div className='banner-element' style={{color:'lightskyblue'}}>
+          <FaBox size={70}/>
+        </div>
+        <div className='banner-element'>
+          <h1>???</h1> 
+        </div>
+        <div className='banner-element' style={{color: 'lightblue'}}>
+          <FaBox size={70}/>
+        </div>
+        <div className='banner-element'>
+          <h1>Mystery Box Warehouse </h1> 
+        </div>
+        <div className='banner-element' style={{color: 'lightblue'}}>
+          <FaBox size={70}/>
+        </div>
+        <div className='banner-element'>
+          <h1>???</h1> 
+        </div>
+        <div className='banner-element' style={{color:'lightskyblue'}}>
+          <FaBox size={70}/>
+        </div>
+        
+      </div>
+     
         <BrowserRouter>
           <Navigation className='nav'/>
           <Routes>
@@ -23,6 +48,7 @@ function App() {
             <Route path='/product' element={<ProductPage />} />
           </Routes>
         </BrowserRouter>
+        
     </div>
     
   )

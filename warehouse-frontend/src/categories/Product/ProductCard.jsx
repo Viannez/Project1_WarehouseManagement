@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { useRef } from "react";
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
-// import ProductSinglePage from '../../pages/ProductDetails';
+import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export const ProductCard = ({product}) => {
     
@@ -43,7 +40,9 @@ export const ProductCard = ({product}) => {
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                             Open Product 
                         </Link>
-                        <Button onClick={handleClick} className="usa-button">Delete</Button>
+                        <Button onClick={handleClick} className="usa-button">
+                        <FaRegTrashAlt />
+                        </Button>
                     </div>
                 </CardHeader>
             </Card>

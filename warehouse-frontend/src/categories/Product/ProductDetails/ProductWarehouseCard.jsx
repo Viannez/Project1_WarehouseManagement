@@ -1,9 +1,7 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
-import GetProducts from "../../Util/GetProducts";
+import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
 import GetWarehouses from "../../Util/GetWarehouses";
+
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export const ProductWarehouseCard = ({productInventory}) => {
     
@@ -44,7 +42,9 @@ export const ProductWarehouseCard = ({productInventory}) => {
                     <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
                         Open Warehouse 
                     </Link>
-                    <Button onClick={handleClick} className="usa-button">Delete</Button>
+                    <Button onClick={handleClick} className="usa-button">
+                    <FaRegTrashAlt />
+                    </Button>
                 </div>
                 </CardHeader>
             </Card>
