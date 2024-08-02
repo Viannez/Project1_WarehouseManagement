@@ -7,7 +7,6 @@ import GetWarehouses from "../Util/GetWarehouses";
 const WarehouseList = ({index}) => {
     const warehouses= GetWarehouses()
 
-    console.log("index: ", typeof index)
     switch(index)
     {
         case '1':

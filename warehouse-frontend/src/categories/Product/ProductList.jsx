@@ -4,10 +4,21 @@ import { ProductCard } from "./ProductCard";
 import GetProducts from "../Util/GetProducts";
 
 //List of total products
-const ProductList = () => {
+const ProductList = ({index}) => {
     const products= GetProducts();
     
-    products.sort((a, b) => a.id - b.id);
+    switch(index)
+    {
+        case '1':
+            console.log("inside 1")
+            products.sort((a, b) => a.id - b.id);
+            break;
+        case '2':
+            console.log("inside 2")
+            products.sort((a, b) => a.price - b.price);
+            break;
+    }
+
     const found = products.length;
     console.log( found)
     return products.map((product, i) => (

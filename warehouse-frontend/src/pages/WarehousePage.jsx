@@ -18,8 +18,8 @@ function WarehousePage() {
           <h1>Warehouses</h1>
         </Title>
         <AddWarehouseModal/>
-        <Label htmlFor="product-category">Sort warehouses by:</Label>
-            <Select onChange={getIndex} id="product-category" name="productCategory" required>
+        <Label htmlFor="sort-warehouses">Sort warehouses by:</Label>
+            <Select onChange={getIndex} id="sort-warehouse" name="sortWarehouse" required>
                 <option value={1}> By ID</option>
                 <option value={2}> By Capacity</option>
             </Select>
