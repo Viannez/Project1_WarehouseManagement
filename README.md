@@ -1,10 +1,10 @@
 # Project1_Warehouse_Management
-Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities.
+Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size.
 
 ## How to Run:
 - Clone repository
 - First run spring boot maven app warehouse-management
-- run warehouse-frontend:
+- Run warehouse-frontend:
 ```terminal
 npm run dev
 ```
