@@ -58,6 +58,7 @@ The warehouse management components are grouped by relations to one another.
 - Cannot overfill warehouse
 - Cannot make duplicate product records in warehouse
 - Cannot name two warehouses the same name
+- Price of product cannot be below 0
 
 
 
