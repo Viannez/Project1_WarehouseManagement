@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Card, CardHeader, CardMedia, CardBody, CardFooter, Link, Button} from '@trussworks/react-uswds';
 import GetProducts from "../../Util/GetProducts";
+import GetWarehouses from "../../Util/GetWarehouses";
 
-export const WarehouseProductCard = ({productInventory}) => {
+export const ProductWarehouseCard = ({productInventory}) => {
     
-    const product = GetProducts(productInventory.product)
+    const warehouse = GetWarehouses(productInventory.warehouse)
 
     function handleClick(e) {
         const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
@@ -37,11 +38,11 @@ export const WarehouseProductCard = ({productInventory}) => {
             }}>
                 <CardHeader>
                     <div className="container">
-                    <div className="container-element"> {product.name} </div>
-                    <div className="container-element"> ${product.price}</div>
+                    <div className="container-element"> {warehouse.name} </div>
+                    <div className="container-element"> ID: {warehouse.id}</div>
                     <div className="container-element">Stock: {productInventory.stock}</div>
-                    <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
-                        Open Product 
+                    <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
+                        Open Warehouse 
                     </Link>
                     <Button onClick={handleClick} className="usa-button">Delete</Button>
                 </div>

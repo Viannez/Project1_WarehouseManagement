@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import ProductUpdateModal from '../categories/Product/ProductDetails/ProductUpdateModal';
 
 import '@trussworks/react-uswds/lib/index.css'
+import ProductWarehouseList from '../categories/Product/ProductDetails/ProductWarehouseList';
 
 function ProductDetails() {
 
@@ -38,12 +39,13 @@ function ProductDetails() {
         <h3>Price: ${product.price}</h3>
         <ProductUpdateModal/>
       </main>
-      {/* {
+      <h2>This Product is located in the following warehouses</h2>
+      {
         loaded ?
-        <ProductProductList productInventory={warehouse.productInventories}/> 
+        <ProductWarehouseList productInventory={product.productInventories}/> 
         : (<p colSpan='2'>Loading...</p>)
       }
-       */}
+      
     </>
   )
 }

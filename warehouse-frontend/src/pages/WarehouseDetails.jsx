@@ -46,6 +46,7 @@ function WarehouseDetails() {
         <WarehouseUpdateModal/>
         <WarehouseAddProductModal capacityNums={capacityNums}/>
       </main>
+      <h2>This warehouse has the following products in stock</h2>
       {
         loaded ?
         <WarehouseProductList productInventory={warehouse.productInventories}/> 
