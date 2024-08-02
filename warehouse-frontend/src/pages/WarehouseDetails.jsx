@@ -48,7 +48,7 @@ function WarehouseDetails() {
           <h3> Location: </h3>
           <h3>Capacity filled: </h3>
         </Col>
-        <Col>
+        <Col style={{color:'lightskyblue'}}>
           <h3> {warehouse.name}</h3>
           <h3> {warehouse.address}</h3>
           <h3> {warehouse.inventoryCapacity}/{warehouse.capacity}</h3>

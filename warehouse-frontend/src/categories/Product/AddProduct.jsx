@@ -55,7 +55,6 @@ const AddProduct = () => {
         <div>
             <Label htmlFor="product-category">Category</Label>
                 <Select id="product-category" name="productCategory" required>
-                    <option>- Select -</option>
                 {
                   categories.map( ({id, name}) => 
                     <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )

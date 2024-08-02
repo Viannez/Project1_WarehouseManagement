@@ -70,7 +70,6 @@ export const WarehouseAddProduct = ({capacityNums}) => {
       <div>
         <Label>Product ID</Label>
             <Select id="product-id" name="productID" required>
-                <option>- Select -</option>
                 {
                   products.map( ({id, name}) => 
                     <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )

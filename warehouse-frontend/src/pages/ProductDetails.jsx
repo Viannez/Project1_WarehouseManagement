@@ -42,7 +42,7 @@ function ProductDetails() {
           <h3>Size: </h3>
           <h3>Price: </h3>
         </Col>
-        <Col>
+        <Col style={{color:'lightskyblue'}}>
           <h3>{product.name}</h3>
           <h3>{product.categoryName}</h3>
           <h3>${product.price}</h3>
