@@ -30,10 +30,17 @@ const AddWarehouse = () => {
         })
         .then(data => data.json())
         .then((returnedData) => {
+          
             if(returnedData.status=='500')
             {
               setMessage("Failed, warehouse name already taken.")
             }
+            //Added after presentation
+            else if(returnedData.status=='400')
+            {
+              setMessage("Check inputs.")
+            }
+            //
             else{
               setMessage("Success!")
             } 
@@ -54,7 +61,8 @@ const AddWarehouse = () => {
           <TextInput id="warehouse-address" name="warehouseAddress" type="text" />
         </div>
         <div>
-          <Label htmlFor="warehouse-capacity">Warehouse Cacpacity</Label>
+          {/* typo fixed after presentation */}
+          <Label htmlFor="warehouse-capacity">Warehouse Capacity</Label>
           <TextInput id="warehouse-capacity" name="warehouseCapacity" type="number" />
         </div>
         <Button type="submit">Submit</Button>

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import GetCategories from "../Util/GetCategories";
 
-//add new product inventory to warehouse
+//create new product 
 const AddProduct = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
@@ -35,8 +35,14 @@ const AddProduct = () => {
         })
         .then(data => data.json())
         .then((returnedData) => {
-            console.log(returnedData)
-            setMessage("Success!")
+          //Added after presentation
+          if(returnedData.status=='400')
+            {
+              setMessage("Check inputs.")
+            }
+            else{
+              setMessage("Success!")
+            } 
         })
         .catch(err => {
             console.log(err);

@@ -46,6 +46,7 @@ function WarehouseDetails() {
         <Col>
           <h3>Name: </h3>
           <h3> Location: </h3>
+          {/* typo fixed after presentation */}
           <h3>Capacity filled: </h3>
         </Col>
         <Col style={{color:'lightskyblue'}}>
