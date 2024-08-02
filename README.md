@@ -2,7 +2,7 @@
 Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can:
 - View and sort list of all warehouses by ID and capacity
 - View and sort list of all products by ID and price
-- Create and Delete warehouse from warehouse list
+- Create and delete warehouse from warehouse list
 - Create and delete product from product list, includes drop down for size category selection
 - View individual warehouse details magnifying glass button, routed '/warehouse/{id}'
   - Update warehouse details with pen button. Null values will just keep previous values. Capacity cannot be lower than total products stocked in the warehouse.
