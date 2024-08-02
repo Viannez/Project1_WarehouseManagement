@@ -1,5 +1,23 @@
 # Project1_Warehouse_Management
-Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can view and sort warehouses by ID and capacity, view and sort products by ID and price, create and delete warehouse and product, view warehouse and product individual details, view what products exist in each warehouse and what warehouses a product is in, update all properties of warehouse and product, as well as product inventory stock for each warehouse. 
+Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can:
+- View and sort list of all warehouses by ID and capacity
+- View and sort list of all products by ID and price
+- Create and Delete warehouse from warehouse list
+- Create and delete product from product list, uses drop down for size category selection
+- View individual warehouse details magnifying glass button, routed '/warehouse/{id}'
+  - Update warehouse details with pen button. Null values will just keep previous values. Capacity cannot be lower than total products stocked in the warehouse.
+  - Add new product inventory to warehouse with drop down of all products, cannot add product already in warehouse.
+  - View what products exist in each warehouse and the stock of the product
+  - Edit stock of each product listed in warehouse with pen button
+  - Delete product inventory from that specific warehouse.
+  - Go to view individual products' details with door button
+- View individual product details with magnifying glass button, routed '/product/{id}'
+  - Update product details with pen button.
+  - View what warehouses the product is in and the stock in each warehouse.
+  - Delete product inventory from that specific warehouse.
+  - Go to view individual warehouses' details with door button
+
+update all properties of warehouse and product, as well as product inventory stock for each warehouse. 
 
 ## How to Run:
 - Clone repository
@@ -63,9 +81,9 @@ The warehouse management components are grouped by relations to one another.
 [Pages](warehouse-frontend/src/pages) have the important components are are routed by the react-router-dom
 
 #### Important constraints
-- Cannot make a warehouse capacity smaller than it's current total inventory
-- Cannot overfill warehouse
-- Cannot make duplicate product records in warehouse
+- Cannot make a warehouse capacity smaller than its current total product stock inventory
+- Cannot overfill warehouse by editing a product's stock
+- Cannot add duplicate product records in warehouse
 - Cannot name two warehouses the same name
 - Price of product cannot be below 0
 
