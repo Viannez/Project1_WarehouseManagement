@@ -19,7 +19,12 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
 
 ## How to Run:
 - Clone repository
-- First run spring boot maven app warehouse-management
+- Go into /warehouse-backend:
+```terminal
+mvn install
+```
+- Run spring boot maven app warehouse-management from apps
+- Go into /warehouse-frontend:
 - Run warehouse-frontend:
 ```terminal
 npm run dev
