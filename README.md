@@ -26,6 +26,9 @@ mvn install
 ```
 - Run spring boot maven app warehouse-management from apps
 - Go into /warehouse-frontend:
+```terminal
+npm install
+```
 - Run warehouse-frontend:
 ```terminal
 npm run dev
