@@ -19,6 +19,7 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
 
 ## How to Run:
 - Clone repository
+- Run /Notes/create_entities.sql in pg Admin 4
 - Go into /warehouse-backend:
 ```terminal
 mvn install
