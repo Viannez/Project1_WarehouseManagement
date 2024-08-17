@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetWarehouses from "../../../Util/GetWarehouses";
+import GetWarehouses from "../../../Utils/GetWarehouses";
 
 //Update stock of product in warehouse
 export const ProductInventoryStock = ({info}) => {

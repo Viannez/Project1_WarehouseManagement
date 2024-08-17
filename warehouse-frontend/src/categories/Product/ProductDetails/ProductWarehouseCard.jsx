@@ -1,5 +1,5 @@
 import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
-import GetWarehouses from "../../Util/GetWarehouses";
+import GetWarehouses from "../../Utils/GetWarehouses";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 

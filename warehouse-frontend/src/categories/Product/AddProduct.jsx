@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
-import GetCategories from "../Util/GetCategories";
+import GetCategories from "../Utils/GetCategories";
 
 //create new product 
 const AddProduct = () => {

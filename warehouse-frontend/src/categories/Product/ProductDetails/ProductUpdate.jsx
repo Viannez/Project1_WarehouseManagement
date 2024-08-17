@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetCategories from "../../Util/GetCategories";
-import GetProducts from "../../Util/GetProducts";
+import GetCategories from "../../Utils/GetCategories";
+import GetProducts from "../../Utils/GetProducts";
 
 //update product details
 export const ProductUpdate = () => {

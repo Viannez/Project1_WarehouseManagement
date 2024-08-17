@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetWarehouses from "../../Util/GetWarehouses";
+import GetWarehouses from "../../Utils/GetWarehouses";
 
 //update warehouse details
 export const WarehouseUpdate = () => {

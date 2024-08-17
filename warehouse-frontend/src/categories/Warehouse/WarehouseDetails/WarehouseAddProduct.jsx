@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetProducts from "../../Util/GetProducts";
+import GetProducts from "../../Utils/GetProducts";
 
 //add product to warehouse
 export const WarehouseAddProduct = ({capacityNums}) => {

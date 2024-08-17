@@ -1,5 +1,5 @@
 import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
-import GetProducts from "../../Util/GetProducts";
+import GetProducts from "../../Utils/GetProducts";
 import ProductInventoryStockModal from "./ProductInventoryStock/ProductInventoryStockModal";
 
 import { FaRegTrashAlt } from "react-icons/fa";

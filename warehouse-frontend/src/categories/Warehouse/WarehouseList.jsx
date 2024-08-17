@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { WarehouseCard } from "./WarehouseCard";
-import GetWarehouses from "../Util/GetWarehouses";
+import GetWarehouses from "../Utils/GetWarehouses";
 
 //list of warehouse cards
 const WarehouseList = ({index}) => {
