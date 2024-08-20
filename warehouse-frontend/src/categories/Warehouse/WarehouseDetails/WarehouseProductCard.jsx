@@ -20,7 +20,7 @@ export const WarehouseProductCard = ({productInventory}) => {
     console.log("info: ", passToStock)
 
     function handleDelete(e) {
-        const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
+        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product_inventory/"+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",

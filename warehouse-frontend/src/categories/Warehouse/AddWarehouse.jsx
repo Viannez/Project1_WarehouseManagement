@@ -7,7 +7,7 @@ const AddWarehouse = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     function handleSubmit(e) {
-        const url = "http://localhost:8080/warehouse"; 
+        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/warehouse"; 
         e.preventDefault();
         const data = new FormData(e.target);
 

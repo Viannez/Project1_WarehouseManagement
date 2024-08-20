@@ -7,11 +7,11 @@ export default function GetProductInventories(id){
 
     let url = "";
     if(id!=undefined){
-        url = "http://localhost:8080/product_inventory/"+id;
+        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product_inventory/"+id;
     }
     else{
         console.log("warehouse found no id");
-        url = "http://localhost:8080/product_inventory";
+        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product_inventory";
     }
     useEffect(() => {
         fetch(url)

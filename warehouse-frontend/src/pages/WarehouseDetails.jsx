@@ -22,7 +22,7 @@ function WarehouseDetails() {
   }
 
   console.log("cap:", capacityNums)
-  const url = "http://localhost:8080/warehouse/"+id;
+  const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/warehouse/"+id;
 
 
   useEffect(() => {

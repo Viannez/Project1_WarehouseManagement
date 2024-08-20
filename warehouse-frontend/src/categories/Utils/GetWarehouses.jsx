@@ -6,13 +6,13 @@ export default function GetWarehouses(id){
 
     let url = "";
     if(id!=undefined){
-        url = "http://localhost:8080/warehouse/"+id;
+        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/warehouse/"+id;
     }
     else{
         console.log("warehouse found no id");
-        url = "http://localhost:8080/warehouse";
+        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/warehouse";
     }
-    
+    console.log(url);
     const [warehouses, setWarehouses] = useState([]);
 
     useEffect(() => {

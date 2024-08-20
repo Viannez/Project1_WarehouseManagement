@@ -9,7 +9,7 @@ export const ProductWarehouseCard = ({productInventory}) => {
     const warehouse = GetWarehouses(productInventory.warehouse)
 
     function handleClick(e) {
-        const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
+        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product_inventory/"+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",
