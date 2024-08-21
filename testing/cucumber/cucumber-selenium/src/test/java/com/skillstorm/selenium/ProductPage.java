@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage {
     private final WebDriver driver;
-    private static final String url = "http://localhost:5173/product";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
 
     @FindBy(id="add-product")
     private WebElement addProductButton;
