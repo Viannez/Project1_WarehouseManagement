@@ -13,7 +13,7 @@ const AddProduct = () => {
 
     function handleSubmit(e) {
         const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product"; 
-        // e.preventDefault();
+        e.preventDefault();
         const data = new FormData(e.target);
 
         const newProduct = {
@@ -36,13 +36,15 @@ const AddProduct = () => {
         .then(data => data.json())
         .then((returnedData) => {
           //Added after presentation
-          if(returnedData.status=='400')
-            {
-              setMessage("Check inputs.")
-            }
-            else{
-              setMessage("Success!")
-            } 
+          if(returnedData.status=='400'){
+            setMessage("Check inputs.")
+          }
+          else if(returnedData.status=='500'){
+            setMessage("Product name already taken.")
+          }
+          else{
+            setMessage("Success!")
+          } 
         })
         .catch(err => {
             console.log(err);
@@ -63,7 +65,7 @@ const AddProduct = () => {
               <Select id="product-category" name="productCategory" required>
               {
                 categories.map( ({id, name}) => 
-                  <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                  <option key={id} value={id}>{name}</option> )
               }
               </Select>
         </div>

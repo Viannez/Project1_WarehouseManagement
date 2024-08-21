@@ -4,7 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 //Product with product information 
 export const ProductCard = ({product}) => {
-    
+
     //DELETE Product from DB
     function handleClick(e) {
         const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product/"+product.id; 
@@ -21,9 +21,12 @@ export const ProductCard = ({product}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
+
     return (
         <>
             <Card layout="flagMediaRight" gridLayout={{

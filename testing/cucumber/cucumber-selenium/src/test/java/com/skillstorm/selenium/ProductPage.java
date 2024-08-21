@@ -1,7 +1,9 @@
 package com.skillstorm.selenium;
 
 import java.time.Duration;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     private static final String url = "http://localhost:5173/product";
 
     @FindBy(id="add-product")
@@ -34,9 +36,9 @@ public class ProductPage {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    // //product card
-    // @FindBy(className = "usa-card__container border-primary-vivid")
-    //  List<WebElement> cards;
+    //product card
+    @FindBy(className = "usa-card__container")
+    private List<WebElement> cards;
 
      /**
      * Initializes the driver and sets an implicit wait 
@@ -104,7 +106,7 @@ public class ProductPage {
             e.printStackTrace();
         }
         Select select = new Select(categorySelect);
-        select.selectByValue(category);
+        select.selectByVisibleText(category);
     }
 
     /**
@@ -124,33 +126,43 @@ public class ProductPage {
      * pause execution for 1000 mili sec before navigating
      */
     public void clickSubmitButton() {
+        submitButton.click();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        submitButton.click();
     }
 
     /**
      * click on submit button on modal
      * pause execution for 1000 mili sec before navigating
      */
-    // public boolean productCardIsDisplayed(String name, String category, int capacity) {
-    //     try {
-    //         Thread.sleep(1000);
-    //     } catch (InterruptedException e) {
-    //         e.printStackTrace();
-    //     }
+    public boolean productCardIsDisplayed(String name, String price, String category) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-    //     for(WebElement list:cards){
-    //         WebElement pName = list.findElement(By.id("product-name"));
-    //         WebElement pCategory = list.findElement(By.id("product-category"));
-    //         WebElement pPrice = list.findElement(By.id("product-price"));
+        boolean found = false;
+        for(WebElement list:cards){
+            WebElement pName = list.findElement(By.id("product-name"));
+            WebElement pCategory = list.findElement(By.id("product-category"));
+            WebElement pPrice = list.findElement(By.id("product-price"));
             
-    //         System.out.print(pName.getText());
-    //     }
-    //     return true; 
-    // }
+            System.out.print(pName.getText()+ " ");
+            System.out.print(pCategory.getText().substring(6)+ " ");
+            System.out.println(pPrice.getText().substring(1));
+
+            if(pName.getText().equals(name) && 
+                pCategory.getText().substring(6).equals(category) &&
+                pPrice.getText().substring(1).equals(price)){
+                found = true;
+            }
+        }
+        
+        return found; 
+    }
 
 }

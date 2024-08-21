@@ -72,9 +72,10 @@ public class AddProductSteps {
         this.productPage.clickSubmitButton();
     }
 
-    // @Then("I should see a card with matching {string} and {string} and {string}")
-    // public void iShouldSee(String name, int price, String category) {
-    //     this.driver.navigate().refresh();
-    // }
+    @Then("I should see a card with matching {string} and {string} and {string}")
+    public void iShouldSeeACardWithMatchingInputs(String name, String price, String category) {
+        this.driver.navigate().refresh();
+        assertTrue(this.productPage.productCardIsDisplayed(name, price, category));
+    }
 
 }
