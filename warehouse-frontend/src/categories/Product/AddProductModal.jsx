@@ -12,10 +12,10 @@ function AddProductModal
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+      <Button id="add-product" variant="primary" onClick={handleShow} style={{height:'90px'}}>
         <FaRegPlusSquare />
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal id = "add-product-modal" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add new Product</Modal.Title>
         </Modal.Header>

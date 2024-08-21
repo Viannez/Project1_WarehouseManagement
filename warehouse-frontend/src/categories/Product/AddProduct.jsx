@@ -68,8 +68,8 @@ const AddProduct = () => {
               </Select>
         </div>
         <div>
-          <Label htmlFor="product-capacity">Product Price ($)</Label>
-          <TextInput id="product-capacity" name="productPrice" type="number" />
+          <Label htmlFor="product-price">Product Price ($)</Label>
+          <TextInput id="product-price" name="productPrice" type="number" />
         </div>
         <Button type="submit">Submit</Button>
       </Form>
