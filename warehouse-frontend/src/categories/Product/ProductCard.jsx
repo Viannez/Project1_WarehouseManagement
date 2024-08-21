@@ -4,7 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 //Product with product information 
 export const ProductCard = ({product}) => {
-    
+
     //DELETE Product from DB
     function handleClick(e) {
         const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product/"+product.id; 
@@ -21,9 +21,12 @@ export const ProductCard = ({product}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
+
     return (
         <>
             <Card layout="flagMediaRight" gridLayout={{
@@ -35,10 +38,10 @@ export const ProductCard = ({product}) => {
             }}>
                 <CardHeader>
                     <div className="container">
-                        <div className="container-element">{product.name}</div>
-                        <div className="container-element">ID: {product.id}</div>
-                        <div className="container-element"> ${product.price} </div>
-                        <div className="container-element">Size: {product.categoryName} </div>
+                        <div id="product-name" className="container-element">{product.name}</div>
+                        <div id="product-id" className="container-element">ID: {product.id}</div>
+                        <div id="product-price" className="container-element"> ${product.price} </div>
+                        <div id="product-category" className="container-element">Size: {product.categoryName} </div>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                             <div className='container-button' style={{textAlign:'left'}}>
                                 <FaMagnifyingGlass/>

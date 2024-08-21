@@ -37,7 +37,8 @@ CREATE TABLE Product(
 	CONSTRAINT fk_category
 		FOREIGN KEY(category_id)
 			REFERENCES Category(id)
-			ON DELETE SET NULL 
+			ON DELETE SET NULL, 
+	UNIQUE (name)
 );
 
 -- Table: Product_Inventory
