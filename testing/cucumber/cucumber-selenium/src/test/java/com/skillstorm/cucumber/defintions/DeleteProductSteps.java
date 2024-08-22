@@ -1,11 +1,10 @@
 package com.skillstorm.cucumber.defintions;
 
-// import static org.junit.Assert.assertFalse;
-// import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.skillstorm.selenium.ProductPage;
 
@@ -22,7 +21,9 @@ public class DeleteProductSteps {
 
     @Before("@delete-product")
     public void before() {
-        this.driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.setBrowserVersion("127");
+        this.driver = new ChromeDriver(options);
         this.productPage = new ProductPage(driver);
     }
     @After("@delete-product")
