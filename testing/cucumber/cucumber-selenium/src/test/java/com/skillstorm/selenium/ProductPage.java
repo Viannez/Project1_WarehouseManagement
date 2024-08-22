@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage {
     private final WebDriver driver;
-    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
-
+    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
+    private static final String url = "http://localhost:5173/product";
     @FindBy(id="add-product")
     private WebElement addProductButton;
 
@@ -36,7 +36,7 @@ public class ProductPage {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    //product card
+    //product cards
     @FindBy(className = "usa-card__container")
     private List<WebElement> cards;
 
@@ -75,6 +75,9 @@ public class ProductPage {
         addProductButton.click();
     }
 
+    /**
+     * product modal is displayed
+     */
     public boolean addProductModalDisplayed() {
         try {
             Thread.sleep(1000);
@@ -135,8 +138,41 @@ public class ProductPage {
     }
 
     /**
-     * click on submit button on modal
-     * pause execution for 1000 mili sec before navigating
+     * checks if there are any product cards
+     */
+    public boolean productCardsAreDisplayed()
+    {
+        System.out.println(cards.size());
+        if(!cards.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * check if product card matches the exact values
+     */
+    public boolean productCardIsDisplayed(String name) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        boolean found = false;
+        for(WebElement list:cards){
+            WebElement pName = list.findElement(By.id("product-name"));
+
+            if(pName.getText().equals(name)){
+                found = true;
+            }
+        }
+        return found;
+    }
+
+    /**
+     * check if product card matches the exact values
      */
     public boolean productCardIsDisplayed(String name, String price, String category) {
         try {
@@ -163,6 +199,27 @@ public class ProductPage {
         }
         
         return found; 
+    }
+
+    /**
+     * click delete button of product card with name
+     */
+    public void clickDeleteProductCard(String name) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebElement deleteButton;
+        for(WebElement list:cards){
+            WebElement pName = list.findElement(By.id("product-name"));
+
+            if(pName.getText().equals(name)){
+                deleteButton=list.findElement(By.id("delete-product"));
+                deleteButton.click();
+                break;
+            }
+        }
     }
 
 }

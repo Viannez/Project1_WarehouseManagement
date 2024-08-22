@@ -1,4 +1,4 @@
-package com.skillstorm.cucumber;
+package com.skillstorm.cucumber.defintions;
 
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

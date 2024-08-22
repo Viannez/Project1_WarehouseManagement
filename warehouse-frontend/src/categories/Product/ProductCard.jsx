@@ -43,11 +43,11 @@ export const ProductCard = ({product}) => {
                         <div id="product-price" className="container-element"> ${product.price} </div>
                         <div id="product-category" className="container-element">Size: {product.categoryName} </div>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
-                            <div className='container-button' style={{textAlign:'left'}}>
+                            <div id="product-details" className='container-button' style={{textAlign:'left'}}>
                                 <FaMagnifyingGlass/>
                             </div>
                         </Link>
-                        <Button onClick={handleClick} className="usa-button">
+                        <Button id="delete-product" onClick={handleClick} className="usa-button">
                             <FaRegTrashAlt />
                         </Button>
                     </div>
