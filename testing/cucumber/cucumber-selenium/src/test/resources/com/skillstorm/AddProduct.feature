@@ -17,9 +17,9 @@ Feature: Add a product to the products page
     |testName     |100           |M         |
     |testName2    |300           |XL        |
 
-  # Scenario: Unsuccessful login with invalid credentials
-  # Given I am on the login page
-  # When I enter invalid "username" and "password"
-  # And I click the login button
-  # Then I should see an error message "Login Failed"
-
+# add invalid add product scenario
+# Scenario: Unsuccessfully add product
+#     Given I have product modal open
+#     When I enter invalid "testName2" and "40" and select "<S>"
+#     And I click the submit button
+#     Then I should see a message "Product name already taken."
