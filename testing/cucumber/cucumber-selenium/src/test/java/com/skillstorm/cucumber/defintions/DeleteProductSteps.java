@@ -41,16 +41,16 @@ public class DeleteProductSteps {
 
     @And("There exists a product card named {string}")
     public void thereExistsProductCards(String name) {
-        assertTrue(this.productPage.productCardIsDisplayed("testName2"));
+        assertTrue(this.productPage.productCardIsDisplayed(name));
     }
 
     @When("I click the delete button on the product card named {string}")
     public void iClickOnTheAddProductButton(String name) {
-        this.productPage.clickDeleteProductCard("testName2");
+        this.productPage.clickDeleteProductCard(name);
     }
 
     @Then("I should no longer see a card named {string} on product page")
     public void iShouldSeeTheAddProductFormModal(String name) {
-        assertFalse(this.productPage.productCardIsDisplayed("testName2"));
+        assertFalse(this.productPage.productCardIsDisplayed(name));
     }
 }
