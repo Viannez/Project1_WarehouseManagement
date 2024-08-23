@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WarehousePage {
     private final WebDriver driver;
-    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    private static final String url = "http://localhost:5173/warehouse";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    // private static final String url = "http://localhost:5173/warehouse";
     @FindBy(id="add-warehouse")
     private WebElement addWarehouseButton;
 
@@ -212,7 +212,6 @@ public class WarehousePage {
         WebElement deleteButton;
         for(WebElement list:cards){
             WebElement wName = list.findElement(By.id("warehouse-name"));
-
             if(wName.getText().equals(name)){
                 deleteButton=list.findElement(By.id("delete-warehouse"));
                 deleteButton.click();

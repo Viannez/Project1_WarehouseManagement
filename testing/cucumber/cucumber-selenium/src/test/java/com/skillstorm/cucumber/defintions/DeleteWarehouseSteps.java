@@ -46,12 +46,12 @@ public class DeleteWarehouseSteps {
     }
 
     @When("I click the delete button on the warehouse card named {string}")
-    public void iClickOnTheAddWarehouseButton(String name) {
+    public void iClickOnTheDeleteWarehouseButton(String name) {
         this.warehousePage.clickDeleteWarehouseCard(name);
     }
 
     @Then("I should no longer see a card named {string} on warehouse page")
-    public void iShouldSeeTheAddWarehouseFormModal(String name) {
+    public void iShouldNotSeeTheAddWarehouseCard(String name) {
         assertFalse(this.warehousePage.warehouseCardIsDisplayed(name));
     }
 }

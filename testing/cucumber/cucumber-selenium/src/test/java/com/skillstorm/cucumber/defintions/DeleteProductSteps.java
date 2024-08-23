@@ -46,12 +46,12 @@ public class DeleteProductSteps {
     }
 
     @When("I click the delete button on the product card named {string}")
-    public void iClickOnTheAddProductButton(String name) {
+    public void iClickOnTheDeleteProductButton(String name) {
         this.productPage.clickDeleteProductCard(name);
     }
 
     @Then("I should no longer see a card named {string} on product page")
-    public void iShouldSeeTheAddProductFormModal(String name) {
+    public void iShouldNotSeeTheProductCard(String name) {
         assertFalse(this.productPage.productCardIsDisplayed(name));
     }
 }
