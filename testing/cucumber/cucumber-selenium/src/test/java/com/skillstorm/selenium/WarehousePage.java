@@ -212,7 +212,6 @@ public class WarehousePage {
         WebElement deleteButton;
         for(WebElement list:cards){
             WebElement wName = list.findElement(By.id("warehouse-name"));
-
             if(wName.getText().equals(name)){
                 deleteButton=list.findElement(By.id("delete-warehouse"));
                 deleteButton.click();

@@ -9,6 +9,6 @@ Feature: Delete warehouse from the warehouses page
 
     Examples:
       |warehouseName  |
-      |testName     |
-      |testName2    |
+      |testName       |
+      |testName2      |
     

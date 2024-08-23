@@ -46,7 +46,7 @@ public class DeleteProductSteps {
     }
 
     @When("I click the delete button on the product card named {string}")
-    public void iClickOnTheAddProductButton(String name) {
+    public void iClickOnTheDeleteProductButton(String name) {
         this.productPage.clickDeleteProductCard(name);
     }
 
