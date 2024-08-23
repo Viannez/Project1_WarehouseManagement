@@ -11,9 +11,6 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("com/skillstorm/active/product")
-// @ConfigurationParameter(key = FEATURES_PROPERTY_NAME,value = "com/skillstorm/AddProduct.feature")
-// @ConfigurationParameter(key = FEATURES_PROPERTY_NAME, value = "com/skillstorm/DeleteProduct.feature")
-// @ConfigurationParameter(key =GLUE_PROPERTY_NAME, value = "com/skillstorm/cucumber/defintions/DeleteProductSteps")
 @ConfigurationParameter(key =GLUE_PROPERTY_NAME, value = "com/skillstorm/cucumber/defintions")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class RunProductCucumberTest {

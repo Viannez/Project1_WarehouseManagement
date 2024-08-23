@@ -51,7 +51,7 @@ public class DeleteProductSteps {
     }
 
     @Then("I should no longer see a card named {string} on product page")
-    public void iShouldSeeTheAddProductFormModal(String name) {
+    public void iShouldNotSeeTheProductCard(String name) {
         assertFalse(this.productPage.productCardIsDisplayed(name));
     }
 }

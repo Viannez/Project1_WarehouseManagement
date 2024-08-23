@@ -51,7 +51,7 @@ public class DeleteWarehouseSteps {
     }
 
     @Then("I should no longer see a card named {string} on warehouse page")
-    public void iShouldSeeTheAddWarehouseFormModal(String name) {
+    public void iShouldNotSeeTheAddWarehouseCard(String name) {
         assertFalse(this.warehousePage.warehouseCardIsDisplayed(name));
     }
 }
