@@ -24,8 +24,7 @@ pipeline {
             steps {
                 sh "echo Building Frontend"
                 sh "cd warehouse-frontend && npm install && npm run build"
-            }
-            script {
+                 script {
                 withSonarQubeEnv('SonarCloud') {
                     sh '''
                     npm install
@@ -39,6 +38,7 @@ pipeline {
                         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                     '''
                 }
+            }
             }
         }
         stage('Deploy Frontend') {
@@ -60,8 +60,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 sh "cd warehouse-management && mvn clean install"
-            }
-            withSonarQubeEnv('SonarCloud') {
+                withSonarQubeEnv('SonarCloud') {
                 sh '''
                 mvn sonar:sonar \
                 -Dsonar.projectKey=warehouse-management \
@@ -70,6 +69,7 @@ pipeline {
                 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                 '''
             } 
+            }
         }
         stage('Test Backend'){
             steps{
