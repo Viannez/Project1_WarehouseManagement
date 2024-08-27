@@ -61,9 +61,9 @@ pipeline {
         }
         stage('Build Backend') {
             steps {
-                sh "cd warehouse-management && mvn clean install"
                 withSonarQubeEnv('SonarCloud') {
                     dir("warehouse-management"){
+                        sh 'mvn clean verify -Pcoverage -Dspring.profiles.active=build '
                         sh '''
                 mvn sonar:sonar \
                 -Dsonar.projectKey=warehouse-management \
