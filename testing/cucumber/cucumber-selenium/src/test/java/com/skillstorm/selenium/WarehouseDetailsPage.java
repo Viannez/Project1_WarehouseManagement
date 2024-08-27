@@ -18,6 +18,12 @@ public class WarehouseDetailsPage {
     @FindBy(id="update-warehouse-modal")
     private WebElement updateWarehouseModal;
 
+    @FindBy(id="current-warehouse-name")
+    private WebElement currentWarehouseName;
+
+    @FindBy(id="current-warehouse-address")
+    private WebElement currentWarehouseAddress;
+
     //modal form 
     @FindBy(css = "input[id='warehouse-name']")
     private WebElement nameField;
@@ -125,6 +131,21 @@ public class WarehouseDetailsPage {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    public boolean updatedWarehouseIsDisplayed(String updatedName, String updatedAddress, String updatedCapacity){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if(updatedName == currentWarehouseName.getText() && updatedAddress == currentWarehouseAddress.getText()){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
