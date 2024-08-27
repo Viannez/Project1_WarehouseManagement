@@ -62,17 +62,27 @@ pipeline {
         stage('Build Backend') {
             steps {
                 withSonarQubeEnv('SonarCloud') {
-                    dir("warehouse-management"){
-                        sh 'mvn clean verify -Pcoverage -Dspring.profiles.active=build '
+                    withCredentials([
+                        string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
+                        string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
+                        string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+                        dir("warehouse-management"){
+                        sh '''mvn clean verify -Pcoverage -Dspring.profiles.active=build \
+                        -Dspring.datasource.url=$DB_URL \
+                        -Dspring.datasource.username=$DB_USER \
+                        -Dspring.datasource.password=$DB_PWD     
+                        '''
                         sh '''
-                mvn sonar:sonar \
-                -Dsonar.projectKey=warehouse-management \
-                -Dsonar.projectName=Project1_WarehouseManagement-backend \
-                -Dsonar.java.binaries=target/classes \
-                -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-                '''
+                        mvn sonar:sonar \
+                        -Dsonar.projectKey=warehouse-management \
+                        -Dsonar.projectName=Project1_WarehouseManagement-backend \
+                        -Dsonar.java.binaries=target/classes \
+                        -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                        '''
                     }
-            } 
+
+                    }
+                } 
             }
         }
         stage('Test Backend'){
