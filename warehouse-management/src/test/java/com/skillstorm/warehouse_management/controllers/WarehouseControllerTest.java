@@ -3,8 +3,8 @@ package com.skillstorm.warehouse_management.controllers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.skillstorm.warehouse_management.services.WarehouseService;
@@ -21,7 +21,7 @@ public class WarehouseControllerTest {
     private AutoCloseable closeable;
 
     //initializes mocks objects to ensure they were ready before tests are run
-    @BeforeTestClass
+    @BeforeTest
     public void setup(){
         closeable = MockitoAnnotations.openMocks(this);
     }

@@ -16,7 +16,7 @@ function ProductDetails() {
 
   const { id } = useParams()
 
-  const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product/"+id;
+  const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/"+id;
 
 
   useEffect(() => {
