@@ -87,7 +87,18 @@ pipeline {
         }
         stage('Test Backend'){
             steps{
-                sh "cd warehouse-management && mvn test"
+                withCredentials([
+                    string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
+                    string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
+                    string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+                        dir("warehouse-management"){
+                            sh '''mvn test \
+                            -Dspring.datasource.url=$DB_URL \
+                            -Dspring.datasource.username=$DB_USER \
+                            -Dspring.datasource.password=$DB_PWD     
+                            '''
+                        }
+                    }
             }
         }
          stage('Deploy Backend') {
