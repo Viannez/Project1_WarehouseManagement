@@ -30,7 +30,7 @@ pipeline {
                 script{
                     try{
                         withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
-                            sh "aws s3 sync frontend/dist s3://mystery-box-warehouses-frontend"
+                            sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
                         }
                     }
                      catch (Exception e) {
