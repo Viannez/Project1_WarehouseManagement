@@ -23,10 +23,10 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 sh "echo Building Frontend"
-                sh "cd warehouse-frontend && npm install && npm run build"
                  script {
                 withSonarQubeEnv('SonarCloud') {
                     sh '''
+                    cd warehouse-frontend
                     npm install
                     npm run build
                     npm run test -- --coverage
