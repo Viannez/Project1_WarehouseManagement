@@ -31,8 +31,8 @@ pipeline {
                     npm run build
                     npm run test -- --coverage
                     npx sonar-scanner \
-                        -Dsonar.projectKey=mgmt-p1 \
-                        -Dsonar.projectName=inventory-mgmt-p1-frontend \
+                        -Dsonar.projectKey=warehouse-frontend \
+                        -Dsonar.projectName=Project1_WarehouseManagement-frontend\
                         -Dsonar.sources=src \
                         -Dsonar.exclusions=**/__tests__/** \
                         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
@@ -63,8 +63,8 @@ pipeline {
             withSonarQubeEnv('SonarCloud') {
                 sh '''
                 mvn sonar:sonar \
-                -Dsonar.projectKey=//insert project key \
-                -Dsonar.projectName=//insert project name \
+                -Dsonar.projectKey=warehouse-management \
+                -Dsonar.projectName=Project1_WarehouseManagement-backend \
                 -Dsonar.java.binaries=target/classes \
                 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                 '''
