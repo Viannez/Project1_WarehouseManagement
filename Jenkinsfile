@@ -8,6 +8,7 @@ pipeline {
         PATCH_VERSION = "${env.BUILD_NUMBER}"
     }
 
+    // update version as first stage
     stages {
         stage('Set Version') {
             steps {
