@@ -12,7 +12,7 @@ const AddProduct = () => {
     const categories = GetCategories();
 
     function handleSubmit(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product"; 
+        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product"; 
         e.preventDefault();
         const data = new FormData(e.target);
 
