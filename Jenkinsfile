@@ -63,9 +63,9 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarCloud') {
                     withCredentials([
-                        string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
-                        string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
-                        string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+                        string(credentialsId: 'DB_USER', variable: 'DB_USER'),
+                        string(credentialsId: 'DB_PWD', variable: 'DB_PWD'),
+                        string(credentialsId: 'DB_URL', variable: 'DB_URL')]){
                         dir("warehouse-management"){
                         sh '''mvn clean verify -Pcoverage -Dspring.profiles.active=build \
                         -Dspring.datasource.url=$DB_URL \
