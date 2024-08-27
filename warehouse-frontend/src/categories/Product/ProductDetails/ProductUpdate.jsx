@@ -21,7 +21,7 @@ export const ProductUpdate = () => {
 
     // submit data to update product
     function handleSubmit(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product/"+id; 
+        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/"+id; 
         e.preventDefault();
 
         const data = new FormData(e.target);

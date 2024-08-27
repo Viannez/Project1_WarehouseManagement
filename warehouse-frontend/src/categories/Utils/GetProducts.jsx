@@ -7,11 +7,11 @@ export default function GetProducts(id){
 
     let url = "";
     if(id!=undefined){
-        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product/"+id;
+        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/"+id;
     }
     else{
         console.log("warehouse found no id");
-        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com:8080/product";
+        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product";
     }
     
     useEffect(() => {

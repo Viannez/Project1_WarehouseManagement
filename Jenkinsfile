@@ -1,3 +1,5 @@
+// start pipeline
+// add comment
 pipeline {
     agent any
 
@@ -7,6 +9,7 @@ pipeline {
         PATCH_VERSION = "${env.BUILD_NUMBER}"
     }
 
+    // update version as first stage
     stages {
         stage('Set Version') {
             steps {
@@ -20,7 +23,24 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 sh "echo Building Frontend"
-                sh "cd warehouse-frontend && npm install && npm run build"
+                 script {
+                withSonarQubeEnv('SonarCloud') {
+                    dir("warehouse-frontend"){
+                        sh '''
+                    npm install
+                    npm run build
+                    npm run test -- --coverage
+                    npx sonar-scanner \
+                        -Dsonar.projectKey=warehouse-frontend \
+                        -Dsonar.projectName=Project1_WarehouseManagement-frontend\
+                        -Dsonar.sources=src \
+                        -Dsonar.exclusions=**/__tests__/** \
+                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+                    '''
+                    }
+                    
+                }
+            }
             }
         }
         stage('Deploy Frontend') {
@@ -29,8 +49,11 @@ pipeline {
                 script{
                     try{
                         withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
-                        sh "aws s3 sync frontend/dist s3://mystery-box-warehouses-frontend"
+                            sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
+                        }
                     }
+                     catch (Exception e) {
+                        echo 'Exception occurred: ' + e.toString()
                     }
                     
                 }
@@ -38,12 +61,44 @@ pipeline {
         }
         stage('Build Backend') {
             steps {
-                sh "cd warehouse-management && mvn clean install"
+                withSonarQubeEnv('SonarCloud') {
+                    withCredentials([
+                        string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
+                        string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
+                        string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+                        dir("warehouse-management"){
+                            sh '''mvn clean verify -Pcoverage -Dspring.profiles.active=build \
+                            -Dspring.datasource.url=$DB_URL \
+                            -Dspring.datasource.username=$DB_USER \
+                            -Dspring.datasource.password=$DB_PWD     
+                            '''
+                            sh '''
+                            mvn sonar:sonar \
+                            -Dsonar.projectKey=warehouse-management \
+                            -Dsonar.projectName=Project1_WarehouseManagement-backend \
+                            -Dsonar.java.binaries=target/classes \
+                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                            '''
+                        }
+
+                    }
+                } 
             }
         }
         stage('Test Backend'){
             steps{
-                sh "cd warehouse-management && mvn test"
+                withCredentials([
+                    string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
+                    string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
+                    string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+                        dir("warehouse-management"){
+                            sh '''mvn test \
+                            -Dspring.datasource.url=$DB_URL \
+                            -Dspring.datasource.username=$DB_USER \
+                            -Dspring.datasource.password=$DB_PWD     
+                            '''
+                        }
+                    }
             }
         }
          stage('Deploy Backend') {
