@@ -25,7 +25,7 @@ pipeline {
                 sh "echo Building Frontend"
                  script {
                 withSonarQubeEnv('SonarCloud') {
-                    dir(warehouse-frontend){
+                    dir("warehouse-frontend"){
                         sh '''
                     npm install
                     npm run build
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 sh "cd warehouse-management && mvn clean install"
                 withSonarQubeEnv('SonarCloud') {
-                    dir(warehouse-management){
+                    dir("warehouse-management"){
                         sh '''
                 mvn sonar:sonar \
                 -Dsonar.projectKey=warehouse-management \
