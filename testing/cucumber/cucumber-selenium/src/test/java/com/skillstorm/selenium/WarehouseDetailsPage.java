@@ -24,6 +24,9 @@ public class WarehouseDetailsPage {
     @FindBy(id="current-warehouse-address")
     private WebElement currentWarehouseAddress;
 
+    @FindBy(id="current-warehouse-capacity")
+    private WebElement currentWarehouseCapacity;
+
     //modal form 
     @FindBy(css = "input[id='warehouse-name']")
     private WebElement nameField;
@@ -141,11 +144,27 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        if(updatedName == currentWarehouseName.getText() && updatedAddress == currentWarehouseAddress.getText()){
-            return true;
-        }
-        else{
+        System.out.println("Updated warehouse name is " + updatedName);
+        System.out.println("Current warehouse name is " + currentWarehouseName.getText());
+        System.out.println("Updated warehouse address is " + updatedAddress);
+        System.out.println("Current warehouse address is " + currentWarehouseAddress.getText());
+
+        updatedCapacity = "0/" + updatedCapacity;
+        System.out.println("Updated warehouse capacity is " + updatedCapacity);
+        System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText());
+        if(!updatedName.equals(currentWarehouseName.getText())){
+            System.out.println("Warehouse name was not updated.");
             return false;
         }
+        if(!updatedAddress.equals(currentWarehouseAddress.getText())){
+            System.out.println("Warehouse address was not updated.");
+            return false;
+        }
+        if(!updatedCapacity.equals(currentWarehouseCapacity.getText())){
+            System.out.println("Warehouse capacity was not updated.");
+            return false;
+        }
+        System.out.println("Warehouse: " + currentWarehouseName.getText() + " successfully updated.");
+        return true;
     }
 }
