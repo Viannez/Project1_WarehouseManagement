@@ -96,7 +96,7 @@ export const ProductUpdate = () => {
                 <option>- Select -</option>
             {
               categories.map( ({id, name}) => 
-                <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                <option key={id} value={id}>{name}</option> )
             }
             </Select>
         <div>
