@@ -31,7 +31,7 @@ public class UpdateWarehouseSteps {
             this.driver.quit();
         }
     }
-
+    
     //Get to modal
     @Given("I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {

@@ -13,5 +13,6 @@ Feature: Update warehouse
         Then I should see the warehouse updated with name = "<updatedName>", address = "<updatedAddress>", capacity = "<updatedCapacity>"
 
     Examples:
-        |updatedName          |updatedAddress        |updatedCapacity  |
-        |updatedWarehouseName |Baltimore, Maryland   |200              |
+        |updatedName                |updatedAddress        |updatedCapacity  |
+        |updatedWarehouseName1      |Baltimore, Maryland   |200              |
+        |updatedWarehouseName2      |Columbia, Maryland    |300              |

@@ -1,7 +1,9 @@
 package com.skillstorm.selenium;
 
 import java.time.Duration;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +11,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WarehouseDetailsPage {
     private final WebDriver driver;
-    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse/1";
-    // private static final String url = "http://localhost:5173/warehouse/1";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    // private static final String url = "http://localhost:5173/warehouse";
+    private static String warehouseDetailUrl = ""; // to be updated based on first existing warehouse on /warehouse page
 
+    //warehouse cards
+    @FindBy(className = "usa-card__container")
+    private List<WebElement> cards;
+
+    //below web elements on a warehouse's details page
     @FindBy(id="update-warehouse")
     private WebElement updateWarehouseButton;
 
@@ -27,7 +35,7 @@ public class WarehouseDetailsPage {
     @FindBy(id="current-warehouse-capacity")
     private WebElement currentWarehouseCapacity;
 
-    //modal form 
+    //modal form web elements
     @FindBy(css = "input[id='warehouse-name']")
     private WebElement nameField;
 
@@ -50,7 +58,7 @@ public class WarehouseDetailsPage {
     }
 
     /**
-     * navigating to the warehouse details page
+     * navigating to the warehouse details page from the first existing warehouse
      * pause execution for 1000 mili sec before navigating
      */
     public void get() {
@@ -59,7 +67,34 @@ public class WarehouseDetailsPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        // navigate to the list of warehouses page
         this.driver.get(url);
+
+        // if there is atleast one existing warehouse
+        if(!cards.isEmpty()){
+            // update the url to navigate to the first existing warehouse
+            for(WebElement list:cards){
+                WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
+                String idString = existingWarehouseId.getText();
+                warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); // note - "ID: 2" would append '2' to the url
+                break;
+            }
+        }
+        else{
+            System.out.println("No warehouses exist!");
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // navigate to the first existing warehouse's details page
+        if(!warehouseDetailUrl.isEmpty()){
+            this.driver.get(warehouseDetailUrl);
+        }
     }
 
     /**
@@ -129,7 +164,14 @@ public class WarehouseDetailsPage {
     * pause execution for 1000 mili sec before navigating
     */
     public void clickSubmitButton() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
         submitButton.click();
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -140,6 +182,14 @@ public class WarehouseDetailsPage {
     public boolean updatedWarehouseIsDisplayed(String updatedName, String updatedAddress, String updatedCapacity){
         try {
             Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.driver.navigate().to(warehouseDetailUrl);
+
+        try {
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
