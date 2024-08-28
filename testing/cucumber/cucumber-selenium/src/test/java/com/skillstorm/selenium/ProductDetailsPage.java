@@ -8,11 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class ProductDetailsPage {
     private final WebDriver driver;
-    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
-    private static final String url = "http://localhost:5173/product";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
+    // private static final String url = "http://localhost:5173/product";
     private static String productDetailUrl = ""; // to be updated based on first existing product on /product page
 
     //product cards
@@ -39,8 +40,8 @@ public class ProductDetailsPage {
     @FindBy(css = "input[id='product-name']")
     private WebElement nameField;
 
-    @FindBy(css = "input[id='product-category']")
-    private WebElement categoryField;
+    @FindBy(css = "select[id='product-category']")
+    private WebElement categorySelect;
 
     @FindBy(css = "input[id='product-price']")
     private WebElement priceField;
@@ -120,5 +121,94 @@ public class ProductDetailsPage {
             e.printStackTrace();
         }
         return updateProductModal.isDisplayed(); 
+    }
+
+    /**
+    * entering the name into the update name field
+    */
+    public void setName(String name) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        nameField.sendKeys(name);
+    }
+
+    /**
+     * selecting the category id 
+    */
+    public void setCategory(String category) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Select select = new Select(categorySelect);
+        select.selectByVisibleText(category);
+    }
+
+    /**
+     * entering the price into the price field
+    */
+    public void setPrice(String price) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        priceField.sendKeys(price);
+    }
+
+    /**
+     * click on submit button on the update product modal
+     * pause execution for 1000 mili sec before navigating
+    */
+    public void clickSubmitButton() {
+        submitButton.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean updatedProductIsDisplayed(String updatedName, String updatedCategory, String updatedPrice){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.driver.navigate().to(productDetailUrl);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Updated product name is " + updatedName);
+        System.out.println("Current product name is " + currentProductName.getText());
+        System.out.println("Updated product size is " + updatedCategory);
+        System.out.println("Current product size is " + currentProductCategory.getText());
+
+        updatedPrice = "$" + updatedPrice;
+        System.out.println("Updated product price is " + updatedPrice);
+        System.out.println("Current product price is " + currentProductPrice.getText());
+        if(!updatedName.equals(currentProductName.getText())){
+            System.out.println("Product name was not updated.");
+            return false;
+        }
+        if(!updatedCategory.equals(currentProductCategory.getText())){
+            System.out.println("Product size was not updated.");
+            return false;
+        }
+        if(!updatedPrice.equals(currentProductPrice.getText())){
+            System.out.println("Product price was not updated.");
+            return false;
+        }
+        System.out.println("Product: " + currentProductName.getText() + " successfully updated.");
+        return true;
     }
 }

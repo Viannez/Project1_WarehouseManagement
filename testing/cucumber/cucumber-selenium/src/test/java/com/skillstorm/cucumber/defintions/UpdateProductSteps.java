@@ -9,6 +9,7 @@ import com.skillstorm.selenium.ProductDetailsPage;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -45,5 +46,35 @@ public class UpdateProductSteps {
     @Then("I should see the update product form modal")
     public void iShouldSeeTheUpdateProductFormModal() {
         assertTrue(this.productDetailsPage.updateProductModalDisplayed());
+    }
+
+    @Given("I have the update product form modal open")
+    public void iAmOnTheUpdateProductFormModal() {
+        this.productDetailsPage.get();
+        this.productDetailsPage.clickUpdateProduct();
+        assertTrue(this.productDetailsPage.updateProductModalDisplayed());
+    }
+
+    @When("I enter valid update fields with name = {string}, category = {string}, price = {string}")
+    public void iEnterValidFormInputs(String updatedName, String updatedCategory, String updatedPrice) {
+        if(this.productDetailsPage.updateProductModalDisplayed()){
+            System.out.println("Update product modal is displaying");
+
+        }
+        this.driver.switchTo().activeElement();
+        this.productDetailsPage.setName(updatedName);
+        this.productDetailsPage.setCategory(updatedCategory);
+        this.productDetailsPage.setPrice(updatedPrice);
+    }
+
+    @And("I click the update product form submit button")
+    public void iClickTheSubmitButton() {
+        this.productDetailsPage.clickSubmitButton();
+    }
+
+    @Then("I should see the product updated with name = {string}, category = {string}, price = {string}")
+    public void iShouldSeeACardWithMatchingInputs(String updatedName, String updatedCategory, String updatedPrice) {
+        this.driver.navigate().refresh();
+        assertTrue(this.productDetailsPage.updatedProductIsDisplayed(updatedName, updatedCategory, updatedPrice));
     }
 }
