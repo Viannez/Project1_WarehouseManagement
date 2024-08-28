@@ -11,10 +11,10 @@ function ProductUpdateModal() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+      <Button id="update-product" variant="primary" onClick={handleShow} style={{height:'90px'}}>
         <FaPen/>
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal id="update-product-modal" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update Product</Modal.Title>
         </Modal.Header>
