@@ -2,6 +2,7 @@ package com.skillstorm.warehouse_management.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.mockito.InjectMocks;
@@ -98,6 +99,20 @@ public class WarehouseServiceTest {
         int response = warehouseService.update(inputWarehouse.getId(), inputWarehouse);
 
         Assert.assertEquals(response, inputWarehouse.getId());
+    }
+
+    @Test
+    public void updateWarehouseInvalidTest() {
+        Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);
+        when(warehouseRepository.save(inputWarehouse))
+        .thenReturn(inputWarehouse);
+
+        when(warehouseRepository.existsById(2))
+        .thenReturn(false);
+        
+        Assert.assertThrows(NoSuchElementException.class, () -> {
+            warehouseService.update(2, inputWarehouse);
+        });
     }
 
     @Test
