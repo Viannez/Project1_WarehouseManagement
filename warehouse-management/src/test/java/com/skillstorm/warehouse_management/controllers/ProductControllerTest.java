@@ -78,6 +78,20 @@ public class ProductControllerTest {
     }
 
     @Test
+    public void findProductByIdInvalidTest() {
+        int productId = 1;
+        Product inputProduct = new Product();
+        Optional<Product> expectedProduct = Optional.of(inputProduct);
+        
+        when(productService.findById(productId))
+        .thenReturn(expectedProduct);
+
+        ResponseEntity<Product> response = productController.findById(2);
+
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+    }
+
+    @Test
     public void createProductTest() {
         Category category = new Category();
         Product inputProduct = new Product();

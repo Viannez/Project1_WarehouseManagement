@@ -2,6 +2,7 @@ package com.skillstorm.warehouse_management.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.mockito.InjectMocks;
@@ -127,6 +128,32 @@ public class ProductInventoryServiceTest {
         System.out.println(response);
 
         Assert.assertEquals(response, inputProductInventory.getId());
+    }
+
+    @Test
+    public void updateProductInventoryInvalidTest() {
+        Product product = new Product();
+        productRepository.save(product);
+
+        Warehouse warehouse = new Warehouse();
+        warehouseRepository.save(warehouse);
+
+        ProductInventory inputProductInventory = new ProductInventory();
+        inputProductInventory.setId(1);
+        inputProductInventory.setProduct(product);
+        inputProductInventory.setWarehouse(warehouse);
+
+        when(productInventoryRepository.save(inputProductInventory))
+        .thenReturn(inputProductInventory);
+
+        when(productInventoryRepository.existsById(2))
+        .thenReturn(false);
+
+        Assert.assertThrows(NoSuchElementException.class, () -> {
+            productInventoryService.update(2, inputProductInventory);
+        });
+        
+
     }
 
     @Test

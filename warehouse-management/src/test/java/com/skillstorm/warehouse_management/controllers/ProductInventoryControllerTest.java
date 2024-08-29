@@ -78,6 +78,21 @@ public class ProductInventoryControllerTest {
     }
 
     @Test
+    public void findProductInventoryByIdInvalidTest() {
+        int productInventoryId = 1;
+        ProductInventory inputProductInventory = new ProductInventory();
+        inputProductInventory.setId(productInventoryId);
+        Optional<ProductInventory> expectedProductInventory = Optional.of(inputProductInventory);
+        
+        when(productInventoryService.findById(1))
+        .thenReturn(expectedProductInventory);
+
+        ResponseEntity<ProductInventory> response = productInventoryController.findById(2);
+
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+    }
+
+    @Test
     public void createProductInventoryTest() {
         ProductInventory inputProductInventory = new ProductInventory();
         ProductInventory savedProductInventory = new ProductInventory();

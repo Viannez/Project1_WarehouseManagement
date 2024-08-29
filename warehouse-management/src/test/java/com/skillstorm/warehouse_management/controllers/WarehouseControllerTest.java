@@ -77,6 +77,20 @@ public class WarehouseControllerTest {
     }
 
     @Test
+    public void findWarehouseByIdInvalidTest() {
+        int warehouseId = 1;
+        Warehouse inputWarehouse = new Warehouse();
+        Optional<Warehouse> expectedWarehouse = Optional.of(inputWarehouse);
+        
+        when(warehouseService.findById(warehouseId))
+        .thenReturn(expectedWarehouse);
+
+        ResponseEntity<Warehouse> response = warehouseController.findById(2);
+
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+    }
+
+    @Test
     public void createWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse();
         Warehouse savedWarehouse = new Warehouse();
