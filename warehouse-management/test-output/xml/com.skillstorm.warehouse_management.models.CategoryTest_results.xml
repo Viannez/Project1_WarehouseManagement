@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-b7b8a3cf-1cba-43a9-b831-43031f74398c"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.076">
+    <properties></properties>
+
+
+
+            <testcase
+                name="productsGetterSetter"
+                time="0.076"
+                classname="com.skillstorm.warehouse_management.models.CategoryTest">
+            </testcase>
+</testsuite>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-d6aac65b-8278-46e2-954d-af25bd894a4c"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.067">
+    <properties></properties>
+
+
+
+            <testcase
+                name="priceGetterSetter"
+                time="0.067"
+                classname="com.skillstorm.warehouse_management.models.ProductTest">
+            </testcase>
+</testsuite>
