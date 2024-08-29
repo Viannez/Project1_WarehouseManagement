@@ -1,4 +1,4 @@
-package com.skillstorm.cucumber.defintions;
+package com.skillstorm.cucumber.definitions;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.openqa.selenium.WebDriver;
