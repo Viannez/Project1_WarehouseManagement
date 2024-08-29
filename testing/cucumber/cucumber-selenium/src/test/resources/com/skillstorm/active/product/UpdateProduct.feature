@@ -13,6 +13,6 @@ Feature: Update product
         Then I should see the product updated with name = "<updatedName>", category = "<updatedCategory>", price = "<updatedPrice>"
 
     Examples:
-        |updatedName          |updatedCategory |updatedPrice  |
-        |updatedProductName1  |L               |200           |
-        |updatedProductName2  |S               |300           |
+        |updatedName      |updatedCategory |updatedPrice  |
+        |updatedProduct1  |L               |200           |
+        |updatedProduct2  |S               |300           |
