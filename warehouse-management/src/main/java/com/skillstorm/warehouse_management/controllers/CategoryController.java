@@ -1,6 +1,7 @@
 package com.skillstorm.warehouse_management.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.coyote.http11.Http11InputBuffer;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,11 @@ public class CategoryController{
 
     @GetMapping("/{id}")
     public ResponseEntity<Category> findById(@PathVariable int id) {
-        Category category = repo.findById(id).get();
-        return new ResponseEntity<Category>(category, HttpStatus.OK);
+        Optional<Category> category = repo.findById(id);
+        if (category.isPresent())
+            return ResponseEntity.ok(category.get());
+        else 
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}/products")

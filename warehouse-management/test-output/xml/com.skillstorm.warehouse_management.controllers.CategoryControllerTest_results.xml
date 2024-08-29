@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-34d72098-e373-44ba-8172-0cc71dba7f64"
+<testsuite name="TestNGTest-f2658629-0b5f-4d1f-a3fa-a591e5032fd3"
            tests="2"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.176">
+           time="0.253">
     <properties></properties>
 
 
 
             <testcase
                 name="findCategoryByIdTest"
-                time="0.005"
+                time="0.007"
                 classname="com.skillstorm.warehouse_management.controllers.CategoryControllerTest">
             </testcase>
             <testcase
-                name="findAllCategorysTest"
-                time="0.171"
+                name="findAllCategoriesTest"
+                time="0.246"
                 classname="com.skillstorm.warehouse_management.controllers.CategoryControllerTest">
             </testcase>
 </testsuite>
