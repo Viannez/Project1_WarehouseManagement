@@ -82,7 +82,7 @@ public class ProductInventory {
 
     @Override
     public String toString() {
-        return "Product Inventory [id=" + id + ", stock=" + stock + ", warehouse: " + (warehouse == null ? null : warehouse.getName()) + ", product: " + (product == null ? null : product.getName()) + "]";
+        return "Product Inventory [id=" + id + ", stock=" + stock + ", warehouseName=" + (warehouse == null ? null : warehouse.getName()) + ", productName=" + (product == null ? null : product.getName()) + "]";
     }
 
     

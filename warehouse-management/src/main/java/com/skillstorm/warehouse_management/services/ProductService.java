@@ -1,13 +1,13 @@
 package com.skillstorm.warehouse_management.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.models.Category;
-
+import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.repositories.CategoryRepository;
 import com.skillstorm.warehouse_management.repositories.ProductRepository;
 
@@ -24,7 +24,7 @@ public class ProductService {
         this.cRepo = cRepo;
     }
 
-    public Iterable<Product> findAll() {
+    public List<Product> findAll() {
         return repo.findAll();
     }
 
@@ -44,11 +44,12 @@ public class ProductService {
     }
 
     @Transactional
-    public void update(int id, Product product) {
+    public int update(int id, Product product) {
         if (!repo.existsById(id)) 
             throw new NoSuchElementException("Product with id " + id + " does not exist");
         product.setId(id);
         repo.save(product);
+        return id;
     }
 
     public void deleteById(int id) {

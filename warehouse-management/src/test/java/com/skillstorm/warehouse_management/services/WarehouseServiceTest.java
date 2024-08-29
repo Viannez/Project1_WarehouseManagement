@@ -1,4 +1,4 @@
-package com.skillstorm.warehouse_management.controllers;
+package com.skillstorm.warehouse_management.services;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,26 +10,24 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.skillstorm.warehouse_management.models.Warehouse;
-import com.skillstorm.warehouse_management.services.WarehouseService;
+import com.skillstorm.warehouse_management.repositories.WarehouseRepository;
 
 
-public class WarehouseControllerTest {
 
+public class WarehouseServiceTest {
     //creates a mock instance of the WarehouseService class
     @Mock
-    private WarehouseService warehouseService;
+    private WarehouseRepository warehouseRepository;
 
     //injects the WarehouseService mock object into the WarehouseController
     @InjectMocks
-    private WarehouseController warehouseController;
+    private WarehouseService warehouseService;
     private AutoCloseable closeable;
 
     //initializes the mock objects to ensure they are ready before tests are run
@@ -50,16 +48,14 @@ public class WarehouseControllerTest {
         List<Warehouse> expectedWarehouses = Arrays.asList(new Warehouse(), new Warehouse());
 
         //When (stubbing)
-        when(warehouseService.findAll())
+        when(warehouseRepository.findAll())
         
         //Then
         .thenReturn(expectedWarehouses);
 
-        ResponseEntity<List<Warehouse>> response = warehouseController.findAll();
+        List<Warehouse> response = warehouseService.findAll();
 
-        Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
-        Assert.assertEquals(response.getBody(), expectedWarehouses);
-        Assert.assertEquals(response.getBody().size(), 2);
+        Assert.assertEquals(response, expectedWarehouses);
     }
 
     @Test
@@ -68,35 +64,40 @@ public class WarehouseControllerTest {
         Warehouse inputWarehouse = new Warehouse();
         Optional<Warehouse> expectedWarehouse = Optional.of(inputWarehouse);
         
-        when(warehouseService.findById(warehouseId))
+        when(warehouseRepository.findById(warehouseId))
         .thenReturn(expectedWarehouse);
 
-        ResponseEntity<Warehouse> response = warehouseController.findById(warehouseId);
+        Optional<Warehouse> response = warehouseService.findById(warehouseId);
 
-        Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+        Assert.assertEquals(response, expectedWarehouse);
     }
 
     @Test
     public void createWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse();
-        Warehouse savedWarehouse = new Warehouse();
-        when(warehouseService.save(inputWarehouse))
-        .thenReturn(savedWarehouse);
 
-        ResponseEntity<Warehouse> response = warehouseController.create(inputWarehouse);
+        when(warehouseRepository.save(inputWarehouse))
+        .thenReturn(inputWarehouse);
 
-        Assert.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
+        Warehouse response = warehouseService.save(inputWarehouse);
+
+        Assert.assertEquals(response, inputWarehouse);
     }
 
     @Test
     public void updateWarehouseTest() {
-        Warehouse inputWarehouse = new Warehouse();
-        when(warehouseService.update(inputWarehouse.getId(), inputWarehouse))
-        .thenReturn(inputWarehouse.getId());
+        Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);
+        when(warehouseRepository.save(inputWarehouse))
+        .thenReturn(inputWarehouse);
 
-        ResponseEntity<Integer> response = warehouseController.update(inputWarehouse.getId(), inputWarehouse);
+        when(warehouseRepository.existsById(inputWarehouse.getId()))
+        .thenReturn(true);
+        
+        System.out.println(inputWarehouse);
 
-        Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+        int response = warehouseService.update(inputWarehouse.getId(), inputWarehouse);
+
+        Assert.assertEquals(response, inputWarehouse.getId());
     }
 
     @Test
@@ -104,11 +105,11 @@ public class WarehouseControllerTest {
         Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);
         Optional<Warehouse> expectedWarehouse = Optional.of(inputWarehouse);
 
-        when(warehouseService.findById(inputWarehouse.getId()))
+        when(warehouseRepository.findById(inputWarehouse.getId()))
         .thenReturn(expectedWarehouse);
         
-        warehouseService.deleteById(inputWarehouse.getId());
-        verify(warehouseService, times(1)).deleteById(inputWarehouse.getId());
+        warehouseRepository.deleteById(inputWarehouse.getId());
+        verify(warehouseRepository, times(1)).deleteById(inputWarehouse.getId());
     }
 
     

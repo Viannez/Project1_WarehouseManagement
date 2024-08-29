@@ -66,12 +66,12 @@ public class Product {
         this.id = id;
     }
 
-    public String setName() {
+    public String getName() {
         return name;
     }
 
-    public String getName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPrice() {
@@ -105,7 +105,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", category: " + (category == null ? null : category.getName()) + "]";
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", categoryName=" + category.getName() + ", productInventories=" + getProductInventories() + "]";
     }
 
     

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-ccd04439-4d4e-4a34-bf01-b2093223e0be"
+           tests="5"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.126">
+    <properties></properties>
+
+
+
+            <testcase
+                name="findAllProductInventorysTest"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.services.ProductInventoryServiceTest">
+            </testcase>
+            <testcase
+                name="deleteProductInventoryTest"
+                time="0.017"
+                classname="com.skillstorm.warehouse_management.services.ProductInventoryServiceTest">
+            </testcase>
+            <testcase
+                name="findProductInventoryByIdTest"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.services.ProductInventoryServiceTest">
+            </testcase>
+            <testcase
+                name="createProductInventoryTest"
+                time="0.100"
+                classname="com.skillstorm.warehouse_management.services.ProductInventoryServiceTest">
+            </testcase>
+            <testcase
+                name="updateProductInventoryTest"
+                time="0.005"
+                classname="com.skillstorm.warehouse_management.services.ProductInventoryServiceTest">
+            </testcase>
+</testsuite>
