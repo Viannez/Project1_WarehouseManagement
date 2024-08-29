@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-3f234cf6-7fd2-4b39-b622-d5ddb60b8def"
+<testsuite name="TestNGTest-ccd04439-4d4e-4a34-bf01-b2093223e0be"
            tests="5"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.183">
+           time="0.023">
     <properties></properties>
 
 
 
             <testcase
                 name="findWarehouseByIdTest"
-                time="0.001"
-                classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
-            </testcase>
-            <testcase
-                name="findAllWarehousesTest"
-                time="0.001"
-                classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
-            </testcase>
-            <testcase
-                name="updateWarehouseTest"
-                time="0.014"
-                classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
-            </testcase>
-            <testcase
-                name="createWarehouseTest"
-                time="0.156"
+                time="0.003"
                 classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
             </testcase>
             <testcase
                 name="deleteWarehouseTest"
-                time="0.011"
+                time="0.003"
+                classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
+            </testcase>
+            <testcase
+                name="createWarehouseTest"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
+            </testcase>
+            <testcase
+                name="updateWarehouseTest"
+                time="0.013"
+                classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
+            </testcase>
+            <testcase
+                name="findAllWarehousesTest"
+                time="0.002"
                 classname="com.skillstorm.warehouse_management.services.WarehouseServiceTest">
             </testcase>
 </testsuite>

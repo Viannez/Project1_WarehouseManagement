@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-3c3aba2e-d02b-4dc4-b6dd-4078fad0af98"
+<testsuite name="TestNGTest-ccd04439-4d4e-4a34-bf01-b2093223e0be"
            tests="5"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.050">
+           time="0.053">
     <properties></properties>
 
 
 
-            <testcase
-                name="findProductInventoryByIdTest"
-                time="0.004"
-                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
-            </testcase>
-            <testcase
-                name="deleteProductInventoryTest"
-                time="0.002"
-                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
-            </testcase>
-            <testcase
-                name="createProductInventoryTest"
-                time="0.041"
-                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
-            </testcase>
             <testcase
                 name="updateProductInventoryTest"
                 time="0.002"
                 classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
             </testcase>
             <testcase
+                name="findProductInventoryByIdTest"
+                time="0.004"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="createProductInventoryTest"
+                time="0.043"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
                 name="findAllProductInventorysTest"
-                time="0.001"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="deleteProductInventoryTest"
+                time="0.002"
                 classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
             </testcase>
 </testsuite>
