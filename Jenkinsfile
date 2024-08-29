@@ -1,5 +1,5 @@
 // start pipeline
-// add comment
+// pre-run through live demo week 8 project 2 team 7
 pipeline {
     agent any
 
