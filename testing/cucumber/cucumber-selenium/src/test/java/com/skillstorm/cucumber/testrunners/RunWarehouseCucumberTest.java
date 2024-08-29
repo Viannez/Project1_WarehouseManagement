@@ -11,7 +11,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("com/skillstorm/active/warehouse")
-@ConfigurationParameter(key =GLUE_PROPERTY_NAME, value = "com/skillstorm/cucumber/defintions")
+@ConfigurationParameter(key =GLUE_PROPERTY_NAME, value = "com/skillstorm/cucumber/definitions")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class RunWarehouseCucumberTest {
 }
