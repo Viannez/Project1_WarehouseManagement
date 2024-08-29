@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-184ec22a-0c9a-47ee-9c0f-75a36a81996f"
+           tests="5"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.242">
+    <properties></properties>
+
+
+
+            <testcase
+                name="deleteProductInventoryTest"
+                time="0.010"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="updateProductInventoryTest"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="createProductInventoryTest"
+                time="0.225"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="findAllProductInventorysTest"
+                time="0.003"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="findProductInventoryByIdTest"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+</testsuite>

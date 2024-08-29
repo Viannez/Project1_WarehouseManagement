@@ -1,5 +1,6 @@
 package com.skillstorm.warehouse_management.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -38,8 +39,9 @@ public class ProductInventoryController {
     }
 
     @GetMapping
-    public Iterable<ProductInventory> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<ProductInventory>> findAll() {
+        List<ProductInventory> productInventories = service.findAll();
+        return new ResponseEntity<List<ProductInventory>>(productInventories, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -53,14 +55,16 @@ public class ProductInventoryController {
 
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ProductInventory create(@Valid @RequestBody ProductInventory productInventory) {
+    public ResponseEntity<ProductInventory> create(@Valid @RequestBody ProductInventory productInventory) {
         logger.debug("=== POST request to /warehouses with ProductInventory of " + productInventory + " ===");
-        return service.save(productInventory);
+        ProductInventory newProductInventory = service.save(productInventory);
+        return new ResponseEntity<ProductInventory>(newProductInventory, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@Valid @PathVariable int id, @RequestBody ProductInventory productInventory) {
+    public ResponseEntity<Integer> update(@Valid @PathVariable int id, @RequestBody ProductInventory productInventory) {
         service.update(id, productInventory);
+        return new ResponseEntity<Integer>(id, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

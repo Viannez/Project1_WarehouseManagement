@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-34d72098-e373-44ba-8172-0cc71dba7f64"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.176">
+    <properties></properties>
+
+
+
+            <testcase
+                name="findCategoryByIdTest"
+                time="0.005"
+                classname="com.skillstorm.warehouse_management.controllers.CategoryControllerTest">
+            </testcase>
+            <testcase
+                name="findAllCategorysTest"
+                time="0.171"
+                classname="com.skillstorm.warehouse_management.controllers.CategoryControllerTest">
+            </testcase>
+</testsuite>

@@ -1,17 +1,19 @@
 package com.skillstorm.warehouse_management.controllers;
 
+import java.util.List;
+
+import org.apache.coyote.http11.Http11InputBuffer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.warehouse_management.models.Category;
 import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.repositories.CategoryRepository;
-
-import java.util.List;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/category")
@@ -25,8 +27,9 @@ public class CategoryController{
     }
 
     @GetMapping("/{id}")
-    public Category findCategory(@PathVariable int id) {
-        return repo.findById(id).get();
+    public ResponseEntity<Category> findById(@PathVariable int id) {
+        Category category = repo.findById(id).get();
+        return new ResponseEntity<Category>(category, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/products")
@@ -35,7 +38,8 @@ public class CategoryController{
     }
 
     @GetMapping()
-    public List<Category> findAll() {
-        return repo.findAll();
+    public ResponseEntity<List<Category>> findAll() {
+        List<Category> categories = repo.findAll();
+        return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
     }
 }

@@ -1,10 +1,12 @@
 package com.skillstorm.warehouse_management.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,8 +39,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public Iterable<Product> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<Product>> findAll() {
+        List<Product> products = service.findAll();
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -52,14 +55,16 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Product create(@Valid @RequestBody Product product) {
+    public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
         logger.debug("=== POST request to /products with Product of " + product + " ===");
-        return service.save(product);
+        Product newProduct = service.save(product);
+        return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@Valid @PathVariable int id, @RequestBody Product product) {
+    public ResponseEntity<Integer> update(@Valid @PathVariable int id, @RequestBody Product product) {
         service.update(id, product);
+        return new ResponseEntity<Integer>(id, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
