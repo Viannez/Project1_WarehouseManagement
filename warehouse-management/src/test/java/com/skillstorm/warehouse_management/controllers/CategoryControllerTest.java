@@ -77,13 +77,13 @@ public class CategoryControllerTest {
 
     @Test
     public void findCategoryByIdInvalidTest() {
-        Category inputCategory = new Category(2, "testname");
+        Category inputCategory = new Category(1, "testname");
         Optional<Category> expectedCategory = Optional.of(inputCategory);
         
         when(categoryRepository.findById(1))
         .thenReturn(expectedCategory);
 
-        ResponseEntity<Category> response = categoryController.findById(inputCategory.getId());
+        ResponseEntity<Category> response = categoryController.findById(2);
         System.out.println(response);
         Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
