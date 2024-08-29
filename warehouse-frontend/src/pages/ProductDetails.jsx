@@ -43,9 +43,9 @@ function ProductDetails() {
           <h3>Price: </h3>
         </Col>
         <Col style={{color:'lightskyblue'}}>
-          <h3 id="current-product-name">{product.name}</h3>
-          <h3 id="current-product-category">{product.categoryName}</h3>
-          <h3 id="current-product-price">${product.price}</h3>
+          <h3>{product.name}</h3>
+          <h3>{product.categoryName}</h3>
+          <h3>${product.price}</h3>
         </Col>
         <Col>
         </Col>

@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -215,9 +214,7 @@ public class WarehousePage {
             WebElement wName = list.findElement(By.id("warehouse-name"));
             if(wName.getText().equals(name)){
                 deleteButton=list.findElement(By.id("delete-warehouse"));
-                Actions actions = new Actions(driver);
-                actions.moveToElement(deleteButton).click().perform();
-                // deleteButton.click();
+                deleteButton.click();
                 break;
             }
         }

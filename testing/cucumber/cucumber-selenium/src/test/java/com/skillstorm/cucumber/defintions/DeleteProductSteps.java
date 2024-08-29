@@ -1,4 +1,4 @@
-package com.skillstorm.cucumber.definitions;
+package com.skillstorm.cucumber.defintions;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
