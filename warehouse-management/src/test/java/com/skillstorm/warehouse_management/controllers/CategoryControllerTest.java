@@ -16,6 +16,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.skillstorm.warehouse_management.models.Category;
+import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.repositories.CategoryRepository;
 
 
@@ -72,6 +73,43 @@ public class CategoryControllerTest {
         ResponseEntity<Category> response = categoryController.findById(inputCategory.getId());
 
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+    }
+
+    @Test
+    public void findCategoryByIdInvalidTest() {
+        Category inputCategory = new Category(2, "testname");
+        Optional<Category> expectedCategory = Optional.of(inputCategory);
+        
+        when(categoryRepository.findById(1))
+        .thenReturn(expectedCategory);
+
+        ResponseEntity<Category> response = categoryController.findById(inputCategory.getId());
+        System.out.println(response);
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+    }
+
+    @Test
+    public void findProductsByCategoryTest() {
+        Category inputCategory = new Category(1, "testname");
+
+        Product product1 = new Product();
+        product1.setId(1);
+        product1.setCategory(inputCategory);
+
+        Product product2 = new Product();
+        product2.setId(2);
+        product2.setCategory(inputCategory);
+
+        List<Product>products = Arrays.asList(product1, product2);
+        inputCategory.setProducts(products);
+        Optional<Category> expectedCategory = Optional.of(inputCategory);
+        
+        when(categoryRepository.findById(inputCategory.getId()))
+        .thenReturn(expectedCategory);
+
+        List<Product> response = categoryController.findProductsByCategory(inputCategory.getId());
+        System.out.println(response);
+        Assert.assertEquals(response, products);
     }
     
 }
