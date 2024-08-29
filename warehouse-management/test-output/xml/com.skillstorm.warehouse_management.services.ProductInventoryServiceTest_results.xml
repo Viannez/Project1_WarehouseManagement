@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-a6a535c1-914e-4c71-be92-7cf733708f00"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.151">
+    <properties></properties>
+
+
+
+            <testcase
+                name="deleteProductInventoryTest"
+                time="0.151"
+                classname="com.skillstorm.warehouse_management.services.ProductInventoryServiceTest">
+            </testcase>
+</testsuite>

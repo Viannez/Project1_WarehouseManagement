@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-184ec22a-0c9a-47ee-9c0f-75a36a81996f"
+<testsuite name="TestNGTest-3c3aba2e-d02b-4dc4-b6dd-4078fad0af98"
            tests="5"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.242">
+           time="0.050">
     <properties></properties>
 
 
 
             <testcase
+                name="findProductInventoryByIdTest"
+                time="0.004"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
                 name="deleteProductInventoryTest"
-                time="0.010"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
+            </testcase>
+            <testcase
+                name="createProductInventoryTest"
+                time="0.041"
                 classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
             </testcase>
             <testcase
@@ -20,18 +30,8 @@
                 classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
             </testcase>
             <testcase
-                name="createProductInventoryTest"
-                time="0.225"
-                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
-            </testcase>
-            <testcase
                 name="findAllProductInventorysTest"
-                time="0.003"
-                classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
-            </testcase>
-            <testcase
-                name="findProductInventoryByIdTest"
-                time="0.002"
+                time="0.001"
                 classname="com.skillstorm.warehouse_management.controllers.ProductInventoryControllerTest">
             </testcase>
 </testsuite>

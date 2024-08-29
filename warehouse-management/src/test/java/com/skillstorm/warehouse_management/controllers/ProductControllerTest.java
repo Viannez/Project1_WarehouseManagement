@@ -17,6 +17,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.skillstorm.warehouse_management.models.Category;
 import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.services.ProductService;
 
@@ -78,8 +79,12 @@ public class ProductControllerTest {
 
     @Test
     public void createProductTest() {
+        Category category = new Category();
         Product inputProduct = new Product();
+        inputProduct.setCategory(category);
         Product savedProduct = new Product();
+        savedProduct.setCategory(category);
+        
         when(productService.save(inputProduct))
         .thenReturn(savedProduct);
 

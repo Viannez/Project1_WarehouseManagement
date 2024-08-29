@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-3c3aba2e-d02b-4dc4-b6dd-4078fad0af98"
+           tests="5"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.002">
+    <properties></properties>
+
+
+
+            <testcase
+                name="testToString"
+                time="0.001"
+                classname="com.skillstorm.warehouse_management.models.ProductInventoryTest">
+            </testcase>
+            <testcase
+                name="warehouseGetterSetter"
+                time="0.000"
+                classname="com.skillstorm.warehouse_management.models.ProductInventoryTest">
+            </testcase>
+            <testcase
+                name="stockGetterSetter"
+                time="0.000"
+                classname="com.skillstorm.warehouse_management.models.ProductInventoryTest">
+            </testcase>
+            <testcase
+                name="productGetterSetter"
+                time="0.000"
+                classname="com.skillstorm.warehouse_management.models.ProductInventoryTest">
+            </testcase>
+            <testcase
+                name="idGetterSetter"
+                time="0.001"
+                classname="com.skillstorm.warehouse_management.models.ProductInventoryTest">
+            </testcase>
+</testsuite>

@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-b7b8a3cf-1cba-43a9-b831-43031f74398c"
-           tests="1"
+<testsuite name="TestNGTest-3c3aba2e-d02b-4dc4-b6dd-4078fad0af98"
+           tests="4"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.076">
+           time="0.009">
     <properties></properties>
 
 
 
             <testcase
+                name="idGetterSetter"
+                time="0.002"
+                classname="com.skillstorm.warehouse_management.models.CategoryTest">
+            </testcase>
+            <testcase
+                name="nameGetterSetter"
+                time="0.000"
+                classname="com.skillstorm.warehouse_management.models.CategoryTest">
+            </testcase>
+            <testcase
+                name="testToString"
+                time="0.006"
+                classname="com.skillstorm.warehouse_management.models.CategoryTest">
+            </testcase>
+            <testcase
                 name="productsGetterSetter"
-                time="0.076"
+                time="0.001"
                 classname="com.skillstorm.warehouse_management.models.CategoryTest">
             </testcase>
 </testsuite>

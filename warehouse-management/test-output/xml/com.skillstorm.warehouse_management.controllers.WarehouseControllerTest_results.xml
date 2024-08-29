@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-d05bb786-a7c6-47df-a350-21be3f2a7f5a"
+<testsuite name="TestNGTest-3c3aba2e-d02b-4dc4-b6dd-4078fad0af98"
            tests="5"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.220">
+           time="0.008">
     <properties></properties>
 
 
@@ -15,22 +15,22 @@
                 classname="com.skillstorm.warehouse_management.controllers.WarehouseControllerTest">
             </testcase>
             <testcase
-                name="findAllWarehousesTest"
-                time="0.003"
+                name="findWarehouseByIdTest"
+                time="0.001"
                 classname="com.skillstorm.warehouse_management.controllers.WarehouseControllerTest">
             </testcase>
             <testcase
-                name="createWarehouseTest"
-                time="0.196"
+                name="findAllWarehousesTest"
+                time="0.001"
                 classname="com.skillstorm.warehouse_management.controllers.WarehouseControllerTest">
             </testcase>
             <testcase
                 name="deleteWarehouseTest"
-                time="0.016"
+                time="0.001"
                 classname="com.skillstorm.warehouse_management.controllers.WarehouseControllerTest">
             </testcase>
             <testcase
-                name="findWarehouseByIdTest"
+                name="createWarehouseTest"
                 time="0.003"
                 classname="com.skillstorm.warehouse_management.controllers.WarehouseControllerTest">
             </testcase>
