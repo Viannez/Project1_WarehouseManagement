@@ -3,7 +3,7 @@
 pipeline {
     agent any
     tools{
-        maven 'Maven 3.9.8'
+        maven 'Maven'
     }
     environment {
         MAJOR_VERSION = '1'
