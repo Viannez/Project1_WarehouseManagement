@@ -68,11 +68,11 @@ export const WarehouseAddProduct = ({capacityNums}) => {
     <>
       <Form onSubmit={handleSubmit}>
       <div>
-        <Label>Product ID</Label>
+        <Label>Product Name</Label>
             <Select id="product-id" name="productID" required>
                 {
                   products.map( ({id, name}) => 
-                    <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                    <option key={id} value={id}>{name}</option> )
                 }
             </Select>
         </div>
