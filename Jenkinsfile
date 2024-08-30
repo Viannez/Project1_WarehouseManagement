@@ -11,6 +11,16 @@ pipeline {
 
     // update version as first stage
     stages {
+         stage('JMeter Test') {
+            steps {
+                dir("warehouse-management"){
+                    script {
+                        sh ".mvnw clean verify"
+                    }
+                }
+                perfReport filterRegex: '', sourceDataFiles: 'target/jmeter/JMeter.report.jtl'
+            }
+        }
         stage('Set Version') {
             steps {
                 script {
