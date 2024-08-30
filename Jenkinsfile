@@ -15,7 +15,7 @@ pipeline {
             steps {
                 dir("warehouse-management"){
                     script {
-                        sh ".mvnw clean verify"
+                        sh "mvn clean verify"
                     }
                 }
                 perfReport filterRegex: '', sourceDataFiles: 'target/jmeter/JMeter.report.jtl'
