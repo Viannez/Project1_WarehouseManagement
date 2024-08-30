@@ -47,11 +47,11 @@ export const WarehouseProductCard = ({productInventory}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
-                    <div className="container">
-                        <div className="container-element"> {product.name} </div>
-                        <div className="container-element"> ${product.price}</div>
-                        <div className="container-element"> Size:{product.categoryName}</div>
-                        <div className="container-element">Stock: {productInventory.stock}</div>
+                    <div id="warehouseproduct-card" className="container">
+                        <div id="warehouseproduct-name" className="container-element"> {product.name} </div>
+                        <div id="warehouseproduct-price" className="container-element"> ${product.price}</div>
+                        <div id="warehouseproduct-size"  className="container-element"> Size:{product.categoryName}</div>
+                        <div id="warehouseproduct-stock"  className="container-element">Stock: {productInventory.stock}</div>
                         <ProductInventoryStockModal info={passToStock}/>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
                             <div className='container-button' style={{textAlign:'left'}}>

@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WarehouseDetailsPage {
     private final WebDriver driver;
-    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    // private static final String url = "http://localhost:5173/warehouse";
+    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    private static final String url = "http://localhost:5173/warehouse";
     private static String warehouseDetailUrl = ""; // to be updated based on first existing warehouse on /warehouse page
 
     //warehouse cards
@@ -22,9 +22,15 @@ public class WarehouseDetailsPage {
     //below web elements on a warehouse's details page
     @FindBy(id="update-warehouse")
     private WebElement updateWarehouseButton;
+    
+    @FindBy(id="warehouse-add-product")
+    private WebElement addProductToWarehouseButton;
 
     @FindBy(id="update-warehouse-modal")
     private WebElement updateWarehouseModal;
+
+    @FindBy(id="warehouse-add-product-modal")
+    private WebElement addProductToWarehouseModal;
 
     @FindBy(id="current-warehouse-name")
     private WebElement currentWarehouseName;
@@ -35,7 +41,7 @@ public class WarehouseDetailsPage {
     @FindBy(id="current-warehouse-capacity")
     private WebElement currentWarehouseCapacity;
 
-    //modal form web elements
+    //update warehouse modal form web elements
     @FindBy(css = "input[id='warehouse-name']")
     private WebElement nameField;
 
@@ -47,6 +53,20 @@ public class WarehouseDetailsPage {
 
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
+
+    //add product to warehouse modal form web elements
+    @FindBy(css = "select[id='product-name']")
+    private WebElement productSelect;
+
+    @FindBy(css = "input[id='product-stock']")
+    private WebElement stockField;
+
+    @FindBy(css = "button[type='submit']")
+    private WebElement productSubmitButton;
+
+    //warehouse's product cards
+    @FindBy(id = "warehouseproduct-card")
+    private List<WebElement> warehouseProductCards;
 
     /**
     * Initializes the driver and sets an implicit wait 
@@ -111,6 +131,19 @@ public class WarehouseDetailsPage {
     }
 
     /**
+    * clicking the add product to warehouse button
+    * pause execution for 1000 mili sec before clicking
+    */
+    public void clickAddProductToWarehouse() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        addProductToWarehouseButton.click();
+    }
+
+    /**
     * update warehouse modal is displayed
     */
     public boolean updateWarehouseModalDisplayed() {
@@ -120,6 +153,18 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
         return updateWarehouseModal.isDisplayed(); 
+    }
+
+    /**
+    * update warehouse modal is displayed
+    */
+    public boolean addProductToWarehouseModalDisplayed() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return addProductToWarehouseModal.isDisplayed(); 
     }
 
     /**
@@ -146,6 +191,29 @@ public class WarehouseDetailsPage {
         addressField.sendKeys(address);
     }
 
+    /**
+    * setting the product name into the add product to warehouse modal
+    */
+    public void setProductName(String productName) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        productSelect.sendKeys(productName);
+    }
+
+    /**
+    * setting the product stock into the add product to warehouse modal
+    */
+    public void setProductStock(String productStock) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        stockField.sendKeys(productStock);
+    }
 
     /**
     * entering the capacity into the update capacity field
@@ -171,6 +239,26 @@ public class WarehouseDetailsPage {
         }
         
         submitButton.click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+    * click on product submit button on add product to warehouse form modal
+    * pause execution for 1000 mili sec before navigating
+    */
+    public void clickProductSubmitButton() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        productSubmitButton.click();
 
         try {
             Thread.sleep(1000);
@@ -216,5 +304,32 @@ public class WarehouseDetailsPage {
         }
         System.out.println("Warehouse: " + currentWarehouseName.getText() + " successfully updated.");
         return true;
+    }
+
+    // checks if the added product is found in the warehouse
+    public boolean addedProductIsDisplayed(String productName, String productStock){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.driver.navigate().to(warehouseDetailUrl);
+        
+        boolean found = false;
+        for(WebElement list:warehouseProductCards){
+            WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
+            WebElement whProductStock = list.findElement(By.id("warehouseproduct-stock"));
+            
+            System.out.println(whProductName.getText());
+            System.out.println(whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2));
+
+            if(whProductName.getText().equals(productName) && 
+                whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2).equals(productStock)){
+                found = true;
+            }
+        }
+        
+        return found; 
     }
 }
