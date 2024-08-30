@@ -11,7 +11,7 @@ function ProductInventoryStockModal({info}) {
   const handleShow = () => setShow(true);
   return (
     <>
-        <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+        <Button id="update-product-stock" variant="primary" onClick={handleShow} style={{height:'90px'}}>
             <FaPen/>
         </Button>
         <Modal show={show} onHide={handleClose}>
