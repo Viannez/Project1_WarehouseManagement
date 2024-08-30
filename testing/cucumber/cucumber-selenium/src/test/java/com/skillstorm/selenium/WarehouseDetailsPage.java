@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WarehouseDetailsPage {
     private final WebDriver driver;
-    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    // private static final String url = "http://localhost:5173/warehouse";
+    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    private static final String url = "http://localhost:5173/warehouse";
     private static String warehouseDetailUrl = ""; // to be updated based on first existing warehouse on /warehouse page
 
     //warehouse cards
@@ -22,9 +22,15 @@ public class WarehouseDetailsPage {
     //below web elements on a warehouse's details page
     @FindBy(id="update-warehouse")
     private WebElement updateWarehouseButton;
+    
+    @FindBy(id="warehouse-add-product")
+    private WebElement addProductToWarehouseButton;
 
     @FindBy(id="update-warehouse-modal")
     private WebElement updateWarehouseModal;
+
+    @FindBy(id="warehouse-add-product-modal")
+    private WebElement addProductToWarehouseModal;
 
     @FindBy(id="current-warehouse-name")
     private WebElement currentWarehouseName;
@@ -111,6 +117,19 @@ public class WarehouseDetailsPage {
     }
 
     /**
+    * clicking the add product to warehouse button
+    * pause execution for 1000 mili sec before clicking
+    */
+    public void clickAddProductToWarehouse() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        addProductToWarehouseButton.click();
+    }
+
+    /**
     * update warehouse modal is displayed
     */
     public boolean updateWarehouseModalDisplayed() {
@@ -120,6 +139,18 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
         return updateWarehouseModal.isDisplayed(); 
+    }
+
+    /**
+    * update warehouse modal is displayed
+    */
+    public boolean addProductToWarehouseModalDisplayed() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return addProductToWarehouseModal.isDisplayed(); 
     }
 
     /**
