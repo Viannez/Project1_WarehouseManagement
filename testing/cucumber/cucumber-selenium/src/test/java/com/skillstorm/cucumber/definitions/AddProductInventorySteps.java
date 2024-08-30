@@ -9,6 +9,7 @@ import com.skillstorm.selenium.WarehouseDetailsPage;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -43,7 +44,36 @@ public class AddProductInventorySteps {
     }
 
     @Then("I should see the add product to warehouse form modal")
-    public void iShouldSeeTheUpdateWarehouseFormModal() {
+    public void iShouldSeeTheAddProductToWarehouseFormModal() {
         assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
+    }
+
+    @Given("I have the add product to warehouse form modal open")
+    public void iAmOnTheAddProductToWarehouseFormModal() {
+        this.warehouseDetailsPage.get();
+        this.warehouseDetailsPage.clickAddProductToWarehouse();
+        assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
+    }
+
+    @When("I enter valid product fields with name = {string} and stock = {string}")
+    public void iEnterValidAddProductToWarehouseFormInputs(String productName, String productStock) {
+        if(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed()){
+            System.out.println("Add product to warehouse modal is displaying");
+
+        }
+        this.driver.switchTo().activeElement();
+        this.warehouseDetailsPage.setProductName(productName);
+        this.warehouseDetailsPage.setProductStock(productStock);
+    }
+
+    @And("I click the add product to warehouse submit button")
+    public void iClickTheAddProductToWarehouseSubmitButton() {
+        this.warehouseDetailsPage.clickProductSubmitButton();
+    }
+
+    @Then("I should see the warehouse's newly added product in stock with name = {string} and stock = {string}")
+    public void iShouldSeeTheAddedProductInTheWarehouse(String productName, String productStock) {
+        this.driver.navigate().refresh();
+        assertTrue(this.warehouseDetailsPage.addedProductIsDisplayed(productName, productStock));
     }
 }

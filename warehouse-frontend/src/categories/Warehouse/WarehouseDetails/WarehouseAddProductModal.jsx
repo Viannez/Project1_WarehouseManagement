@@ -15,7 +15,7 @@ function WarehouseAddProductModal({capacityNums}) {
       <Button id="warehouse-add-product" variant="primary" onClick={handleShow} style={{height:'90px'}}>
         <FaRegPlusSquare />
       </Button>
-      <Modal id="warehouse-add-product-modal"show={show} onHide={handleClose}>
+      <Modal id="warehouse-add-product-modal" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Product to Warehouse</Modal.Title>
         </Modal.Header>

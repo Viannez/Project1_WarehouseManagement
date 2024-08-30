@@ -69,7 +69,7 @@ export const WarehouseAddProduct = ({capacityNums}) => {
       <Form onSubmit={handleSubmit}>
       <div>
         <Label>Product Name</Label>
-            <Select id="product-id" name="productID" required>
+            <Select id="product-name" name="productID" required>
                 {
                   products.map( ({id, name}) => 
                     <option key={id} value={id}>{name}</option> )
@@ -78,9 +78,9 @@ export const WarehouseAddProduct = ({capacityNums}) => {
         </div>
         <div>
           <Label>Product Stock in this warehouse</Label>
-          <TextInput id="inputs" name="productInventoryStock" type="number" />
+          <TextInput id="product-stock" name="productInventoryStock" type="number" />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button id="product-submit"type="submit">Submit</Button>
       </Form>
       {
         message && <Alert type="success" headingLevel="h4">
