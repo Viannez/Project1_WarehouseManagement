@@ -18,7 +18,7 @@ pipeline {
                         sh "mvn clean verify"
                     }
                 }
-                perfReport filterRegex: '', sourceDataFiles: 'target/jmeter/JMeter.report.jtl'
+                perfReport filterRegex: '', sourceDataFiles: 'target/jmeter/**/*.csv'
             }
         }
         stage('Set Version') {
