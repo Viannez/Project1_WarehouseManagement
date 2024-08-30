@@ -1,5 +1,5 @@
 // start pipeline
-// trigger week 8 stand up jenkins pipeline
+// test jenkins
 pipeline {
     agent any
 
