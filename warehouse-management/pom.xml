@@ -175,8 +175,7 @@
 					</execution>
 				</executions>
 					<configuration>
-                        <generateReports>true</generateReports>   
-						<formats>XML</formats>                    
+						<resultsFileFormat>xml</resultsFileFormat>                    
                     </configuration>
 			</plugin>
 		</plugins>

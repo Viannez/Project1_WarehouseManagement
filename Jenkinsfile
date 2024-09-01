@@ -102,7 +102,7 @@ pipeline {
                             '''
                         }
                     }
-                perfReport filterRegex: '', sourceDataFiles: '**/target/jmeter/**/*.csv'
+                perfReport filterRegex: '', sourceDataFiles: '**/target/jmeter/**/*.jtl'
             }
         }
         // stage('JMeter Test') {
