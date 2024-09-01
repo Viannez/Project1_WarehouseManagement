@@ -102,7 +102,6 @@ pipeline {
                             '''
                         }
                     }
-                perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'
             }
         }
         // stage('Deploy Backend') {
@@ -122,5 +121,13 @@ pipeline {
         //         }
         //     }
         // }
+        stage('Jmeter Performance tests and Cucumber tests') {
+            steps {  
+                dir("testing"){
+                    sh 'mvn clean verify'
+                }                
+            }
+            perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'
+        }
     }
 }
