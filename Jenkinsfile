@@ -8,8 +8,8 @@ pipeline {
     environment {
         MAJOR_VERSION = '1'
         MINOR_VERSION = '1'
-        PATCH_VERSION = "${env.BUILD_NUMBER}"
-        // PATCH_VERSION = "1"
+        // PATCH_VERSION = "${env.BUILD_NUMBER}"
+        PATCH_VERSION = "1"
     }
 
     // update version as first stage
@@ -102,7 +102,7 @@ pipeline {
                             '''
                         }
                     }
-                perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true'
+                perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'
             }
         }
         // stage('JMeter Test') {
