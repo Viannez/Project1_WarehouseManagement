@@ -15,7 +15,7 @@ export const WarehouseAddProduct = ({capacityNums}) => {
 
     //submit data to add new product inventory to 
     function handleSubmit(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory"; 
+        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product_inventory`; 
         e.preventDefault();
         const data = new FormData(e.target);
 

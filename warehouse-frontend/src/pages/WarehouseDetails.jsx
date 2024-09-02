@@ -22,7 +22,7 @@ function WarehouseDetails() {
   }
 
   console.log("cap:", capacityNums)
-  const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse/"+id;
+  const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/warehouse/`+id;
 
 
   useEffect(() => {

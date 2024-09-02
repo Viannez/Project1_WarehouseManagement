@@ -7,11 +7,11 @@ export default function GetProductInventories(id){
 
     let url = "";
     if(id!=undefined){
-        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/"+id;
+        url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product_inventory/`+id;
     }
     else{
         console.log("warehouse found no id");
-        url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory";
+        url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product_inventory`;
     }
     useEffect(() => {
         fetch(url)

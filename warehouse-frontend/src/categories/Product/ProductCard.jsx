@@ -7,7 +7,7 @@ export const ProductCard = ({product}) => {
 
     //DELETE Product from DB
     function handleClick(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/"+product.id; 
+        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product/`+product.id; 
 
         fetch(url, {
         method: "DELETE",
