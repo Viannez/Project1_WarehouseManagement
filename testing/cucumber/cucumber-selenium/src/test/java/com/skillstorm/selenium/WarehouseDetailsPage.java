@@ -287,9 +287,8 @@ public class WarehouseDetailsPage {
         System.out.println("Updated warehouse address is " + updatedAddress);
         System.out.println("Current warehouse address is " + currentWarehouseAddress.getText());
 
-        updatedCapacity = "0/" + updatedCapacity;
         System.out.println("Updated warehouse capacity is " + updatedCapacity);
-        System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText());
+        System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText().substring(currentWarehouseCapacity.getText().lastIndexOf("/") + 1));
         if(!updatedName.equals(currentWarehouseName.getText())){
             System.out.println("Warehouse name was not updated.");
             return false;
@@ -298,7 +297,7 @@ public class WarehouseDetailsPage {
             System.out.println("Warehouse address was not updated.");
             return false;
         }
-        if(!updatedCapacity.equals(currentWarehouseCapacity.getText())){
+        if(!updatedCapacity.equals(currentWarehouseCapacity.getText().substring(currentWarehouseCapacity.getText().lastIndexOf("/") + 1))){
             System.out.println("Warehouse capacity was not updated.");
             return false;
         }
