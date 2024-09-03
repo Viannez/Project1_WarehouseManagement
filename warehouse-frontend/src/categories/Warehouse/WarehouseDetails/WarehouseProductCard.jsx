@@ -34,8 +34,10 @@ export const WarehouseProductCard = ({productInventory}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>
