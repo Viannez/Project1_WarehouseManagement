@@ -9,7 +9,7 @@ export const ProductWarehouseCard = ({productInventory}) => {
     const warehouse = GetWarehouses(productInventory.warehouse)
 
     function handleClick(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/"+productInventory.id; 
+        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product_inventory/`+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",
@@ -23,8 +23,10 @@ export const ProductWarehouseCard = ({productInventory}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>

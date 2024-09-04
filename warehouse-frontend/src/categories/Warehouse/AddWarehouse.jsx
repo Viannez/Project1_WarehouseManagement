@@ -7,7 +7,7 @@ const AddWarehouse = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     function handleSubmit(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse"; 
+        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/warehouse`; 
         e.preventDefault();
         const data = new FormData(e.target);
 

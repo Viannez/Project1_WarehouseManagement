@@ -20,7 +20,7 @@ export const WarehouseProductCard = ({productInventory}) => {
     console.log("info: ", passToStock)
 
     function handleDelete(e) {
-        const url = "http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/"+productInventory.id; 
+        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product_inventory/`+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",
@@ -34,8 +34,10 @@ export const WarehouseProductCard = ({productInventory}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>
@@ -58,7 +60,7 @@ export const WarehouseProductCard = ({productInventory}) => {
                                 <FaArrowRightToBracket />
                             </div>
                         </Link>
-                        <Button onClick={handleDelete} className="usa-button">
+                        <Button id="delete-warehouseproduct-button" onClick={handleDelete} className="usa-button">
                             <FaRegTrashAlt />
                         </Button>
                     </div>

@@ -2,15 +2,23 @@
 // test jenkins
 pipeline {
     agent any
-
+    tools{
+        maven 'Maven'
+    }
     environment {
         MAJOR_VERSION = '1'
         MINOR_VERSION = '1'
         PATCH_VERSION = "${env.BUILD_NUMBER}"
+        // PATCH_VERSION = "1"
     }
 
     // update version as first stage
     stages {
+        stage('CleanWorkspace') {
+            steps {
+                sh "git clean -fdx"
+            }
+        }
         stage('Set Version') {
             steps {
                 script {
@@ -99,9 +107,10 @@ pipeline {
                             '''
                         }
                     }
+                archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true
             }
         }
-         stage('Deploy Backend') {
+        stage('Deploy Backend') {
             steps {
                 withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
                     sh '''
@@ -116,6 +125,24 @@ pipeline {
                     aws elasticbeanstalk update-environment --environment-name Mystery-box-warehouses-env --version-label ${VERSION}
                     '''
                 }
+            }
+        }
+        stage('Jmeter Performance tests and Cucumber tests') {
+            steps {  
+                // wait for the deployed backend to be ready
+                withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
+                    sh '''
+                    aws elasticbeanstalk wait environment-updated --environment-name Mystery-box-warehouses-env
+                    '''
+                }
+                dir("testing"){
+                    withCredentials([string(credentialsId: 'CUCUMBER_PUBLISH_TOKEN', variable: 'CUCUMBER_TOKEN')]) {
+                        sh '''
+                            mvn clean verify -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
+                        '''
+                    }
+                } 
+                perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'               
             }
         }
     }
