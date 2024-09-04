@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('CleanWorkspace') {
             steps {
-                deleteDir("/var/lib/jenkins/workspace/JMeter-test")
+                sh "git clean -fdx"
             }
         }
         stage('Set Version') {
