@@ -46,22 +46,22 @@ pipeline {
             }
             }
         }
-        // stage('Deploy Frontend') {
-        //     steps {
-        //         sh "echo Deploying Frontend"
-        //         script{
-        //             try{
-        //                 withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
-        //                     sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
-        //                 }
-        //             }
-        //              catch (Exception e) {
-        //                 echo 'Exception occurred: ' + e.toString()
-        //             }
+        stage('Deploy Frontend') {
+            steps {
+                sh "echo Deploying Frontend"
+                script{
+                    try{
+                        withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
+                            sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
+                        }
+                    }
+                     catch (Exception e) {
+                        echo 'Exception occurred: ' + e.toString()
+                    }
                     
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
         stage('Build Backend') {
             steps {
                 withSonarQubeEnv('SonarCloud') {
@@ -104,30 +104,34 @@ pipeline {
                     }
             }
         }
-        // stage('Deploy Backend') {
-        //     steps {
-        //         withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
-        //             sh '''
-        //             JAR_FILE=$(ls warehouse-management/target/*.jar | head -n 1)
-        //             aws s3 cp $JAR_FILE s3://mystery-box-warehouses-backend/
-        //             JAR_FILENAME=$(basename $JAR_FILE)
-        //             echo "Deploying $JAR_FILENAME"
-        //             aws elasticbeanstalk create-application-version \
-        //                 --application-name mystery-box-warehouses \
-        //                 --version-label ${VERSION} \
-        //                 --source-bundle S3Bucket=mystery-box-warehouses-backend,S3Key=$JAR_FILENAME
-        //             aws elasticbeanstalk update-environment --environment-name Mystery-box-warehouses-env --version-label ${VERSION}
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Deploy Backend') {
+            steps {
+                withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
+                    sh '''
+                    JAR_FILE=$(ls warehouse-management/target/*.jar | head -n 1)
+                    aws s3 cp $JAR_FILE s3://mystery-box-warehouses-backend/
+                    JAR_FILENAME=$(basename $JAR_FILE)
+                    echo "Deploying $JAR_FILENAME"
+                    aws elasticbeanstalk create-application-version \
+                        --application-name mystery-box-warehouses \
+                        --version-label ${VERSION} \
+                        --source-bundle S3Bucket=mystery-box-warehouses-backend,S3Key=$JAR_FILENAME
+                    aws elasticbeanstalk update-environment --environment-name Mystery-box-warehouses-env --version-label ${VERSION}
+                    '''
+                }
+            }
+        }
         stage('Jmeter Performance tests and Cucumber tests') {
             steps {  
                 dir("testing"){
-                    sh 'mvn clean verify'
-                }                
+                    withCredentials([string(credentialsId: 'CUCUMBER_PUBLISH_TOKEN', variable: 'CUCUMBER_TOKEN')]) {
+                        sh '''
+                            mvn test -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
+                        '''
+                    }
+                } 
+                perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'               
             }
-            perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'
         }
     }
 }
