@@ -10,7 +10,7 @@ export const WarehouseCard = ({warehouse}) => {
     
     //DELETE Warehouse
     function handleClick(e) {
-        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/warehouse/`+warehouse.id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse/`+warehouse.id; 
 
         fetch(url, {
         method: "DELETE",

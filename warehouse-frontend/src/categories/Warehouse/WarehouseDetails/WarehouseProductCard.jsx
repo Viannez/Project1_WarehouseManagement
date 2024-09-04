@@ -20,7 +20,7 @@ export const WarehouseProductCard = ({productInventory}) => {
     console.log("info: ", passToStock)
 
     function handleDelete(e) {
-        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/product_inventory/`+productInventory.id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/`+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",

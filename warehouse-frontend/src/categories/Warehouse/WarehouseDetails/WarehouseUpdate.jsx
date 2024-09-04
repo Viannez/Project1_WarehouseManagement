@@ -16,7 +16,7 @@ export const WarehouseUpdate = () => {
 
     // submit data to add new warehouse inventory to 
     function handleSubmit(e) {
-        const url = `${import.meta.env.VITE_APP_API_ENDPOINT}/warehouse/`+id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse/`+id; 
         e.preventDefault();
 
         const data = new FormData(e.target);
