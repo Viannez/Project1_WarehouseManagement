@@ -14,97 +14,97 @@ pipeline {
 
     // update version as first stage
     stages {
-        stage('Set Version') {
-            steps {
-                script {
-                    def newVersion = PATCH_VERSION.toInteger() + 1
-                    env.VERSION = "${MAJOR_VERSION}.${MINOR_VERSION}.${newVersion}"
-                    echo "Updated version to: ${env.VERSION}"
-                }
-            }
-        }
-        stage('Build Frontend') {
-            steps {
-                sh "echo Building Frontend"
-                 script {
-                withSonarQubeEnv('SonarCloud') {
-                    dir("warehouse-frontend"){
-                        sh '''
-                    npm install
-                    npm run build
-                    npm run test -- --coverage
-                    npx sonar-scanner \
-                        -Dsonar.projectKey=warehouse-frontend \
-                        -Dsonar.projectName=Project1_WarehouseManagement-frontend\
-                        -Dsonar.sources=src \
-                        -Dsonar.exclusions=**/__tests__/** \
-                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-                    '''
-                    }
+        // stage('Set Version') {
+        //     steps {
+        //         script {
+        //             def newVersion = PATCH_VERSION.toInteger() + 1
+        //             env.VERSION = "${MAJOR_VERSION}.${MINOR_VERSION}.${newVersion}"
+        //             echo "Updated version to: ${env.VERSION}"
+        //         }
+        //     }
+        // }
+        // stage('Build Frontend') {
+        //     steps {
+        //         sh "echo Building Frontend"
+        //          script {
+        //         withSonarQubeEnv('SonarCloud') {
+        //             dir("warehouse-frontend"){
+        //                 sh '''
+        //             npm install
+        //             npm run build
+        //             npm run test -- --coverage
+        //             npx sonar-scanner \
+        //                 -Dsonar.projectKey=warehouse-frontend \
+        //                 -Dsonar.projectName=Project1_WarehouseManagement-frontend\
+        //                 -Dsonar.sources=src \
+        //                 -Dsonar.exclusions=**/__tests__/** \
+        //                 -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+        //             '''
+        //             }
                     
-                }
-            }
-            }
-        }
-        stage('Deploy Frontend') {
-            steps {
-                sh "echo Deploying Frontend"
-                script{
-                    try{
-                        withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
-                            sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
-                        }
-                    }
-                     catch (Exception e) {
-                        echo 'Exception occurred: ' + e.toString()
-                    }
+        //         }
+        //     }
+        //     }
+        // }
+        // stage('Deploy Frontend') {
+        //     steps {
+        //         sh "echo Deploying Frontend"
+        //         script{
+        //             try{
+        //                 withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
+        //                     sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
+        //                 }
+        //             }
+        //              catch (Exception e) {
+        //                 echo 'Exception occurred: ' + e.toString()
+        //             }
                     
-                }
-            }
-        }
-        stage('Build Backend') {
-            steps {
-                withSonarQubeEnv('SonarCloud') {
-                    withCredentials([
-                        string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
-                        string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
-                        string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
-                        dir("warehouse-management"){
-                            sh '''mvn clean verify -Pcoverage -Dspring.profiles.active=build \
-                            -Dspring.datasource.url=$DB_URL \
-                            -Dspring.datasource.username=$DB_USER \
-                            -Dspring.datasource.password=$DB_PWD     
-                            '''
-                            sh '''
-                            mvn sonar:sonar \
-                            -Dsonar.projectKey=warehouse-management \
-                            -Dsonar.projectName=Project1_WarehouseManagement-backend \
-                            -Dsonar.java.binaries=target/classes \
-                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-                            '''
-                        }
+        //         }
+        //     }
+        // }
+        // stage('Build Backend') {
+        //     steps {
+        //         withSonarQubeEnv('SonarCloud') {
+        //             withCredentials([
+        //                 string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
+        //                 string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
+        //                 string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+        //                 dir("warehouse-management"){
+        //                     sh '''mvn clean verify -Pcoverage -Dspring.profiles.active=build \
+        //                     -Dspring.datasource.url=$DB_URL \
+        //                     -Dspring.datasource.username=$DB_USER \
+        //                     -Dspring.datasource.password=$DB_PWD     
+        //                     '''
+        //                     sh '''
+        //                     mvn sonar:sonar \
+        //                     -Dsonar.projectKey=warehouse-management \
+        //                     -Dsonar.projectName=Project1_WarehouseManagement-backend \
+        //                     -Dsonar.java.binaries=target/classes \
+        //                     -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+        //                     '''
+        //                 }
 
-                    }
-                } 
-            }
-        }
-        stage('Test Backend'){
-            steps{
-                withCredentials([
-                    string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
-                    string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
-                    string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
-                        dir("warehouse-management"){
-                            sh '''mvn test \
-                            -Dspring.datasource.url=$DB_URL \
-                            -Dspring.datasource.username=$DB_USER \
-                            -Dspring.datasource.password=$DB_PWD     
-                            '''
-                        }
-                    }
-                archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true
-            }
-        }
+        //             }
+        //         } 
+        //     }
+        // }
+        // stage('Test Backend'){
+        //     steps{
+        //         withCredentials([
+        //             string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
+        //             string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
+        //             string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
+        //                 dir("warehouse-management"){
+        //                     sh '''mvn test \
+        //                     -Dspring.datasource.url=$DB_URL \
+        //                     -Dspring.datasource.username=$DB_USER \
+        //                     -Dspring.datasource.password=$DB_PWD     
+        //                     '''
+        //                 }
+        //             }
+        //         archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true
+        //     }
+        // }
         // stage('Deploy Backend') {
         //     steps {
         //         withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
@@ -127,11 +127,17 @@ pipeline {
                 dir("testing"){
                     withCredentials([string(credentialsId: 'CUCUMBER_PUBLISH_TOKEN', variable: 'CUCUMBER_TOKEN')]) {
                         sh '''
-                            mvn test -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
+                            mvn clean verify -Dcucumber.publish.token=${CUCUMBER_TOKEN}
                         '''
                     }
                 } 
                 perfReport sourceDataFiles: '**/target/jmeter/**/*.jtl', showTrendGraphs: 'true', compareBuildPrevious: 'true', modeEvaluation: 'false'               
+            }
+            
+        }
+        post { 
+            always { 
+                cleanWs()
             }
         }
     }
