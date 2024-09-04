@@ -21,7 +21,7 @@ function ProductDetails() {
 
   useEffect(() => {
     fetch(url)
-        .then(data => data.json()) // arrow function notation rules 
+        .then(data => {data ? JSON.parse(data) : {}}) // arrow function notation rules 
         .then(returnedData => {
             setProduct(returnedData);
             setLoaded(true);

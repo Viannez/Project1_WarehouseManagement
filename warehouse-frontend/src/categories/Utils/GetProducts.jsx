@@ -16,7 +16,7 @@ export default function GetProducts(id){
     
     useEffect(() => {
         fetch(url)
-            .then(data => data.json()) // arrow function notation rules 
+            .then(data => {data ? JSON.parse(data) : {}}) // arrow function notation rules 
             .then(returnedData => {
                 setProducts(returnedData);
             })

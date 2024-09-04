@@ -28,7 +28,7 @@ const AddWarehouse = () => {
         },
         body: JSON.stringify(newWarehouse)
         })
-        .then(data => data.json())
+        .then(data => {data ? JSON.parse(data) : {}})
         .then((returnedData) => {
           
             if(returnedData.status=='500')

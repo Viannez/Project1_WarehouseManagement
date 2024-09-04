@@ -78,7 +78,7 @@ export const ProductInventoryStock = ({info}) => {
             },
             body: JSON.stringify(updateProductInventory)
             })
-            .then(data => data.json())
+            .then(data => {data ? JSON.parse(data) : {}})
             .then((returnedData) => {
                 console.log(returnedData)
                 if(returnedData.status=='500')

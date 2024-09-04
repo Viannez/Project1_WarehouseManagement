@@ -54,7 +54,7 @@ export const WarehouseUpdate = () => {
             },
             body: JSON.stringify(updateWarehouse)
             })
-            .then(data => data.json())
+            .then(data => {data ? JSON.parse(data) : {}})
             .then((returnedData) => {
                 console.log(returnedData)
             })
