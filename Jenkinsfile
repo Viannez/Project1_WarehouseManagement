@@ -14,6 +14,11 @@ pipeline {
 
     // update version as first stage
     stages {
+        stage('CleanWorkspace') {
+            steps {
+                deleteDir("/var/lib/jenkins/workspace/JMeter-test")
+            }
+        }
         stage('Set Version') {
             steps {
                 script {
