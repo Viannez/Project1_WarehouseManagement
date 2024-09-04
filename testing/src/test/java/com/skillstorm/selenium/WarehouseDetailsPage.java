@@ -12,8 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WarehouseDetailsPage {
     private final WebDriver driver;
-    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    private static final String url = "http://localhost:5173/warehouse";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    // private static final String url = "http://localhost:5173/warehouse";
     private static String warehouseDetailUrl = ""; // to be updated based on first existing warehouse on /warehouse page
 
     //warehouse cards
