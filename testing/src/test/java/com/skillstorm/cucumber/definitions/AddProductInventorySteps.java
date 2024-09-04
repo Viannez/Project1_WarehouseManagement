@@ -22,7 +22,7 @@ public class AddProductInventorySteps {
     public void before() {
         ChromeOptions options = new ChromeOptions();
         options.setBrowserVersion("127");
-        options.addArguments("--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
+        options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
         
         this.driver = new ChromeDriver(options);
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
