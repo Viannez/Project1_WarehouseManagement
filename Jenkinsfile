@@ -46,22 +46,22 @@ pipeline {
             }
             }
         }
-        // stage('Deploy Frontend') {
-        //     steps {
-        //         sh "echo Deploying Frontend"
-        //         script{
-        //             try{
-        //                 withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
-        //                     sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
-        //                 }
-        //             }
-        //              catch (Exception e) {
-        //                 echo 'Exception occurred: ' + e.toString()
-        //             }
+        stage('Deploy Frontend') {
+            steps {
+                sh "echo Deploying Frontend"
+                script{
+                    try{
+                        withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS') {
+                            sh "aws s3 sync warehouse-frontend/dist s3://mystery-box-warehouses-frontend"
+                        }
+                    }
+                     catch (Exception e) {
+                        echo 'Exception occurred: ' + e.toString()
+                    }
                     
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
         stage('Build Backend') {
             steps {
                 withSonarQubeEnv('SonarCloud') {
