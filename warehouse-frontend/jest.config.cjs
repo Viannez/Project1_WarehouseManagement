@@ -3,5 +3,8 @@ module.exports = {
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
     },
-    moduleFileExtensions: ['js', 'jsx']
+    moduleFileExtensions: ['js', 'jsx'],
+    moduleNameMapper: {
+      '\\.(css|less)$': '<rootDir>/src/pages/__mocks__/styleMock.js'
+    }
   };
