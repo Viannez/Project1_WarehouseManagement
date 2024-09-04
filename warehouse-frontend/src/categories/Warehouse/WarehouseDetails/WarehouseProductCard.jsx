@@ -28,7 +28,7 @@ export const WarehouseProductCard = ({productInventory}) => {
             "Content-Type": "application/json"
         },
         })
-        .then(data => {data ? JSON.parse(data) : {}})
+        .then(data => data.json())
         .then((returnedData) => {
             console.log(returnedData)
         })

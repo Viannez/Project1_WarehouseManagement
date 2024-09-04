@@ -46,7 +46,7 @@ export const WarehouseAddProduct = ({capacityNums}) => {
             },
             body: JSON.stringify(newProductInventory)
             })
-            .then(data => {data ? JSON.parse(data) : {}})
+            .then(data => data.json())
             .then((returnedData) => {
               if(returnedData.status=='500')
                 {

@@ -16,7 +16,7 @@ export default function GetCategories(id){
 
     useEffect(() => {
         fetch(url)
-            .then(data => {data ? JSON.parse(data) : {}}) // arrow function notation rules 
+            .then(data => data.json()) // arrow function notation rules 
             .then(returnedData => {
                 setCategories(returnedData);
             })

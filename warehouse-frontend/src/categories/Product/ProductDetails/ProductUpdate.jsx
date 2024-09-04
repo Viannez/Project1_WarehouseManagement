@@ -69,7 +69,7 @@ export const ProductUpdate = () => {
           },
           body: JSON.stringify(updateProduct)
           })
-          .then(data => {data ? JSON.parse(data) : {}})
+          .then(data => data.json())
           .then((returnedData) => {
             if(returnedData.status=='500')
               {

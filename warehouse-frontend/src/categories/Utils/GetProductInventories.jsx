@@ -15,7 +15,7 @@ export default function GetProductInventories(id){
     }
     useEffect(() => {
         fetch(url)
-            .then(data => {data ? JSON.parse(data) : {}}) // arrow function notation rules 
+            .then(data => data.json()) // arrow function notation rules 
             .then(returnedData => {
                 setProductInventories(returnedData);
             })

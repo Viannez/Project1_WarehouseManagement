@@ -17,7 +17,7 @@ export default function GetWarehouses(id){
 
     useEffect(() => {
         fetch(url)
-            .then(data => {data ? JSON.parse(data) : {}}) // arrow function notation rules 
+            .then(data => data.json()) // arrow function notation rules 
             .then(returnedData => {
                 setWarehouses(returnedData);
             })
