@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -168,6 +169,27 @@ public class WarehouseDetailsPage {
     }
 
     /**
+    * checks if a specific product exists based on the name
+    */
+    public boolean isAProductStockedInTheWarehouse(String productName) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        boolean found = false;
+        for(WebElement list:warehouseProductCards){
+            WebElement wName = list.findElement(By.id("warehouseproduct-name"));
+
+            if(wName.getText().equals(productName)){
+                found = true;
+            }
+        }
+        return found;
+    }
+
+    /**
     * entering the name into the update name field
     */
     public void setName(String name) {
@@ -267,6 +289,28 @@ public class WarehouseDetailsPage {
         }
     }
 
+    /**
+    * click on product delete button for a particular warehouse
+    * pause execution for 1000 mili sec before navigating
+    */
+    public void clickDeleteProductFromWarehouseButton(String productName) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebElement deleteButton;
+        for(WebElement list:warehouseProductCards){
+            WebElement wName = list.findElement(By.id("warehouseproduct-name"));
+            if(wName.getText().equals(productName)){
+                deleteButton=list.findElement(By.id("delete-warehouseproduct-button"));
+                Actions actions = new Actions(driver);
+                actions.moveToElement(deleteButton).click().perform();
+                break;
+            }
+        }
+    }
+
     public boolean updatedWarehouseIsDisplayed(String updatedName, String updatedAddress, String updatedCapacity){
         try {
             Thread.sleep(1000);
@@ -287,9 +331,8 @@ public class WarehouseDetailsPage {
         System.out.println("Updated warehouse address is " + updatedAddress);
         System.out.println("Current warehouse address is " + currentWarehouseAddress.getText());
 
-        updatedCapacity = "0/" + updatedCapacity;
         System.out.println("Updated warehouse capacity is " + updatedCapacity);
-        System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText());
+        System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText().substring(currentWarehouseCapacity.getText().lastIndexOf("/") + 1));
         if(!updatedName.equals(currentWarehouseName.getText())){
             System.out.println("Warehouse name was not updated.");
             return false;
@@ -298,7 +341,7 @@ public class WarehouseDetailsPage {
             System.out.println("Warehouse address was not updated.");
             return false;
         }
-        if(!updatedCapacity.equals(currentWarehouseCapacity.getText())){
+        if(!updatedCapacity.equals(currentWarehouseCapacity.getText().substring(currentWarehouseCapacity.getText().lastIndexOf("/") + 1))){
             System.out.println("Warehouse capacity was not updated.");
             return false;
         }
@@ -315,12 +358,22 @@ public class WarehouseDetailsPage {
         }
 
         this.driver.navigate().to(warehouseDetailUrl);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
         boolean found = false;
+        if(warehouseProductCards.size() == 0)
+        {
+            return true;
+        }
         for(WebElement list:warehouseProductCards){
             WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
             WebElement whProductStock = list.findElement(By.id("warehouseproduct-stock"));
-            
+
             System.out.println(whProductName.getText());
             System.out.println(whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2));
 
@@ -331,5 +384,34 @@ public class WarehouseDetailsPage {
         }
         
         return found; 
+    }
+
+    // checks if the deleted product is found in the warehouse
+    public boolean isProductDeletedFromWarehouse(String productName){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.driver.navigate().to(warehouseDetailUrl);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        boolean isProductExisting = false;
+        for(WebElement list:warehouseProductCards){
+            WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
+            System.out.println(whProductName.getText());
+
+            if(whProductName.getText().equals(productName)){
+                isProductExisting = true; // the deleted product exists, something went wrong
+            }
+        }
+        
+        return isProductExisting; 
     }
 }

@@ -34,8 +34,10 @@ export const WarehouseProductCard = ({productInventory}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>
@@ -58,7 +60,7 @@ export const WarehouseProductCard = ({productInventory}) => {
                                 <FaArrowRightToBracket />
                             </div>
                         </Link>
-                        <Button onClick={handleDelete} className="usa-button">
+                        <Button id="delete-warehouseproduct-button" onClick={handleDelete} className="usa-button">
                             <FaRegTrashAlt />
                         </Button>
                     </div>
