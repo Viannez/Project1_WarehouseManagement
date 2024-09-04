@@ -318,7 +318,6 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        System.out.println(warehouseDetailUrl);
         this.driver.navigate().to(warehouseDetailUrl);
 
         try {
