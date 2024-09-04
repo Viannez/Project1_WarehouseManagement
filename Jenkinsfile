@@ -102,7 +102,7 @@ pipeline {
                             '''
                         }
                     }
-                archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/index.html', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true
             }
         }
         // stage('Deploy Backend') {
