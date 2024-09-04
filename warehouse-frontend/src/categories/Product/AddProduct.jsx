@@ -33,7 +33,7 @@ const AddProduct = () => {
         },
         body: JSON.stringify(newProduct)
         })
-        .then(data => {data ? JSON.parse(data) : {}})
+        .then(data => data.json())
         .then((returnedData) => {
           //Added after presentation
           if(returnedData.status=='400'){
