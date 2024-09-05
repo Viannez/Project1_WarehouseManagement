@@ -99,10 +99,7 @@ pipeline {
                     string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
                     string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
                         dir("warehouse-management"){
-                            backend = sh( script: 
-                            '''
-                            mvn spring-boot:run -Dspring.profiles.active=test"
-                            ''', returnStdout: true).trim()
+                            backend = sh( script: "mvn spring-boot:run -Dspring.profiles.active=test", returnStdout: true).trim()
                             sh "mvn test"
                             // sh '''mvn test \
                             // -Dspring.datasource.url=$DB_URL \
