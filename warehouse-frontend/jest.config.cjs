@@ -11,6 +11,6 @@ module.exports = {
       fetch: global.fetch,
     },
     setupFilesAfterEnv: [
-    "<rootDir>/src/setupTests.js"
-  ]
+      "<rootDir>/src/setupTests.js"
+    ]
   };
