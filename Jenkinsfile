@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         MAJOR_VERSION = '1'
-        MINOR_VERSION = '2'
+        MINOR_VERSION = '1'
         PATCH_VERSION = "${env.BUILD_NUMBER}"
     }
 
