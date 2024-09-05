@@ -109,11 +109,6 @@ pipeline {
                                 ''', returnStdout: true).trim()
                                 echo "$backend"
                                 sh "mvn test"
-                                // sh '''mvn test \
-                                // -Dspring.datasource.url=$DB_URL \
-                                // -Dspring.datasource.username=$DB_USER \
-                                // -Dspring.datasource.password=$DB_PWD     
-                                // '''
                                 sh "kill ${backend} || true"
                             }
                         }
