@@ -101,10 +101,10 @@ pipeline {
                         dir("warehouse-management"){
                             script{
                                 def backend = sh( script: '''mvn spring-boot:run \
-                                -Dspring-boot.run.arguments=" \
+                                -Dspring-boot.run.arguments=\
                                 --DB_URL=${DB_URL} \
                                 --DB_USER=${DB_USER} \
-                                --DB_PWD=${DB_PWD}"
+                                --DB_PWD=${DB_PWD}
                                 ''', returnStdout: true).trim()
                                 echo "$backend"
                                 sh "mvn test"
