@@ -100,7 +100,12 @@ pipeline {
                     string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
                         dir("warehouse-management"){
                             script{
-                                def backend = sh( script: "mvn spring-boot:run -Dspring.profiles.active=build", returnStdout: true).trim()
+                                def backend = sh( script: '''mvn spring-boot:run \
+                                -Dspring-boot.run.arguments=" \
+                                --DB_URL=${DB_URL} 
+                                --DB_USER=${DB_USER} 
+                                --DB_PWD=${DB_PWD}"
+                                ''', returnStdout: true).trim()
                                 echo "$backend"
                                 sh "mvn test"
                                 // sh '''mvn test \
