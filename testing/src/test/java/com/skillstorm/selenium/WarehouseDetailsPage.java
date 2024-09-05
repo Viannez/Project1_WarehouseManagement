@@ -99,6 +99,7 @@ public class WarehouseDetailsPage {
                 WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
                 String idString = existingWarehouseId.getText();
                 warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); // note - "ID: 2" would append '2' to the url
+                System.out.println(warehouseDetailUrl);
                 break;
             }
         }
@@ -319,7 +320,7 @@ public class WarehouseDetailsPage {
         }
 
         this.driver.navigate().to(warehouseDetailUrl);
-
+        System.out.println(warehouseDetailUrl);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
