@@ -13,7 +13,7 @@ pipeline {
 
     // update version as first stage
     stages {
-        stage('CleanWorkspace') {
+        stage('Setup') {
             steps {
                 sh "git clean -fdx"
             }
