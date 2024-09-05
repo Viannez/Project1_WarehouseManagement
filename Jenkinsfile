@@ -99,17 +99,19 @@ pipeline {
                     string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
                     string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
                         dir("warehouse-management"){
-                            backend = sh( script: "mvn spring-boot:run -Dspring.profiles.active=test", returnStdout: true).trim()
-                            sh "mvn test"
-                            // sh '''mvn test \
-                            // -Dspring.datasource.url=$DB_URL \
-                            // -Dspring.datasource.username=$DB_USER \
-                            // -Dspring.datasource.password=$DB_PWD     
-                            // '''
+                            script{
+                                def backend = sh( script: "mvn spring-boot:run -Dspring.profiles.active=test", returnStdout: true).trim()
+                                sh "mvn test"
+                                // sh '''mvn test \
+                                // -Dspring.datasource.url=$DB_URL \
+                                // -Dspring.datasource.username=$DB_USER \
+                                // -Dspring.datasource.password=$DB_PWD     
+                                // '''
+                                sh "kill ${backend} || true"
+                            }
                         }
                     }
                 archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true
-                sh "kill ${backend} || true"
             }
         }
         stage('Deploy Backend') {
