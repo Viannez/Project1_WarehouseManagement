@@ -102,8 +102,8 @@ pipeline {
                             script{
                                 def backend = sh( script: '''mvn spring-boot:run \
                                 -Dspring-boot.run.arguments=" \
-                                --DB_URL=${DB_URL} 
-                                --DB_USER=${DB_USER} 
+                                --DB_URL=${DB_URL} \
+                                --DB_USER=${DB_USER} \
                                 --DB_PWD=${DB_PWD}"
                                 ''', returnStdout: true).trim()
                                 echo "$backend"
