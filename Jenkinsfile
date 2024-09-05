@@ -101,7 +101,7 @@ pipeline {
                         dir("warehouse-management"){
                             script{
                                 def backend = sh( script: "mvn spring-boot:run -Dspring.profiles.active=test", returnStdout: true).trim()
-                                echo ${backend}
+                                echo "$backend"
                                 sh "mvn test"
                                 // sh '''mvn test \
                                 // -Dspring.datasource.url=$DB_URL \
