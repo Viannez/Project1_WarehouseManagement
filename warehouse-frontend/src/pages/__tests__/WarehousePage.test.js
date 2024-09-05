@@ -8,7 +8,7 @@ describe('Warehouse Page', () => {
         jest.clearAllMocks();
     });
 
-    it('should render the warehouses title', () => {
+    test('should render the warehouses title', () => {
          act( () => {
             render(<WarehousePage />);
         });
@@ -16,7 +16,7 @@ describe('Warehouse Page', () => {
         expect(screen.getByText('Warehouses')).toBeInTheDocument();
     });
 
-    it('should render the sort warehouses label', () => {
+    test('should render the sort warehouses label', () => {
         act( () => {
            render(<WarehousePage />);
        });
