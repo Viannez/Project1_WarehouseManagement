@@ -94,22 +94,21 @@ pipeline {
         }
         stage('Test Backend'){
             steps{
-                backend = 
-                    sh( script: 
-                    '''
-                    mvn spring-boot:run \
-                    -Dspring-boot.run.arguments="--DB_URL=${DB_URL} --DB_USER=${DB_USER} --DB_PWD=${DB_PWD}"
-                    ''', returnStdout: true).trim()
                 withCredentials([
                     string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
                     string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
                     string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
                         dir("warehouse-management"){
-                            sh '''mvn test \
-                            -Dspring.datasource.url=$DB_URL \
-                            -Dspring.datasource.username=$DB_USER \
-                            -Dspring.datasource.password=$DB_PWD     
+                            backend = sh( script: 
                             '''
+                            mvn spring-boot:run -Dspring.profiles.active=test"
+                            ''', returnStdout: true).trim()
+                            sh "mvn test"
+                            // sh '''mvn test \
+                            // -Dspring.datasource.url=$DB_URL \
+                            // -Dspring.datasource.username=$DB_USER \
+                            // -Dspring.datasource.password=$DB_PWD     
+                            // '''
                         }
                     }
                 archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true

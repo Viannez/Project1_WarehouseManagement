@@ -100,20 +100,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-		</plugins>
-	</build>
-	<profiles>
-	<profile>
-		<id>prod</id>
-	</profile>
-	<profile>
-		<id>dev</id>
-		<activation>
-			<activeByDefault>true</activeByDefault>
-		</activation>	
-		<build>
-			<plugins>
-				<plugin>
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
@@ -171,9 +158,6 @@
                     </execution>
                 </executions>
             </plugin>
-			</plugins>
-		</build>
-	</profile>
-	</profiles>
-
+		</plugins>
+	</build>
 </project>
