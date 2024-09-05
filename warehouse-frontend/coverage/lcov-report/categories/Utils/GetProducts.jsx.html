@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for categories/Warehouse/AddWarehouseModal.jsx</title>
+    <title>Code coverage report for categories/Utils/GetProducts.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Warehouse</a> AddWarehouseModal.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Utils</a> GetProducts.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">64.28% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>9/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>9/13</span>
             </div>
         
             
@@ -91,66 +91,63 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
-import { Button } from '@trussworks/react-uswds';
-import Modal from 'react-bootstrap/Modal';
-import AddWarehouse from './AddWarehouse';
-import { FaRegPlusSquare } from "react-icons/fa";
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from "react";
+import { useEffect } from "react";
 &nbsp;
-//create new warehouse form in modal
-function AddWarehouseModal
-() {
-  const [show, setShow] = useState(false);
-  const handleClose = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShow(false);</span>
-  const handleShow = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShow(true);</span>
-  return (
-    &lt;&gt;
-      &lt;Button id="add-warehouse" variant="primary" onClick={handleShow} style={{height:'90px'}}&gt;
-        &lt;FaRegPlusSquare /&gt;
-      &lt;/Button&gt;
-      &lt;Modal id="add-warehouse-modal" show={show} onHide={handleClose}&gt;
-        &lt;Modal.Header closeButton&gt;
-          &lt;Modal.Title&gt;Add new Warehouse&lt;/Modal.Title&gt;
-        &lt;/Modal.Header&gt;
-        &lt;Modal.Body&gt;
-          &lt;AddWarehouse/&gt;
-        &lt;/Modal.Body&gt;
-      &lt;/Modal&gt;
-    &lt;/&gt;
-  );
-}
+//get all products or one product by id
+export default function GetProducts(id){
+    const [products, setProducts] = useState([]);
 &nbsp;
-export default AddWarehouseModal</pre></td></tr></table></pre>
+    let url = "";
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(id!=undefined){
+<span class="cstat-no" title="statement not covered" >        url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/`+id;</span>
+    }
+    else{
+        console.log("warehouse found no id");
+        url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product`;
+    }
+    
+    useEffect(() =&gt; {
+        fetch(url)
+            .then(<span class="fstat-no" title="function not covered" >da</span>ta =&gt; <span class="cstat-no" title="statement not covered" >data.json())</span> // arrow function notation rules 
+            .then(<span class="fstat-no" title="function not covered" >re</span>turnedData =&gt; {
+<span class="cstat-no" title="statement not covered" >                setProducts(returnedData);</span>
+            })
+            .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; { <span class="cstat-no" title="statement not covered" >alert(err); <span class="cstat-no" title="statement not covered" ></span>console.log(err) </span>})
+&nbsp;
+    }, []) 
+&nbsp;
+    console.log( products)
+    return products;
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

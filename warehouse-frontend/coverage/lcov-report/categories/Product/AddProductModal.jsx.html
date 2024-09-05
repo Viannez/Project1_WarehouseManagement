@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for categories/Warehouse/AddWarehouseModal.jsx</title>
+    <title>Code coverage report for categories/Product/AddProductModal.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Warehouse</a> AddWarehouseModal.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Product</a> AddProductModal.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -124,33 +124,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
 import { Button } from '@trussworks/react-uswds';
 import Modal from 'react-bootstrap/Modal';
-import AddWarehouse from './AddWarehouse';
+import AddProduct from './AddProduct';
 import { FaRegPlusSquare } from "react-icons/fa";
 &nbsp;
-//create new warehouse form in modal
-function AddWarehouseModal
+//display add product form in modal
+function AddProductModal
 () {
   const [show, setShow] = useState(false);
   const handleClose = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShow(false);</span>
   const handleShow = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShow(true);</span>
   return (
     &lt;&gt;
-      &lt;Button id="add-warehouse" variant="primary" onClick={handleShow} style={{height:'90px'}}&gt;
+      &lt;Button id="add-product" variant="primary" onClick={handleShow} style={{height:'90px'}}&gt;
         &lt;FaRegPlusSquare /&gt;
       &lt;/Button&gt;
-      &lt;Modal id="add-warehouse-modal" show={show} onHide={handleClose}&gt;
+      &lt;Modal id = "add-product-modal" show={show} onHide={handleClose}&gt;
         &lt;Modal.Header closeButton&gt;
-          &lt;Modal.Title&gt;Add new Warehouse&lt;/Modal.Title&gt;
+          &lt;Modal.Title&gt;Add new Product&lt;/Modal.Title&gt;
         &lt;/Modal.Header&gt;
         &lt;Modal.Body&gt;
-          &lt;AddWarehouse/&gt;
+          &lt;AddProduct/&gt;
         &lt;/Modal.Body&gt;
       &lt;/Modal&gt;
     &lt;/&gt;
   );
 }
 &nbsp;
-export default AddWarehouseModal</pre></td></tr></table></pre>
+export default AddProductModal</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

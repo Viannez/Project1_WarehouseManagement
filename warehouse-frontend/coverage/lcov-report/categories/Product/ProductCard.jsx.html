@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for categories/Warehouse/WarehouseCard.jsx</title>
+    <title>Code coverage report for categories/Product/ProductCard.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Warehouse</a> WarehouseCard.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Product</a> ProductCard.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -121,12 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,6 +147,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -184,18 +180,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
-import '../styles/Card.css'
-import '../styles/Button.css'
+import { FaRegTrashAlt } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 &nbsp;
-import { FaRegTrashAlt } from "react-icons/fa";
+//Product with product information 
+export const ProductCard = <span class="fstat-no" title="function not covered" >({</span>product}) =&gt; {
 &nbsp;
-//warehouse information on a card
-export const WarehouseCard = <span class="fstat-no" title="function not covered" >({</span>warehouse}) =&gt; {
-    
-    //DELETE Warehouse
+    //DELETE Product from DB
     function <span class="fstat-no" title="function not covered" >handleClick(</span>e) {
-        const url = <span class="cstat-no" title="statement not covered" >`http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse/`+warehouse.id; </span>
+        const url = <span class="cstat-no" title="statement not covered" >`http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/`+product.id; </span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        fetch(url, {</span>
         method: "DELETE",
@@ -214,6 +207,7 @@ export const WarehouseCard = <span class="fstat-no" title="function not covered"
 <span class="cstat-no" title="statement not covered" >            window.location.reload();</span>
         });
     }
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;&gt;
             &lt;Card layout="flagMediaRight" gridLayout={{
@@ -225,16 +219,16 @@ export const WarehouseCard = <span class="fstat-no" title="function not covered"
             }}&gt;
                 &lt;CardHeader&gt;
                     &lt;div className="container"&gt;
-                        &lt;div id="warehouse-name" className="container-element"&gt;{warehouse.name}&lt;/div&gt;
-                        &lt;div id="warehouse-id"className="container-element"&gt;ID: {warehouse.id}&lt;/div&gt;
-                        &lt;div id="warehouse-address" className="container-element" &gt; {warehouse.address} &lt;/div&gt;
-                        &lt;div id="warehouse-capacity" className="container-element" &gt; {warehouse.inventoryCapacity}/{warehouse.capacity} &lt;/div &gt;
-                        &lt;Link className="usa-button" variant="unstyled" href={'/warehouse/'+warehouse.id} &gt;
-                        &lt;div id="warehouse-details" className='container-button' style={{textAlign:'left'}}&gt;
-                            &lt;FaMagnifyingGlass/&gt;
-                        &lt;/div&gt;
+                        &lt;div id="product-name" className="container-element"&gt;{product.name}&lt;/div&gt;
+                        &lt;div id="product-id" className="container-element"&gt;ID: {product.id}&lt;/div&gt;
+                        &lt;div id="product-price" className="container-element"&gt; ${product.price} &lt;/div&gt;
+                        &lt;div id="product-category" className="container-element"&gt;Size: {product.categoryName} &lt;/div&gt;
+                        &lt;Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} &gt;
+                            &lt;div id="product-details" className='container-button' style={{textAlign:'left'}}&gt;
+                                &lt;FaMagnifyingGlass/&gt;
+                            &lt;/div&gt;
                         &lt;/Link&gt;
-                        &lt;Button id="delete-warehouse" onClick={handleClick} &gt;
+                        &lt;Button id="delete-product" onClick={handleClick} className="usa-button"&gt;
                             &lt;FaRegTrashAlt /&gt;
                         &lt;/Button&gt;
                     &lt;/div&gt;

@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for categories/Warehouse/AddWarehouseModal.jsx</title>
+    <title>Code coverage report for pages/ProductPage.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">categories/Warehouse</a> AddWarehouseModal.jsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">pages</a> ProductPage.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -92,7 +92,16 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,9 +111,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,36 +132,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
-import { Button } from '@trussworks/react-uswds';
-import Modal from 'react-bootstrap/Modal';
-import AddWarehouse from './AddWarehouse';
-import { FaRegPlusSquare } from "react-icons/fa";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import ProductList from '../categories/Product/ProductList'
+import { GridContainer, Header, Title, Label, Select } from '@trussworks/react-uswds'
+import '@trussworks/react-uswds/lib/index.css'
+import AddProduct from '../categories/Product/AddProduct'
+import AddProductModal from '../categories/Product/AddProductModal'
+import { useState } from 'react'
 &nbsp;
-//create new warehouse form in modal
-function AddWarehouseModal
-() {
-  const [show, setShow] = useState(false);
-  const handleClose = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShow(false);</span>
-  const handleShow = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShow(true);</span>
+//All products page
+function ProductPage() {
+  let  [index, setIndex] = useState(1)
+  function <span class="fstat-no" title="function not covered" >getIndex(</span>e)
+  {
+<span class="cstat-no" title="statement not covered" >    setIndex(e.target.value)</span>
+  }
   return (
     &lt;&gt;
-      &lt;Button id="add-warehouse" variant="primary" onClick={handleShow} style={{height:'90px'}}&gt;
-        &lt;FaRegPlusSquare /&gt;
-      &lt;/Button&gt;
-      &lt;Modal id="add-warehouse-modal" show={show} onHide={handleClose}&gt;
-        &lt;Modal.Header closeButton&gt;
-          &lt;Modal.Title&gt;Add new Warehouse&lt;/Modal.Title&gt;
-        &lt;/Modal.Header&gt;
-        &lt;Modal.Body&gt;
-          &lt;AddWarehouse/&gt;
-        &lt;/Modal.Body&gt;
-      &lt;/Modal&gt;
+      &lt;Header &gt;
+        &lt;Title&gt;
+          &lt;h1&gt;Products&lt;/h1&gt;
+        &lt;/Title&gt;
+        &lt;AddProductModal/&gt;
+          &lt;Label htmlFor="sort-products"&gt;Sort products by:&lt;/Label&gt;
+            &lt;Select onChange={getIndex} id="sort-product" name="sortProduct" required&gt;
+              &lt;option &gt;- Select -&lt;/option&gt;
+              &lt;option value={1}&gt; By ID&lt;/option&gt;
+              &lt;option value={2}&gt; By Price&lt;/option&gt;
+            &lt;/Select&gt;
+      &lt;/Header&gt;
+      &lt;main className="container-center"&gt;
+        &lt;GridContainer containerSize="desktop"&gt;
+          &lt;ProductList index={index}/&gt;
+        &lt;/GridContainer&gt;
+      &lt;/main&gt;
     &lt;/&gt;
-  );
+  )
 }
 &nbsp;
-export default AddWarehouseModal</pre></td></tr></table></pre>
+export default ProductPage
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
@@ -159,14 +186,14 @@ export default AddWarehouseModal</pre></td></tr></table></pre>
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2024-09-05T15:25:34.740Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
