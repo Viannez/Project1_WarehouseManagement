@@ -47,6 +47,8 @@ public class ProductServiceTest {
         closeable.close();
     }
 
+    // Tests if the mocked product repo successfully return expected response
+    // after service calls findAll() with expected values
     @Test
     public void findAllProductsTest() {
         //Given
@@ -63,6 +65,8 @@ public class ProductServiceTest {
         Assert.assertEquals(response, expectedProducts);
     }
 
+    // Tests if the mocked product repo successfully return expected response
+    // after service calls findById() for a product id that does exist 
     @Test
     public void findProductByIdTest() {
         int productId = 1;
@@ -77,6 +81,8 @@ public class ProductServiceTest {
         Assert.assertEquals(response, expectedProduct);
     }
 
+    // Tests if the mocked product repo successfully return expected response
+    // after service calls save() to create a product
     @Test
     public void createProductTest() {
         Category category = new Category();
@@ -95,6 +101,8 @@ public class ProductServiceTest {
         Assert.assertEquals(response, savedProduct);
     }
 
+    // Tests if the mocked product repo successfully return expected response
+    // after service calls update()
     @Test
     public void updateProductTest() {
         Category category = new Category();
@@ -119,6 +127,8 @@ public class ProductServiceTest {
         Assert.assertEquals(response, inputProduct.getId());
     }
 
+    // Tests if the mocked product repo successfully return expected EXCEPTION
+    // after service calls update()
     @Test
     public void updateProductInvalidTest() {
         Category category = new Category();
@@ -141,6 +151,7 @@ public class ProductServiceTest {
         });
     }
 
+    // Tests if the mocked productInventory repo successfully deletes product with matching id after service calls deleteById()
     @Test
     public void deleteProductTest() {
         Product inputProduct = new Product(1, "testName", 20);

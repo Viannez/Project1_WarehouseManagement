@@ -43,6 +43,8 @@ public class WarehouseServiceTest {
         closeable.close();
     }
 
+    // Tests if the mocked warehouse repo successfully return expected response
+    // after service calls findAll() with expected values
     @Test
     public void findAllWarehousesTest() {
         //Given
@@ -59,6 +61,8 @@ public class WarehouseServiceTest {
         Assert.assertEquals(response, expectedWarehouses);
     }
 
+    // Tests if the mocked warehouse repo successfully return expected response
+    // after service calls findById() for a warehouse id that does exist 
     @Test
     public void findWarehouseByIdTest() {
         int warehouseId = 1;
@@ -73,6 +77,8 @@ public class WarehouseServiceTest {
         Assert.assertEquals(response, expectedWarehouse);
     }
 
+    // Tests if the mocked warehouse repo successfully return expected response
+    // after service calls save() to create a warehouse
     @Test
     public void createWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse();
@@ -85,6 +91,8 @@ public class WarehouseServiceTest {
         Assert.assertEquals(response, inputWarehouse);
     }
 
+    // Tests if the mocked warehouse repo successfully return expected response
+    // after service calls update()
     @Test
     public void updateWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);
@@ -101,6 +109,8 @@ public class WarehouseServiceTest {
         Assert.assertEquals(response, inputWarehouse.getId());
     }
 
+    // Tests if the mocked warehouse repo successfully return expected EXCEPTION
+    // after service calls update()
     @Test
     public void updateWarehouseInvalidTest() {
         Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);
@@ -115,6 +125,7 @@ public class WarehouseServiceTest {
         });
     }
 
+    // Tests if the mocked warehouse repo successfully deletes product with matching id after service calls deleteById()
     @Test
     public void deleteWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);

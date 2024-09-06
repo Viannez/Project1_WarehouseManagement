@@ -14,6 +14,8 @@ public class ProductTest {
     private Category category;
     private List<ProductInventory> productInventories;
 
+    // Set up instance of ProductInventory into a list and sets the instance of product
+    // to testing values for its properties
     @BeforeMethod
     public void setUp() {
         product = new Product();
@@ -38,12 +40,15 @@ public class ProductTest {
         product.setCategory(category);
         product.setProductInventories(productInventories);
     }
+    // Tear down after tests
     @AfterTest
     public void teardown() throws Exception{
         product = null;
         category = null;
     }
 
+    // The below methods assert that the product's getters & setters are successfully retrieved and set
+    // for the following properties: id, name, price, & category
     @Test
     public void idGetterSetter() {
         assertEquals(product.getId(), 1);
@@ -76,6 +81,8 @@ public class ProductTest {
         assertEquals(product.getPrice(), 24);
     }
 
+    // Tests if the product has expected productInventories list
+    // and if updating that list with set() methods still returns expected values
     @Test
     public void productInventoriesGetterSetter() {
         assertEquals(product.getProductInventories(), productInventories);
@@ -89,7 +96,7 @@ public class ProductTest {
         assertEquals(product.getProductInventories(), productInventories2);
     }
 
-
+    // Tests .toString() for our test Product instance
     @Test
     public void testToString() {
         System.out.println(product);

@@ -45,6 +45,7 @@ public class ProductInventoryControllerTest {
         closeable.close();
     }
 
+    // Tests if the mocked productInventory service successfully HTTP 200 OK after controller calls findAll() with expected values
     @Test
     public void findAllProductInventorysTest() {
         //Given
@@ -63,6 +64,8 @@ public class ProductInventoryControllerTest {
         Assert.assertEquals(response.getBody().size(), 2);
     }
 
+    // Tests if the mocked productInventory service successfully HTTP 200 OK after controller calls findById()
+    // for a productInventory id that does exist 
     @Test
     public void findProductInventoryByIdTest() {
         int productInventoryId = 1;
@@ -77,6 +80,8 @@ public class ProductInventoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked productInventory service gets HTTP 404 NOT FOUND after controller calls findById()
+    // for a product id that doesn't exist 
     @Test
     public void findProductInventoryByIdInvalidTest() {
         int productInventoryId = 1;
@@ -92,6 +97,7 @@ public class ProductInventoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
+    // Tests if the mocked productInventory service successfully HTTP 201 CREATED after controller calls create() to create a productInventory
     @Test
     public void createProductInventoryTest() {
         ProductInventory inputProductInventory = new ProductInventory();
@@ -104,6 +110,7 @@ public class ProductInventoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
     }
 
+    // Tests if the mocked productInventory service successfully HTTP 200 OK after controller calls update()
     @Test
     public void updateProductInventoryTest() {
         ProductInventory inputProductInventory = new ProductInventory();
@@ -115,6 +122,7 @@ public class ProductInventoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked productInventory service successfully deletes productInventory with matching id after controller calls deleteById()
     @Test
     public void deleteProductInventoryTest() {
         ProductInventory inputProductInventory = new ProductInventory();

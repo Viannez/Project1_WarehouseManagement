@@ -11,6 +11,8 @@ public class ProductInventoryTest {
     private Product product;
     private Warehouse warehouse;
 
+    // Set up instance of ProductInventory into a list and sets the instance of ProductInventory
+    // to testing values for its properties
     @BeforeMethod
     public void setUp() {
         productInventory = new ProductInventory();
@@ -28,12 +30,15 @@ public class ProductInventoryTest {
         productInventory.setWarehouse(warehouse);
         productInventory.setStock(30);
     }
+    // Tear down after tests
     @AfterTest
     public void teardown() throws Exception{
         productInventory = null;
         product = null;
     }
 
+    // The below methods assert that the ProductInventory's getters & setters are successfully retrieved and set
+    // for the following properties: id, stock, warehouse, & product
     @Test
     public void idGetterSetter() {
         assertEquals(productInventory.getId(), 1);
@@ -74,6 +79,7 @@ public class ProductInventoryTest {
         assertEquals(productInventory.getWarehouse(), warehouse2);
     }
 
+    // Tests .toString() for our test ProductInventory instance
     @Test
     public void testToString() {
         System.out.println(productInventory);
