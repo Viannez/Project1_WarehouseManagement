@@ -36,14 +36,28 @@ pipeline {
                         sh '''
                     npm install
                     npm run build
-                    npm run test -- --coverage
-                    npx sonar-scanner \
-                        -Dsonar.projectKey=warehouse-frontend \
-                        -Dsonar.projectName=Project1_WarehouseManagement-frontend\
-                        -Dsonar.sources=src \
-                        -Dsonar.exclusions=**/__tests__/** \
-                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                     '''
+                    }
+                    
+                }
+            }
+            }
+        }
+        stage('Test Frontend') {
+            steps {
+                sh "echo Testing Frontend"
+                 script {
+                withSonarQubeEnv('SonarCloud') {
+                    dir("warehouse-frontend"){
+                        sh '''
+                        npm run test -- --coverage
+                        npx sonar-scanner \
+                            -Dsonar.projectKey=warehouse-frontend \
+                            -Dsonar.projectName=Project1_WarehouseManagement-frontend\
+                            -Dsonar.sources=src \
+                            -Dsonar.exclusions=**/__tests__/** \
+                            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+                        '''
                     }
                     
                 }
@@ -66,7 +80,7 @@ pipeline {
                 }
             }
         }
-        stage('Build Backend') {
+        stage('Build and Test Backend') {
             steps {
                 withSonarQubeEnv('SonarCloud') {
                     withCredentials([
@@ -90,22 +104,6 @@ pipeline {
 
                     }
                 } 
-            }
-        }
-        stage('Test Backend'){
-            steps{
-                withCredentials([
-                    string(credentialsId: 'TEST_DB_USER', variable: 'DB_USER'),
-                    string(credentialsId: 'TEST_DB_PWD', variable: 'DB_PWD'),
-                    string(credentialsId: 'TEST_DB_URL', variable: 'DB_URL')]){
-                        dir("warehouse-management"){
-                            sh '''mvn test \
-                            -Dspring.datasource.url=$DB_URL \
-                            -Dspring.datasource.username=$DB_USER \
-                            -Dspring.datasource.password=$DB_PWD     
-                            '''
-                        }
-                    }
                 archiveArtifacts artifacts: 'warehouse-management/target/site/jacoco/*', allowEmptyArchive: true
             }
         }
@@ -137,7 +135,7 @@ pipeline {
                 dir("testing"){
                     withCredentials([string(credentialsId: 'CUCUMBER_PUBLISH_TOKEN', variable: 'CUCUMBER_TOKEN')]) {
                         sh '''
-                            mvn clean verify -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
+                            mvn clean test -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
                         '''
                     }
                 } 

@@ -1,4 +1,4 @@
-@delete-product
+@delete-product @phase3
 Feature: Delete product from the products page
     
   Scenario Outline: Click on product card delete button and see the card removed
@@ -8,6 +8,6 @@ Feature: Delete product from the products page
     Then I should no longer see a card named "<productName>" on product page
 
     Examples:
-      |productName  |
-      |testName     |
-      |testName2    |
+      |productName        |
+      |updatedProduct1    |
+      |updatedProduct2    |

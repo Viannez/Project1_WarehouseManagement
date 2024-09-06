@@ -23,7 +23,6 @@ public class AddProductInventorySteps {
         ChromeOptions options = new ChromeOptions();
         options.setBrowserVersion("127");
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
-        
         this.driver = new ChromeDriver(options);
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
@@ -37,7 +36,7 @@ public class AddProductInventorySteps {
     //Get to modal
     @Given("ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get();
+        this.warehouseDetailsPage.get("Greenish");
     }
 
     @When("I click on the add product to warehouse button")
@@ -52,7 +51,7 @@ public class AddProductInventorySteps {
 
     @Given("I have the add product to warehouse form modal open")
     public void iAmOnTheAddProductToWarehouseFormModal() {
-        this.warehouseDetailsPage.get();
+        this.warehouseDetailsPage.get("Greenish");
         this.warehouseDetailsPage.clickAddProductToWarehouse();
         assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
     }
