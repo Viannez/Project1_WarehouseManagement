@@ -15,3 +15,6 @@ Feature: Add a product to a warehouse
     Examples:
         |productName              |productStock        |
         |miscellaneous            |35                  |
+        |new books                |40                  |
+        |supplies                 |66                  |
+        |electronics              |3                   |

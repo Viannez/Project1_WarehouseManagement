@@ -17,6 +17,7 @@ import io.cucumber.java.en.When;
 public class UpdateProductSteps {
     private WebDriver driver;
     private ProductDetailsPage productDetailsPage;
+    private String productDetailsUrl;
 
     // Setup cucumber ChromeOptions and instantiate a ChromeDriver and ProductDetailsPage
     @Before("@update-product")
@@ -40,7 +41,8 @@ public class UpdateProductSteps {
     // Navigate to the product with matching name parameter
     @Given("I am on the product {string} details page")
     public void iAmOnTheProductDetailsPage(String productName) {
-        this.productDetailsPage.get(productName);
+        this.productDetailsUrl = this.productDetailsPage.get(productName);
+        this.productDetailsPage.getUrl(productDetailsUrl);
     }
 
     // Call method to simulate a click on the button to update a product
@@ -59,7 +61,8 @@ public class UpdateProductSteps {
     // and checks if the update product form is displayed
     @Given("I have the update product {string} form modal open")
     public void iAmOnTheUpdateProductFormModal(String productName) {
-        this.productDetailsPage.get(productName);
+        this.productDetailsUrl = this.productDetailsPage.get(productName);
+        this.productDetailsPage.getUrl(productDetailsUrl);
         this.productDetailsPage.clickUpdateProduct();
         assertTrue(this.productDetailsPage.updateProductModalDisplayed());
     }
@@ -70,8 +73,8 @@ public class UpdateProductSteps {
     public void iEnterValidFormInputs(String updatedName, String updatedCategory, String updatedPrice) {
         if(this.productDetailsPage.updateProductModalDisplayed()){
             System.out.println("Update product modal is displaying");
-
         }
+        System.out.println(this.driver.getCurrentUrl());
         this.driver.switchTo().activeElement();
         this.productDetailsPage.setName(updatedName);
         this.productDetailsPage.setCategory(updatedCategory);

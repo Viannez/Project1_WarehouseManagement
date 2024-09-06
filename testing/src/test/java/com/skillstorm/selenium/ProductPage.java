@@ -64,7 +64,68 @@ public class ProductPage {
     }
 
     /**
-     * navigating to the product page
+     * select sort by products
+     * pause execution for 1000 mili sec before navigating
+     */
+    public void selectSortBy(String selectOption) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Select select = new Select(sortProduct);
+        select.selectByVisibleText(selectOption);
+    }
+
+    /**
+     * check if products are sorted
+     */
+    public boolean isOrdered(String sortOption) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(cards.size() == 1)
+        {
+            return true;
+        }
+        // sort by id
+        boolean found = true;
+        int prev = 0;
+        if(sortOption.equals("By ID"))
+        {
+            for(WebElement list:cards){
+                WebElement pID = list.findElement(By.id("product-id"));
+                int current = Integer.parseInt(pID.getText().substring(pID.getText().lastIndexOf(":") + 2));
+                if(current <= prev){
+                    return false;
+                }
+                else{
+                    prev = current;
+                }
+            }
+        }
+        // sort by price
+        else if(sortOption.equals("By Price"))
+        {
+            for(WebElement list:cards){
+                WebElement pPrice = list.findElement(By.id("product-price"));
+                int current = Integer.parseInt(pPrice.getText().substring(1));
+                if(current < prev){
+                    return false;
+                }
+                else{
+                    prev = current;
+                }
+            }
+        }
+        
+        return found;
+    }
+
+    /**
+     * click add product button
      * pause execution for 1000 mili sec before navigating
      */
     public void clickAddProduct() {
@@ -143,7 +204,6 @@ public class ProductPage {
      */
     public boolean productCardsAreDisplayed()
     {
-        System.out.println(cards.size());
         if(!cards.isEmpty()){
             return true;
         }

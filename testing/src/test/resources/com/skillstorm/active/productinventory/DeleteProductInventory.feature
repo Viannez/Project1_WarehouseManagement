@@ -8,6 +8,8 @@ Feature: Delete a product from a warehouse
         Then I should no longer see a product named "<productName>" for that warehouse
 
     Examples:
-      |productName   |
-      |miscellaneous |
-      |dishware      |
+        |productName   |
+        |miscellaneous |
+        |new books     |
+        |supplies      |
+        |electronics   |

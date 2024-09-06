@@ -82,7 +82,7 @@ public class WarehouseDetailsPage {
      * navigating to the warehouse details page from the first existing warehouse
      * pause execution for 1000 mili sec before navigating
      */
-    public void get(String warehouseName) {
+    public String get(String warehouseName) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -102,26 +102,24 @@ public class WarehouseDetailsPage {
                     WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
                     String idString = existingWarehouseId.getText();
                     warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); 
+                    return warehouseDetailUrl;
                     // note - "ID: 2" would append '2' to the url
-                    System.out.println(existingProductName.getText() + " " + warehouseName + " " + warehouseDetailUrl);
-                    break;
                 }
             }
         }
         else{
-            System.out.println("No warehouses exist!");
+            System.out.println("No products exist!");
         }
-
+        return "";
+    }
+    // get url of driver
+    public void getUrl(String newUrl) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        // navigate to the first existing warehouse's details page
-        if(!warehouseDetailUrl.isEmpty()){
-            this.driver.get(warehouseDetailUrl);
-        }
+        this.driver.get(newUrl);
     }
 
     /**

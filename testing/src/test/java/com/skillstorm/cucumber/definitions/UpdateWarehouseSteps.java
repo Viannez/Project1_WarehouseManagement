@@ -17,6 +17,7 @@ import io.cucumber.java.en.When;
 public class UpdateWarehouseSteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
+    private String warehouseDetailsUrl;
 
     // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehouseDetailsPage
     @Before("@update-warehouse")
@@ -40,7 +41,8 @@ public class UpdateWarehouseSteps {
     // Navigate to the warehouse with matching name parameter
     @Given("I am on the warehouse {string} details page")
     public void iAmOnTheWarehouseDetailsPage(String warehouseName) {
-        this.warehouseDetailsPage.get(warehouseName);
+        this.warehouseDetailsUrl = this.warehouseDetailsPage.get(warehouseName);
+        this.warehouseDetailsPage.getUrl(warehouseDetailsUrl);
     }
 
     // Call method to simulate a click on the button to update a warehouse
@@ -59,7 +61,8 @@ public class UpdateWarehouseSteps {
     // and checks if the update warehouse form is displayed
     @Given("I have the update warehouse {string} form modal open")
     public void iAmOnTheUpdateWarehouseFormModal(String warehouseName) {
-        this.warehouseDetailsPage.get(warehouseName);
+        this.warehouseDetailsUrl = this.warehouseDetailsPage.get(warehouseName);
+        this.warehouseDetailsPage.getUrl(warehouseDetailsUrl);
         this.warehouseDetailsPage.clickUpdateWarehouse();
         assertTrue(this.warehouseDetailsPage.updateWarehouseModalDisplayed());
     }

@@ -17,7 +17,8 @@ import io.cucumber.java.en.When;
 public class DeleteProductInventorySteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
-
+    private String warehouseDetailsUrl;
+    
     // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehouseDetailsPage
     @Before("@delete-productinventory")
     public void before() {
@@ -40,7 +41,8 @@ public class DeleteProductInventorySteps {
     // Navigate to the warehouse with matching name parameter
     @Given("Delete ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get("Greenish");
+        this.warehouseDetailsUrl = this.warehouseDetailsPage.get("Greenish");
+        this.warehouseDetailsPage.getUrl(warehouseDetailsUrl);
     }
 
     // Checks if the product specified is stocked in the warehouse
