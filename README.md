@@ -18,6 +18,23 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
   - Go to view individual warehouses' details with door button
 
 ## Links for Project 2:
+### AWS
+[Link to frontend deployed on AWS](http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse) 
+
+[Link to RDS database deployed on AWS](http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse)
+#### S3 buckets
+- mystery-box-warehouses-backend
+- mystery-box-warehouses-frontend
+
+#### EC2
+- Instance: mystery-box-warehouses-jenkins
+
+Elastic Beanstalk
+- Application: mystery-box-warehouses
+- Environment: Mystery-box-warehouses-env
+
+#### RDS
+- Mysteryboxwarehouses-db instance
 ### Jenkins
 [Jenkins](http://3.93.172.113:8080/job/mysterybox-warehouse-pipeline/) pipeline using AWS EC2 instance to provide information to builds, coverage, and more
 ![image](https://github.com/user-attachments/assets/b8d2c5f2-0eec-4c28-94f9-9e45ada6dd9b)
