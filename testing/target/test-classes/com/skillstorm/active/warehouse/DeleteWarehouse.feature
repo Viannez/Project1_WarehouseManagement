@@ -1,4 +1,4 @@
-@delete-warehouse @phase3
+@delete-warehouse
 Feature: Delete warehouse from the warehouses page
 
   Scenario Outline: Click on warehouse card delete button and see card removed
@@ -8,7 +8,7 @@ Feature: Delete warehouse from the warehouses page
     Then I should no longer see a card named "<warehouseName>" on warehouse page
 
     Examples:
-      |warehouseName       |
-      |updatedWarehouse1   |
-      |updatedWarehouse2   |
+      |warehouseName  |
+      |testName       |
+      |testName2      |
     

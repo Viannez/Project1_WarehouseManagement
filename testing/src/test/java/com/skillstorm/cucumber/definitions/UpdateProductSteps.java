@@ -25,7 +25,6 @@ public class UpdateProductSteps {
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
 
         this.driver = new ChromeDriver(options);
-        
         this.productDetailsPage = new ProductDetailsPage(driver);
     }
     @After("@update-product")
@@ -36,9 +35,9 @@ public class UpdateProductSteps {
     }
     
     //Get to modal
-    @Given("I am on the product {string} details page")
-    public void iAmOnTheProductDetailsPage(String productName) {
-        this.productDetailsPage.get(productName);
+    @Given("I am on the product details page")
+    public void iAmOnTheProductDetailsPage() {
+        this.productDetailsPage.get();
     }
 
     @When("I click on the update product button")
@@ -51,10 +50,9 @@ public class UpdateProductSteps {
         assertTrue(this.productDetailsPage.updateProductModalDisplayed());
     }
 
-    //Update prodyuct valid
-    @Given("I have the update product {string} form modal open")
-    public void iAmOnTheUpdateProductFormModal(String productName) {
-        this.productDetailsPage.get(productName);
+    @Given("I have the update product form modal open")
+    public void iAmOnTheUpdateProductFormModal() {
+        this.productDetailsPage.get();
         this.productDetailsPage.clickUpdateProduct();
         assertTrue(this.productDetailsPage.updateProductModalDisplayed());
     }

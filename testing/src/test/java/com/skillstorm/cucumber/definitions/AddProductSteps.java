@@ -25,7 +25,6 @@ public class AddProductSteps {
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
 
         this.driver = new ChromeDriver(options);
-        
         this.productPage = new ProductPage(driver);
     }
     @After("@add-product")

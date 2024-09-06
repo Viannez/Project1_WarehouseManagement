@@ -1,4 +1,4 @@
-@add-product @phase1
+@add-product
 Feature: Add a product to the products page
 
   Scenario: Click on add product button
@@ -17,13 +17,16 @@ Feature: Add a product to the products page
     |testName     |100           |M         |
     |testName2    |300           |XL        |
 
-# add invalid 
-# Scenario: Unsuccessfully add product 
+# add invalid add product scenario by name
+# Scenario: Unsuccessfully add product because of name
 #     Given I have product modal open
-#     When I enter invalid <productName and "40" and select "<S>"
+#     When I enter invalid "testName" and "40" and select "<S>"
 #     And I click the submit button
 #     Then I should see a message "Product name already taken."
-#  Examples:
-#     |productName  |productPrice  |category  |
-#     |knicknacks   |0             |M         |
-#     |normaladd    |-1            |XL        |
+
+# add invalid add product scenario by price
+# Scenario: Unsuccessfully add product because of price
+#     Given I have product modal open
+#     When I enter invalid "testName" and "40" and select "<S>"
+#     And I click the submit button
+#     Then I should see a message "Check inputs for error."

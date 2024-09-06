@@ -82,7 +82,7 @@ public class WarehouseDetailsPage {
      * navigating to the warehouse details page from the first existing warehouse
      * pause execution for 1000 mili sec before navigating
      */
-    public void get(String warehouseName) {
+    public void get() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -94,18 +94,12 @@ public class WarehouseDetailsPage {
 
         // if there is atleast one existing warehouse
         if(!cards.isEmpty()){
-            // update the url to navigate to the first existing product
+            // update the url to navigate to the first existing warehouse
             for(WebElement list:cards){
-                WebElement existingProductName= list.findElement(By.id("warehouse-name"));
-                if(existingProductName.getText().equals(warehouseName))
-                {
-                    WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
-                    String idString = existingWarehouseId.getText();
-                    warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); 
-                    // note - "ID: 2" would append '2' to the url
-                    System.out.println(existingProductName.getText() + " " + warehouseName + " " + warehouseDetailUrl);
-                    break;
-                }
+                WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
+                String idString = existingWarehouseId.getText();
+                warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); // note - "ID: 2" would append '2' to the url
+                break;
             }
         }
         else{
@@ -305,7 +299,6 @@ public class WarehouseDetailsPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         WebElement deleteButton;
         for(WebElement list:warehouseProductCards){
             WebElement wName = list.findElement(By.id("warehouseproduct-name"));
@@ -325,7 +318,7 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        this.driver.navigate().refresh();
+        this.driver.navigate().to(warehouseDetailUrl);
 
         try {
             Thread.sleep(2000);
@@ -364,13 +357,23 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        this.driver.navigate().refresh();
+        this.driver.navigate().to(warehouseDetailUrl);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
         boolean found = false;
+        if(warehouseProductCards.size() == 0)
+        {
+            return true;
+        }
         for(WebElement list:warehouseProductCards){
             WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
             WebElement whProductStock = list.findElement(By.id("warehouseproduct-stock"));
-            
+
             System.out.println(whProductName.getText());
             System.out.println(whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2));
 
@@ -391,7 +394,13 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        this.driver.navigate().refresh();
+        this.driver.navigate().to(warehouseDetailUrl);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
         boolean isProductExisting = false;
         for(WebElement list:warehouseProductCards){

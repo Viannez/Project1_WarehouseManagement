@@ -25,7 +25,6 @@ public class AddWarehouseSteps {
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
 
         this.driver = new ChromeDriver(options);
-        
         this.warehousePage = new WarehousePage(driver);
     }
     @After("@add-warehouse")

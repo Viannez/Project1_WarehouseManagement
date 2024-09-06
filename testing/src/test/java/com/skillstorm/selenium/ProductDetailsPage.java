@@ -62,7 +62,7 @@ public class ProductDetailsPage {
      * navigating to the product details page from the first existing product
      * pause execution for 1000 mili sec before navigating
      */
-    public void get(String productName) {
+    public void get() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -76,16 +76,10 @@ public class ProductDetailsPage {
         if(!cards.isEmpty()){
             // update the url to navigate to the first existing product
             for(WebElement list:cards){
-                WebElement existingProductName= list.findElement(By.id("product-name"));
-                if(existingProductName.getText().equals(productName))
-                {
-                    WebElement existingWarehouseId = list.findElement(By.id("product-id"));
-                    String idString = existingWarehouseId.getText();
-                    productDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); 
-                    // note - "ID: 2" would append '2' to the url
-                    System.out.println(existingProductName.getText() + " " + productName + " " + productDetailUrl);
-                    break;
-                }
+                WebElement existingWarehouseId = list.findElement(By.id("product-id"));
+                String idString = existingWarehouseId.getText();
+                productDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); // note - "ID: 2" would append '2' to the url
+                break;
             }
         }
         else{
@@ -186,10 +180,10 @@ public class ProductDetailsPage {
             e.printStackTrace();
         }
 
-        this.driver.navigate().refresh();
+        this.driver.navigate().to(productDetailUrl);
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

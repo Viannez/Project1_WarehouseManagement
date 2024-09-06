@@ -25,7 +25,6 @@ public class UpdateWarehouseSteps {
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
 
         this.driver = new ChromeDriver(options);
-        
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
     @After("@update-warehouse")
@@ -36,9 +35,9 @@ public class UpdateWarehouseSteps {
     }
     
     //Get to modal
-    @Given("I am on the warehouse {string} details page")
-    public void iAmOnTheWarehouseDetailsPage(String warehouseName) {
-        this.warehouseDetailsPage.get(warehouseName);
+    @Given("I am on the warehouse details page")
+    public void iAmOnTheWarehouseDetailsPage() {
+        this.warehouseDetailsPage.get();
     }
 
     @When("I click on the update warehouse button")
@@ -51,9 +50,9 @@ public class UpdateWarehouseSteps {
         assertTrue(this.warehouseDetailsPage.updateWarehouseModalDisplayed());
     }
 
-    @Given("I have the update warehouse {string} form modal open")
-    public void iAmOnTheUpdateWarehouseFormModal(String warehouseName) {
-        this.warehouseDetailsPage.get(warehouseName);
+    @Given("I have the update warehouse form modal open")
+    public void iAmOnTheUpdateWarehouseFormModal() {
+        this.warehouseDetailsPage.get();
         this.warehouseDetailsPage.clickUpdateWarehouse();
         assertTrue(this.warehouseDetailsPage.updateWarehouseModalDisplayed());
     }

@@ -1,4 +1,4 @@
-@add-productinventory @phase1
+@add-productinventory
 Feature: Add a product to a warehouse
 
     Scenario: Click on add product inventory button
@@ -6,7 +6,7 @@ Feature: Add a product to a warehouse
         When I click on the add product to warehouse button
         Then I should see the add product to warehouse form modal
 
-    Scenario: Successfully add a warehouse product inventory
+    Scenario: Successfully update a warehouse product inventory
         Given I have the add product to warehouse form modal open
         When I enter valid product fields with name = "<productName>" and stock = "<productStock>"
         And I click the add product to warehouse submit button
@@ -15,3 +15,4 @@ Feature: Add a product to a warehouse
     Examples:
         |productName              |productStock        |
         |miscellaneous            |35                  |
+        |dishware                 |11                  |
