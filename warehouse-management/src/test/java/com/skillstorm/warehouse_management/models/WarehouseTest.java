@@ -13,6 +13,8 @@ public class WarehouseTest {
     private Warehouse warehouse;
     private List<ProductInventory> productInventories;
 
+    // Set up instance of ProductInventory into a list and sets the instance of warehouse
+    // to testing values for its properties
     @BeforeMethod
     public void setUp() {
         warehouse = new Warehouse();
@@ -33,11 +35,14 @@ public class WarehouseTest {
         warehouse.setCapacity(300);
         warehouse.setProductInventories(productInventories);
     }
+    // Tear down after tests
     @AfterTest
     public void teardown() throws Exception{
         warehouse = null;
     }
 
+    // The below methods assert that the warehouse's getters & setters are successfully retrieved and set
+    // for the following properties: id, name, address, & capacity
     @Test
     public void idGetterSetter() {
         assertEquals(warehouse.getId(), 1);
@@ -65,6 +70,8 @@ public class WarehouseTest {
         assertEquals(warehouse.getCapacity(), 400);
     }
 
+    // Tests if the warehouse has expected productInventories list
+    // and if updating that list with set() methods still returns expected values
     @Test
     public void productInventoriesGetterSetter() {
         assertEquals(warehouse.getProductInventories(), productInventories);
@@ -78,11 +85,13 @@ public class WarehouseTest {
         assertEquals(warehouse.getProductInventories(), productInventories2);
     }
 
+    // Tests if inventory capacity of warehouse return expected value
     @Test
     public void InventoryCapacityGetter() {
         assertEquals(warehouse.getInventoryCapacity(), 50);
     }
 
+    // Tests .toString() for our test Warehouse instance
     @Test
     public void testToString() {
         System.out.println(warehouse);

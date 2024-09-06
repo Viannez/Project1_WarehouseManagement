@@ -13,6 +13,8 @@ public class CategoryTest {
     private Category category;
     private List<Product> products;
 
+    // Set up instance of Category with testing values for its properties
+    // and sets the instance of Product into a list of products
     @BeforeMethod
     public void setUp() {
         category = new Category();
@@ -31,12 +33,15 @@ public class CategoryTest {
         category.setName("testName");
         category.setProducts(products);
     }
+    // Tear down after tests
     @AfterTest
     public void teardown() throws Exception{
         category = null;
         products = null;
     }
 
+    // The below methods assert that the category's getters & setters are successfully retrieved and set
+    // for the following properties: id, name, & list of products
     @Test
     public void idGetterSetter() {
         assertEquals(category.getId(), 1);
@@ -64,7 +69,7 @@ public class CategoryTest {
         assertEquals(category.getProduct(), products2);
     }
 
-
+    // Tests .toString() for our test Category instance
     @Test
     public void testToString() {
         String expectedToString = "Category [id=1, name=testName, products=" + products + "]";
