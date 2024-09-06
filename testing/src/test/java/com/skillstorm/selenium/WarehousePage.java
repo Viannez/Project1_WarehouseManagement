@@ -13,8 +13,16 @@ import org.openqa.selenium.support.ui.Select;
 
 public class WarehousePage {
     private final WebDriver driver;
-    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    // private static final String url = "http://localhost:5173/warehouse";
+    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    private static final String url = "http://localhost:5173/warehouse";
+    //navbar
+    @FindBy(id="nav-product")
+    private WebElement goToProductsPage;
+
+    @FindBy(id="nav-warehouse")
+    private WebElement goToWarehousesPage;
+    
+    //buttons
     @FindBy(id="add-warehouse")
     private WebElement addWarehouseButton;
 
@@ -61,6 +69,26 @@ public class WarehousePage {
             e.printStackTrace();
         }
         this.driver.get(url);
+    }
+
+    /**
+     * clicking navbar option
+     * pause execution for 1000 mili sec before navigating
+     */
+    public void selectNavBar(String page) {
+        if(page.equals("Products")){
+            
+            goToProductsPage.click();
+        }
+        else if(page.equals("Warehouses")){
+            System.out.println("clicked");
+            goToWarehousesPage.click();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
        /**
