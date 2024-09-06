@@ -23,8 +23,8 @@ public class AddProductInventorySteps {
         ChromeOptions options = new ChromeOptions();
         options.setBrowserVersion("127");
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
-        
         this.driver = new ChromeDriver(options);
+
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
     @After("@add-productinventory")
@@ -37,7 +37,7 @@ public class AddProductInventorySteps {
     //Get to modal
     @Given("ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get();
+        this.warehouseDetailsPage.get("Electronics Galore");
     }
 
     @When("I click on the add product to warehouse button")
@@ -52,7 +52,7 @@ public class AddProductInventorySteps {
 
     @Given("I have the add product to warehouse form modal open")
     public void iAmOnTheAddProductToWarehouseFormModal() {
-        this.warehouseDetailsPage.get();
+        this.warehouseDetailsPage.get("Electronics Galore");
         this.warehouseDetailsPage.clickAddProductToWarehouse();
         assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
     }
@@ -76,6 +76,6 @@ public class AddProductInventorySteps {
     @Then("I should see the warehouse's newly added product in stock with name = {string} and stock = {string}")
     public void iShouldSeeTheAddedProductInTheWarehouse(String productName, String productStock) {
         this.driver.navigate().refresh();
-        assertTrue(this.warehouseDetailsPage.addedProductIsDisplayed(productName, productStock));
+        assertTrue(this.warehouseDetailsPage.productIsDisplayed(productName, productStock));
     }
 }

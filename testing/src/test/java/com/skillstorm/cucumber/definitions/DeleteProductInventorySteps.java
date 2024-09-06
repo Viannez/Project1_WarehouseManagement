@@ -25,6 +25,7 @@ public class DeleteProductInventorySteps {
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
 
         this.driver = new ChromeDriver(options);
+        
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
     @After("@delete-productinventory")
@@ -37,7 +38,7 @@ public class DeleteProductInventorySteps {
     //Get to modal
     @Given("Delete ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get();
+        this.warehouseDetailsPage.get("Electronics Galore");
     }
 
     @And("there exists a product in the warehouse named {string}")

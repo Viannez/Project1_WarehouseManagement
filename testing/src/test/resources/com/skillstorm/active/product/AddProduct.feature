@@ -1,4 +1,4 @@
-@add-product
+@add-product @phase1
 Feature: Add a product to the products page
 
   Scenario: Click on add product button

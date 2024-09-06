@@ -1,4 +1,4 @@
-@add-warehouse
+@add-warehouse @phase1
 Feature: Add a warehouse to the warehouses page
 
   Scenario: Click on add warehouse button

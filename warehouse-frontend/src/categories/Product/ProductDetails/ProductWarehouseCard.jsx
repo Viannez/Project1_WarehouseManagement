@@ -38,16 +38,16 @@ export const ProductWarehouseCard = ({productInventory}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
-                    <div className="container">
+                    <div id="productwarehouse-card" className="container">
                     <div className="container-element"> {warehouse.name} </div>
                     <div className="container-element"> ID: {warehouse.id}</div>
                     <div className="container-element">Stock: {productInventory.stock}</div>
                     <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
-                        <div className='container-button' style={{textAlign:'left'}}>
+                        <div id='go-to-warehouse' className='container-button' style={{textAlign:'left'}}>
                             <FaArrowRightToBracket />
                         </div>
                     </Link>
-                    <Button onClick={handleClick} className="usa-button">
+                    <Button id="delete-productwarehouse-button"onClick={handleClick} className="usa-button">
                         <FaRegTrashAlt />
                     </Button>
                 </div>

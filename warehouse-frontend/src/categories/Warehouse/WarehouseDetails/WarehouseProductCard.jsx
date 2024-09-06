@@ -56,7 +56,7 @@ export const WarehouseProductCard = ({productInventory}) => {
                         <div id="warehouseproduct-stock"  className="container-element">Stock: {productInventory.stock}</div>
                         <ProductInventoryStockModal info={passToStock}/>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
-                            <div className='container-button' style={{textAlign:'left'}}>
+                            <div id='go-to-product' className='container-button' style={{textAlign:'left'}}>
                                 <FaArrowRightToBracket />
                             </div>
                         </Link>

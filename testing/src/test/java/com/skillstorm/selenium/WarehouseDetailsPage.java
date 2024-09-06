@@ -12,8 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WarehouseDetailsPage {
     private final WebDriver driver;
-    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    // private static final String url = "http://localhost:5173/warehouse";
+    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    private static final String url = "http://localhost:5173/warehouse";
     private static String warehouseDetailUrl = ""; // to be updated based on first existing warehouse on /warehouse page
 
     //warehouse cards
@@ -65,6 +65,17 @@ public class WarehouseDetailsPage {
     @FindBy(css = "button[type='submit']")
     private WebElement productSubmitButton;
 
+    //update product card and update stock modal form
+    @FindBy(id="update-product-stock")
+    private WebElement updateProductButton;
+    @FindBy(id="product-stock-modal")
+    private WebElement updateProductModal;
+    @FindBy(css = "input[id='update-product-stock']")
+    private WebElement updateStockField;
+    @FindBy(css = "button[id='submit-stock-button']")
+    private WebElement submitStockButton;
+
+
     //warehouse's product cards
     @FindBy(id = "warehouseproduct-card")
     private List<WebElement> warehouseProductCards;
@@ -82,7 +93,7 @@ public class WarehouseDetailsPage {
      * navigating to the warehouse details page from the first existing warehouse
      * pause execution for 1000 mili sec before navigating
      */
-    public void get() {
+    public void get(String warehouseName) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -96,10 +107,16 @@ public class WarehouseDetailsPage {
         if(!cards.isEmpty()){
             // update the url to navigate to the first existing warehouse
             for(WebElement list:cards){
-                WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
-                String idString = existingWarehouseId.getText();
-                warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); // note - "ID: 2" would append '2' to the url
-                break;
+                WebElement existingWarehouseName= list.findElement(By.id("warehouse-name"));
+                if(existingWarehouseName.getText().equals(warehouseName))
+                {
+                    WebElement existingWarehouseId = list.findElement(By.id("warehouse-id"));
+                    String idString = existingWarehouseId.getText();
+                    warehouseDetailUrl = url + "/" + idString.substring(idString.lastIndexOf(":") + 2); 
+                    // note - "ID: 2" would append '2' to the url
+                    System.out.println(existingWarehouseName.getText() + " " + warehouseName + " " + warehouseDetailUrl);
+                    break;
+                }
             }
         }
         else{
@@ -144,6 +161,19 @@ public class WarehouseDetailsPage {
         addProductToWarehouseButton.click();
     }
 
+     /**
+    * clicking the update product stock button
+    * pause execution for 1000 mili sec before clicking
+    */
+    public void clickUpdateProduct() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        updateProductButton.click();
+    }
+
     /**
     * update warehouse modal is displayed
     */
@@ -154,6 +184,18 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
         return updateWarehouseModal.isDisplayed(); 
+    }
+
+    /**
+    * update product stock modal is displayed
+    */
+    public boolean updateProductStockModalDisplayed() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return updateProductModal.isDisplayed(); 
     }
 
     /**
@@ -249,8 +291,20 @@ public class WarehouseDetailsPage {
         capacityField.sendKeys(capacity);
     }
 
+     /**
+    * entering the capacity into the update capacity field
+    */
+    public void updateProductStock(String stock) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        updateStockField.sendKeys(stock);
+    }
+
     /**
-    * click on submit button on modal
+    * click on submit button on update warehouse modal
     * pause execution for 1000 mili sec before navigating
     */
     public void clickSubmitButton() {
@@ -290,6 +344,27 @@ public class WarehouseDetailsPage {
     }
 
     /**
+    * click on update product submit button on update stock modal form
+    * pause execution for 1000 mili sec before navigating
+    */
+    public void clickUpdateProductSubmitButton() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        submitStockButton.click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
     * click on product delete button for a particular warehouse
     * pause execution for 1000 mili sec before navigating
     */
@@ -311,6 +386,7 @@ public class WarehouseDetailsPage {
         }
     }
 
+    //checks that warehouse has updated values
     public boolean updatedWarehouseIsDisplayed(String updatedName, String updatedAddress, String updatedCapacity){
         try {
             Thread.sleep(1000);
@@ -318,10 +394,10 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        this.driver.navigate().to(warehouseDetailUrl);
+        this.driver.navigate().refresh();
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -350,7 +426,8 @@ public class WarehouseDetailsPage {
     }
 
     // checks if the added product is found in the warehouse
-    public boolean addedProductIsDisplayed(String productName, String productStock){
+    //also for updating stock value
+    public boolean productIsDisplayed(String productName, String productStock){
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -385,6 +462,7 @@ public class WarehouseDetailsPage {
         
         return found; 
     }
+
 
     // checks if the deleted product is found in the warehouse
     public boolean isProductDeletedFromWarehouse(String productName){
