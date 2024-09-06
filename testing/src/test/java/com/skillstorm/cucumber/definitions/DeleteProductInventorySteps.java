@@ -18,6 +18,7 @@ public class DeleteProductInventorySteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
 
+    // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehouseDetailsPage
     @Before("@delete-productinventory")
     public void before() {
         ChromeOptions options = new ChromeOptions();
@@ -28,6 +29,7 @@ public class DeleteProductInventorySteps {
         
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
+    // Tear down
     @After("@delete-productinventory")
     public void after() {
         if(driver != null) {
@@ -35,22 +37,25 @@ public class DeleteProductInventorySteps {
         }
     }
     
-    //Get to modal
+    // Navigate to the warehouse with matching name parameter
     @Given("Delete ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
         this.warehouseDetailsPage.get("Greenish");
     }
 
+    // Checks if the product specified is stocked in the warehouse
     @And("there exists a product in the warehouse named {string}")
     public void thereExistsAProductInTheWarehouse(String productName) {
         this.warehouseDetailsPage.isAProductStockedInTheWarehouse(productName);
     }
 
+    // Call method to simulate a click on the button to delete a product from a warehouse
     @When("I click on the delete product from warehouse button for the product named {string}")
     public void iClickOnTheAddProductToWarehouseButton(String productName) {
         this.warehouseDetailsPage.clickDeleteProductFromWarehouseButton(productName);
     }
 
+    // Checks if the deleted product is no longer stocked in the warehouse
     @Then("I should no longer see a product named {string} for that warehouse")
     public void iShouldNoLongerSeeTheProductInTheWarehouse(String productName) {
         assertFalse(this.warehouseDetailsPage.isProductDeletedFromWarehouse(productName));

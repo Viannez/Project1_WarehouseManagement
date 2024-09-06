@@ -18,6 +18,7 @@ public class AddWarehouseSteps {
     private WebDriver driver;
     private WarehousePage warehousePage;
 
+    // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehousePage
     @Before("@add-warehouse")
     public void before() {
         ChromeOptions options = new ChromeOptions();
@@ -28,6 +29,7 @@ public class AddWarehouseSteps {
         
         this.warehousePage = new WarehousePage(driver);
     }
+    // Tear down
     @After("@add-warehouse")
     public void after() {
         if(driver != null) {
@@ -35,23 +37,26 @@ public class AddWarehouseSteps {
         }
     }
 
-    //Get to modal
+    // Navigates to the /warehouse page
     @Given("I am on the warehouses page")
     public void iAmOnTheWarehousesPage() {
         this.warehousePage.get();
     }
 
+    // Simulates a button click to add a warehouse
     @When("I click on the add warehouse button")
     public void iClickOnTheAddWarehouseButton() {
         this.warehousePage.clickAddWarehouse();
     }
 
+    // Checks if the add warehouse form modal is displayed
     @Then("I should see the add warehouse form modal")
     public void iShouldSeeTheAddWarehouseFormModal() {
         assertTrue(this.warehousePage.addWarehouseModalDisplayed());
     }
 
-    //Create and add warehouse
+    // Navigates to /warehouse page, simulates a button click to add a warehouse
+    // and checks if the add warehouse form is displayed
     @Given("I have warehouse modal open")
     public void iAmOnTheAddProducyModal() {
         this.warehousePage.get();
@@ -59,6 +64,8 @@ public class AddWarehouseSteps {
         assertTrue(this.warehousePage.addWarehouseModalDisplayed());
     }
 
+    // Checks if the add warehouse form is displayed
+    // and sets the warehouse's name, address, and capacity based on arguments
     @When("I enter valid {string} and {string} and {string}")
     public void iEnterValidFormInputs(String name, String address, String capacity) {
         if(this.warehousePage.addWarehouseModalDisplayed()){
@@ -71,11 +78,13 @@ public class AddWarehouseSteps {
         this.warehousePage.setCapacity(capacity);
     }
 
+    // Simulates clicking the submit button on the add warehouse form
     @And("I click the warehouse form submit button")
     public void iClickTheSubmitButton() {
         this.warehousePage.clickSubmitButton();
     }
 
+    // Checks if the added product is displayed on the /warehouse page
     @Then("I should see warehouse a card with matching {string} and {string} and {string}")
     public void iShouldSeeACardWithMatchingInputs(String name, String address, String capacity) {
         this.driver.navigate().refresh();

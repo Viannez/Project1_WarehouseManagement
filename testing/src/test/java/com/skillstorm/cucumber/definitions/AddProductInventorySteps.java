@@ -18,6 +18,7 @@ public class AddProductInventorySteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
 
+    // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehouseDetailsPage
     @Before("@add-productinventory")
     public void before() {
         ChromeOptions options = new ChromeOptions();
@@ -26,6 +27,7 @@ public class AddProductInventorySteps {
         this.driver = new ChromeDriver(options);
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
+    // Tear down
     @After("@add-productinventory")
     public void after() {
         if(driver != null) {
@@ -33,22 +35,26 @@ public class AddProductInventorySteps {
         }
     }
     
-    //Get to modal
+    // Navigate to the warehouse with matching name parameter
     @Given("ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
         this.warehouseDetailsPage.get("Greenish");
     }
 
+    // Call method to simulate a click on the button to add a product to a warehouse
     @When("I click on the add product to warehouse button")
     public void iClickOnTheAddProductToWarehouseButton() {
         this.warehouseDetailsPage.clickAddProductToWarehouse();
     }
 
+    // Checks if the form modal for adding a product to a warehouse is displayed
     @Then("I should see the add product to warehouse form modal")
     public void iShouldSeeTheAddProductToWarehouseFormModal() {
         assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
     }
 
+    // Navigates to the "Greenish" warehouse, simulates a button click to add a product, and
+    // checks if the form modal for adding a product to a warehouse is displayed 
     @Given("I have the add product to warehouse form modal open")
     public void iAmOnTheAddProductToWarehouseFormModal() {
         this.warehouseDetailsPage.get("Greenish");
@@ -56,6 +62,8 @@ public class AddProductInventorySteps {
         assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
     }
 
+    // Checks if the add product to warehouse form is displayed
+    // then sets the product name and product stock based on arguments
     @When("I enter valid product fields with name = {string} and stock = {string}")
     public void iEnterValidAddProductToWarehouseFormInputs(String productName, String productStock) {
         if(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed()){
@@ -67,11 +75,13 @@ public class AddProductInventorySteps {
         this.warehouseDetailsPage.setProductStock(productStock);
     }
 
+    // Simulates a button click on submitting the add product to warehouse form
     @And("I click the add product to warehouse submit button")
     public void iClickTheAddProductToWarehouseSubmitButton() {
         this.warehouseDetailsPage.clickProductSubmitButton();
     }
 
+    // Checks if the added product is stocked in the warehouse
     @Then("I should see the warehouse's newly added product in stock with name = {string} and stock = {string}")
     public void iShouldSeeTheAddedProductInTheWarehouse(String productName, String productStock) {
         this.driver.navigate().refresh();
