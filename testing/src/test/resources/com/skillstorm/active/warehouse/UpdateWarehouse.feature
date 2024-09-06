@@ -16,3 +16,4 @@ Feature: Update warehouse
         |warehouseName      |updatedName           |updatedAddress        |updatedCapacity  |
         |testName           |updatedWarehouse1     |Baltimore, Maryland   |200              |
         |testName2          |updatedWarehouse2     |Columbia, Maryland    |300              |
+        |testName3          |updatedWarehouse3     |San Diego, California |2000             |

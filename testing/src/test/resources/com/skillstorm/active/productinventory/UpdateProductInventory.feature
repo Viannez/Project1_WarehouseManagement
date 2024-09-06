@@ -17,4 +17,4 @@ Feature: Update product inventory on warehouse page
         |miscellaneous            |1                 |
         |new books                |4                 |
         |supplies                 |76                |
-        |electronics              |12         `      |
+        |electronics              |12                |

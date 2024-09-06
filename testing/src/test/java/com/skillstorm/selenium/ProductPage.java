@@ -15,6 +15,15 @@ public class ProductPage {
     private final WebDriver driver;
     private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
     // private static final String url = "http://localhost:5173/product";
+    
+    //navbar
+    @FindBy(id="nav-product")
+    private WebElement goToProductsPage;
+
+    @FindBy(id="nav-warehouse")
+    private WebElement goToWarehousesPage;
+
+    //buttons
     @FindBy(id="add-product")
     private WebElement addProductButton;
 
@@ -61,6 +70,26 @@ public class ProductPage {
             e.printStackTrace();
         }
         this.driver.get(url);
+    }
+
+    /**
+     * clicking navbar option
+     * pause execution for 1000 mili sec before navigating
+     */
+    public void selectNavBar(String page) {
+        if(page.equals("Products")){
+            
+            goToProductsPage.click();
+        }
+        else if(page.equals("Warehouses")){
+            System.out.println("clicked");
+            goToWarehousesPage.click();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -248,9 +277,9 @@ public class ProductPage {
             WebElement pCategory = list.findElement(By.id("product-category"));
             WebElement pPrice = list.findElement(By.id("product-price"));
             
-            System.out.print(pName.getText()+ " ");
-            System.out.print(pCategory.getText().substring(6)+ " ");
-            System.out.println(pPrice.getText().substring(1));
+            // System.out.print(pName.getText()+ " ");
+            // System.out.print(pCategory.getText().substring(6)+ " ");
+            // System.out.println(pPrice.getText().substring(1));
 
             if(pName.getText().equals(name) && 
                 pCategory.getText().substring(6).equals(category) &&

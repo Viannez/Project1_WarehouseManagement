@@ -11,3 +11,4 @@ Feature: Delete product from the products page
       |productName        |
       |updatedProduct1    |
       |updatedProduct2    |
+      |updatedProduct3    |

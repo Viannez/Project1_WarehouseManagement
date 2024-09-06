@@ -16,3 +16,4 @@ Feature: Update product
         |productName        |updatedName      |updatedCategory |updatedPrice  |
         |testName           |updatedProduct1  |L               |200           |
         |testName2          |updatedProduct2  |S               |300           |
+        |testName3          |updatedProduct3  |M               |92            |

@@ -63,7 +63,7 @@ public class ProductInventoryServiceTest {
         .thenReturn(expectedProductInventorys);
 
         List<ProductInventory> response = productInventoryService.findAll();
-        System.out.println(response);
+        // System.out.println(response);
         Assert.assertEquals(response, expectedProductInventorys);
     }
 
@@ -98,7 +98,7 @@ public class ProductInventoryServiceTest {
         .thenReturn(inputProductInventory);
 
         ProductInventory savedProductInventory = productInventoryService.save(inputProductInventory);
-        System.out.println(savedProductInventory);
+        // System.out.println(savedProductInventory);
 
         ProductInventory response = productInventoryService.save(inputProductInventory);
 
@@ -125,7 +125,7 @@ public class ProductInventoryServiceTest {
         .thenReturn(true);
 
         int response = productInventoryService.update(inputProductInventory.getId(), inputProductInventory);
-        System.out.println(response);
+        // System.out.println(response);
 
         Assert.assertEquals(response, inputProductInventory.getId());
     }

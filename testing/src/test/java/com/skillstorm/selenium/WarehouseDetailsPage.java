@@ -334,13 +334,13 @@ public class WarehouseDetailsPage {
             e.printStackTrace();
         }
 
-        System.out.println("Updated warehouse name is " + updatedName);
-        System.out.println("Current warehouse name is " + currentWarehouseName.getText());
-        System.out.println("Updated warehouse address is " + updatedAddress);
-        System.out.println("Current warehouse address is " + currentWarehouseAddress.getText());
+        // System.out.println("Updated warehouse name is " + updatedName);
+        // System.out.println("Current warehouse name is " + currentWarehouseName.getText());
+        // System.out.println("Updated warehouse address is " + updatedAddress);
+        // System.out.println("Current warehouse address is " + currentWarehouseAddress.getText());
 
-        System.out.println("Updated warehouse capacity is " + updatedCapacity);
-        System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText().substring(currentWarehouseCapacity.getText().lastIndexOf("/") + 1));
+        // System.out.println("Updated warehouse capacity is " + updatedCapacity);
+        // System.out.println("Current warehouse capacity is " + currentWarehouseCapacity.getText().substring(currentWarehouseCapacity.getText().lastIndexOf("/") + 1));
         if(!updatedName.equals(currentWarehouseName.getText())){
             System.out.println("Warehouse name was not updated.");
             return false;
@@ -376,8 +376,8 @@ public class WarehouseDetailsPage {
             WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
             WebElement whProductStock = list.findElement(By.id("warehouseproduct-stock"));
             
-            System.out.println(whProductName.getText());
-            System.out.println(whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2));
+            // System.out.println(whProductName.getText());
+            // System.out.println(whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2));
 
             if(whProductName.getText().equals(productName) && 
                 whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2).equals(productStock)){
@@ -401,7 +401,7 @@ public class WarehouseDetailsPage {
         boolean isProductExisting = false;
         for(WebElement list:warehouseProductCards){
             WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
-            System.out.println(whProductName.getText());
+            // System.out.println(whProductName.getText());
 
             if(whProductName.getText().equals(productName)){
                 isProductExisting = true; // the deleted product exists, something went wrong

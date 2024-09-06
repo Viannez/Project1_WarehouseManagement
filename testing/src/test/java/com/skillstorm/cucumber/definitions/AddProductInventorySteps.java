@@ -69,8 +69,7 @@ public class AddProductInventorySteps {
     @When("I enter valid product fields with name = {string} and stock = {string}")
     public void iEnterValidAddProductToWarehouseFormInputs(String productName, String productStock) {
         if(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed()){
-            System.out.println("Add product to warehouse modal is displaying");
-
+            // System.out.println("Add product to warehouse modal is displaying");
         }
         this.driver.switchTo().activeElement();
         this.warehouseDetailsPage.setProductName(productName);

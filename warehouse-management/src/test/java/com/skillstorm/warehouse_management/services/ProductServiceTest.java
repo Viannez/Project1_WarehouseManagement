@@ -112,7 +112,7 @@ public class ProductServiceTest {
         when(productRepository.existsById(inputProduct.getId()))
         .thenReturn(true);
         
-        System.out.println(savedProduct);
+        // System.out.println(savedProduct);
 
         int response = productService.update(inputProduct.getId(), inputProduct);
 

@@ -196,14 +196,14 @@ public class ProductDetailsPage {
             e.printStackTrace();
         }
 
-        System.out.println("Updated product name is " + updatedName);
-        System.out.println("Current product name is " + currentProductName.getText());
-        System.out.println("Updated product size is " + updatedCategory);
-        System.out.println("Current product size is " + currentProductCategory.getText());
+        // System.out.println("Updated product name is " + updatedName);
+        // System.out.println("Current product name is " + currentProductName.getText());
+        // System.out.println("Updated product size is " + updatedCategory);
+        // System.out.println("Current product size is " + currentProductCategory.getText());
 
         updatedPrice = "$" + updatedPrice;
-        System.out.println("Updated product price is " + updatedPrice);
-        System.out.println("Current product price is " + currentProductPrice.getText());
+        // System.out.println("Updated product price is " + updatedPrice);
+        // System.out.println("Current product price is " + currentProductPrice.getText());
         if(!updatedName.equals(currentProductName.getText())){
             System.out.println("Product name was not updated.");
             return false;

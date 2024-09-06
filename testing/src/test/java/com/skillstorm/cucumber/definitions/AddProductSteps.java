@@ -69,7 +69,7 @@ public class AddProductSteps {
     @When("I enter valid {string} and {string} and select {string}")
     public void iEnterValidFormInputs(String name, String price, String category) {
         if(this.productPage.addProductModalDisplayed()){
-            System.out.println("Modal is displaying");
+            // System.out.println("Modal is displaying");
 
         }
         this.driver.switchTo().activeElement();

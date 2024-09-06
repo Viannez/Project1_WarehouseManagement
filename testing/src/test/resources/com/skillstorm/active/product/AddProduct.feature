@@ -16,6 +16,7 @@ Feature: Add a product to the products page
     |productName  |productPrice  |category  |
     |testName     |100           |M         |
     |testName2    |300           |XL        |
+    |testName3    |45            |S        |
 
 # add invalid 
 # Scenario: Unsuccessfully add product 

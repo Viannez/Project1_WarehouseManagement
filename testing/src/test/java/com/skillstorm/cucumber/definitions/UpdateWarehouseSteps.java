@@ -72,7 +72,7 @@ public class UpdateWarehouseSteps {
     @When("I enter valid update fields with name = {string}, address = {string}, capacity = {string}")
     public void iEnterValidFormInputs(String updatedName, String updatedAddress, String updatedCapacity) {
         if(this.warehouseDetailsPage.updateWarehouseModalDisplayed()){
-            System.out.println("Update warehouse modal is displaying");
+            // System.out.println("Update warehouse modal is displaying");
 
         }
         this.driver.switchTo().activeElement();

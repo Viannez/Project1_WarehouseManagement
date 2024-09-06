@@ -94,7 +94,7 @@ public class WarehouseServiceTest {
         when(warehouseRepository.existsById(inputWarehouse.getId()))
         .thenReturn(true);
         
-        System.out.println(inputWarehouse);
+        // System.out.println(inputWarehouse);
 
         int response = warehouseService.update(inputWarehouse.getId(), inputWarehouse);
 

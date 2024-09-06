@@ -11,4 +11,5 @@ Feature: Delete warehouse from the warehouses page
       |warehouseName       |
       |updatedWarehouse1   |
       |updatedWarehouse2   |
+      |updatedWarehouse3   |
     

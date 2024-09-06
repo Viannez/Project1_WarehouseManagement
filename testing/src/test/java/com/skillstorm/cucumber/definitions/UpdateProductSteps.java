@@ -72,7 +72,7 @@ public class UpdateProductSteps {
     @When("I enter valid update fields with name = {string}, category = {string}, price = {string}")
     public void iEnterValidFormInputs(String updatedName, String updatedCategory, String updatedPrice) {
         if(this.productDetailsPage.updateProductModalDisplayed()){
-            System.out.println("Update product modal is displaying");
+            // System.out.println("Update product modal is displaying");
         }
         System.out.println(this.driver.getCurrentUrl());
         this.driver.switchTo().activeElement();
