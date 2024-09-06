@@ -7,11 +7,13 @@ import org.junit.platform.suite.api.Suite;
 
 import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("com/skillstorm/active/productinventory")
+@SelectClasspathResource("com/skillstorm/active")
 @ConfigurationParameter(key =GLUE_PROPERTY_NAME, value = "com/skillstorm/cucumber/definitions")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
-public class RunProductInventoryCucumberTest {
+@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@phase2")
+public class RunCucumberPhase2Test {
 }

@@ -100,9 +100,9 @@ export const ProductInventoryStock = ({info}) => {
       <Form onSubmit={handleSubmit}>
       <div>
           <Label>Stock</Label>
-          <TextInput id="productInventory-price" name="productInventoryStock" type="number"/>
+          <TextInput id="update-product-stock" name="productInventoryStock" type="number"/>
         </div>
-        <Button type="submit">Submit</Button>
+        <Button id='submit-stock-button' type="submit">Submit</Button>
       </Form>
       {
         <Alert type="success" headingLevel="h4">

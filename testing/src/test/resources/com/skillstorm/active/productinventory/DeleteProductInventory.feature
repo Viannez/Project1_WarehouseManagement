@@ -1,4 +1,4 @@
-@delete-productinventory
+@delete-productinventory @phase3
 Feature: Delete a product from a warehouse
 
     Scenario: Click on delete product button and see the product removed from the warehouse
