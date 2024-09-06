@@ -376,7 +376,7 @@ public class WarehouseDetailsPage {
             WebElement whProductName = list.findElement(By.id("warehouseproduct-name"));
             WebElement whProductStock = list.findElement(By.id("warehouseproduct-stock"));
             
-            System.out.println(whProductName.getText());
+            System.out.print(whProductName.getText());
             System.out.println(whProductStock.getText().substring(whProductStock.getText().lastIndexOf(":") + 2));
 
             if(whProductName.getText().equals(productName) && 
