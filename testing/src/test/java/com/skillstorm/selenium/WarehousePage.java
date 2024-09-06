@@ -13,8 +13,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class WarehousePage {
     private final WebDriver driver;
-    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
-    private static final String url = "http://localhost:5173/warehouse";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse";
+    // private static final String url = "http://localhost:5173/warehouse";
     //navbar
     @FindBy(id="nav-product")
     private WebElement goToProductsPage;

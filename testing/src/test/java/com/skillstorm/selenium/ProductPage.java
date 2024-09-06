@@ -13,8 +13,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage {
     private final WebDriver driver;
-    // private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
-    private static final String url = "http://localhost:5173/product";
+    private static final String url = "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/product";
+    // private static final String url = "http://localhost:5173/product";
     //navbar
     @FindBy(id="nav-product")
     private WebElement goToProductsPage;
@@ -70,7 +70,7 @@ public class ProductPage {
         }
         this.driver.get(url);
     }
-    
+
     /**
      * clicking navbar option
      * pause execution for 1000 mili sec before navigating
