@@ -17,8 +17,8 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
   - Delete product inventory from that specific warehouse.
   - Go to view individual warehouses' details with door button
 
-## Links for Project 2:
-### AWS
+# Links for Project 2:
+## AWS
 [Link to frontend deployed on AWS](http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com/warehouse) 
 
 [Link to RDS database deployed on AWS](http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse)
@@ -35,20 +35,30 @@ Elastic Beanstalk
 
 #### RDS
 - Mysteryboxwarehouses-db instance
-### Jenkins
-[Jenkins](http://3.93.172.113:8080/job/mysterybox-warehouse-pipeline/) pipeline using AWS EC2 instance to provide information to builds, coverage, and more
+## Jenkins
+[Jenkins](http://3.93.172.113:8080/job/mysterybox-warehouse-pipeline/) pipeline using AWS EC2 instance to deploy code changes to AWS automatically, perform tests, and generate reports. Performance test trends based on [JMeter test plan](testing/src/test/jmeter/Mysterybox-warehouse-JMeter.jmx)
 ![image](https://github.com/user-attachments/assets/b8d2c5f2-0eec-4c28-94f9-9e45ada6dd9b)
-### SonarCloud
+## SonarCloud
 [SonarCloud](https://sonarcloud.io/organizations/viannez/projects) link that provides information on backend & frontend coverage, quality gates, and more
 ![image](https://github.com/user-attachments/assets/833535cd-cb6e-4a25-833b-8945454eedfb)
-### Cucumber Report
+## Cucumber Report
 [Cucumber Report](https://reports.cucumber.io/report-collections/d7789cc2-cacf-4683-b7a6-cc5ebea41dfe) provides information on BDD tests using Cucumber + Selenium.
 Every Jenkins build has three cucumber reports
 ![image](https://github.com/user-attachments/assets/4ca59393-8888-4d5e-934a-a4e1d08edba4)
 
+## Testing Structure
+### Testing directory
+- Cucumber and Selenium [Step Defintions and Page Object Models](testing/src/test/java/com/skillstorm)
+- Cucumber [Feature Files](testing/src/test/resources/com/skillstorm/active)
+- Uses [Jmeter Maven Plugin](https://github.com/jmeter-maven-plugin/jmeter-maven-plugin) with [JMeter test plan](testing/src/test/jmeter/Mysterybox-warehouse-JMeter.jmx)
+### Warehouse-frontend
+- Jest testing [Coverage](warehouse-frontend/coverage)
+### Warehouse-management
+- Mockito [Unit Tests](https://github.com/Viannez/Project1_WarehouseManagement/tree/main/warehouse-management/src/test/java/com/skillstorm/warehouse_management)
+- TestNG [Suite Report](warehouse-management/test-output/html/suite0_test0_results.html)
+- Used [Jacoco-Maven Plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) to report coverage of Mockito unit tests
 
-
-## Comprehensive list of tools used for testing:
+### Comprehensive list of tools used for testing:
 - Selenium
 - Cucumber
 - TestNG
@@ -61,6 +71,7 @@ Every Jenkins build has three cucumber reports
 - SonarCloud
 - Jmeter
 
+# Instructions for Project 1
 ## How to Run:
 - Clone repository
 - Run /Notes/create_entities.sql in pg Admin 4
