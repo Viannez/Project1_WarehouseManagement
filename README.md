@@ -1,4 +1,4 @@
-# Project1_Warehouse_Management
+# Mystery Box Warehouses (Project 1 & Project 2)
 Warehouse web-app that fascilitates administrator to view, add, remove, and alter warehouse entities. Theming is mystery boxes, where miscellaneous bundles can be sold depending on size. User can:
 - View and sort list of all warehouses by ID and capacity.
 - View and sort list of all products by ID and price.
@@ -16,6 +16,25 @@ Warehouse web-app that fascilitates administrator to view, add, remove, and alte
   - View what warehouses the product is in and the stock in each warehouse.
   - Delete product inventory from that specific warehouse.
   - Go to view individual warehouses' details with door button
+
+## Links for Project 2:
+#### Jenkins
+[Jenkins](http://3.93.172.113:8080/job/mysterybox-warehouse-pipeline/) pipeline using AWS EC2 instance to provide information to builds, coverage, and more
+#### SonarCloud
+[SonarCloud](https://sonarcloud.io/organizations/viannez/projects) link that provides information on backend & frontend coverage, quality gates, and more
+
+## Comprehensive list of tools used for testing:
+- Selenium
+- Cucumber
+- TestNG
+- Jest
+- Mockito
+- AWS
+- Jenkins
+- JaCoCo
+- Burp Suite
+- SonarCloud
+- Jmeter
 
 ## How to Run:
 - Clone repository
