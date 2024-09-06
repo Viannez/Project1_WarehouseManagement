@@ -7,6 +7,8 @@ const renderApp = () => {
 }
 
 describe('App component', () => {
+    
+    // tests if the Mystery Box Warehouses website title is displayed by App
     test('renders the Mystery Box Warehouses title', () => {
         renderApp();
         expect(screen.getByText('Mystery Box Warehouses')).toBeInTheDocument();

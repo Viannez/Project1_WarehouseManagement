@@ -9,6 +9,7 @@ describe('Navigation bar', () => {
         jest.clearAllMocks();
     });
 
+    // tests if the nav bar displays the Warehouses and Products options
     test('should render the warehouses and products nav options', async () => {
         await act(async () => {
             render(

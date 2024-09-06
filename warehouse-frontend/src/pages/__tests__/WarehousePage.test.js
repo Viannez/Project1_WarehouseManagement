@@ -8,6 +8,7 @@ describe('Warehouse Page', () => {
         jest.clearAllMocks();
     });
 
+    // tests if the Warehouses title appears on the Warehouses page
     test('should render the warehouses title', () => {
          act( () => {
             render(<WarehousePage />);
@@ -16,6 +17,7 @@ describe('Warehouse Page', () => {
         expect(screen.getByText('Warehouses')).toBeInTheDocument();
     });
 
+    // tests if the Warehouses page has the sorting label displayed
     test('should render the sort warehouses label', () => {
         act( () => {
            render(<WarehousePage />);
