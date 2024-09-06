@@ -8,7 +8,8 @@ describe('Product Details', () => {
         jest.clearAllMocks();
     });
 
-    it('should render the product title', () => {
+    // tests if the Product title appears on the Product Detail page
+    test('should render the product title', () => {
          act( () => {
             render(<ProductDetails />);
         });
@@ -16,7 +17,8 @@ describe('Product Details', () => {
         expect(screen.getByText('Product')).toBeInTheDocument();
     });
 
-    it('should render the product details', () => {
+    // tests if the Product Detail page has the details of the product displayed
+    test('should render the product details', () => {
         act( () => {
            render(<ProductDetails />);
        });

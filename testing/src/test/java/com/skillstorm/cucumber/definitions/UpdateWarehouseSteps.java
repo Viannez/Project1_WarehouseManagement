@@ -18,6 +18,7 @@ public class UpdateWarehouseSteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
 
+    // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehouseDetailsPage
     @Before("@update-warehouse")
     public void before() {
         ChromeOptions options = new ChromeOptions();
@@ -28,6 +29,7 @@ public class UpdateWarehouseSteps {
         
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
+    // Tear down
     @After("@update-warehouse")
     public void after() {
         if(driver != null) {
@@ -35,22 +37,26 @@ public class UpdateWarehouseSteps {
         }
     }
     
-    //Get to modal
+    // Navigate to the warehouse with matching name parameter
     @Given("I am on the warehouse {string} details page")
     public void iAmOnTheWarehouseDetailsPage(String warehouseName) {
         this.warehouseDetailsPage.get(warehouseName);
     }
 
+    // Call method to simulate a click on the button to update a warehouse
     @When("I click on the update warehouse button")
     public void iClickOnTheUpdateWarehouseButton() {
         this.warehouseDetailsPage.clickUpdateWarehouse();
     }
 
+    // Checks if the update warehouse form is displayed
     @Then("I should see the update warehouse form modal")
     public void iShouldSeeTheUpdateWarehouseFormModal() {
         assertTrue(this.warehouseDetailsPage.updateWarehouseModalDisplayed());
     }
 
+    // Navigates to the warehouse with matching name, simulates a button click to update that warehouse
+    // and checks if the update warehouse form is displayed
     @Given("I have the update warehouse {string} form modal open")
     public void iAmOnTheUpdateWarehouseFormModal(String warehouseName) {
         this.warehouseDetailsPage.get(warehouseName);
@@ -58,6 +64,8 @@ public class UpdateWarehouseSteps {
         assertTrue(this.warehouseDetailsPage.updateWarehouseModalDisplayed());
     }
 
+    // Checks if the update warehouse form is displayed
+    // and sets the warehouse's updated name, address, and category
     @When("I enter valid update fields with name = {string}, address = {string}, capacity = {string}")
     public void iEnterValidFormInputs(String updatedName, String updatedAddress, String updatedCapacity) {
         if(this.warehouseDetailsPage.updateWarehouseModalDisplayed()){
@@ -70,11 +78,13 @@ public class UpdateWarehouseSteps {
         this.warehouseDetailsPage.setCapacity(updatedCapacity);
     }
 
+    // Simulates a button click to submit the update warehouse form
     @And("I click the update warehouse form submit button")
     public void iClickTheSubmitButton() {
         this.warehouseDetailsPage.clickSubmitButton();
     }
 
+    // Checks if the warehouse was updated according to the update warehouse form
     @Then("I should see the warehouse updated with name = {string}, address = {string}, capacity = {string}")
     public void iShouldSeeACardWithMatchingInputs(String updatedName, String updatedAddress, String updatedCapacity) {
         this.driver.navigate().refresh();

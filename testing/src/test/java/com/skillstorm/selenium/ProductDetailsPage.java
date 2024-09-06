@@ -179,6 +179,9 @@ public class ProductDetailsPage {
         }
     }
 
+    /**
+    * returns true if the product was successfully updated with the updatedName, updatedCategory, and updatedPrice
+    */
     public boolean updatedProductIsDisplayed(String updatedName, String updatedCategory, String updatedPrice){
         try {
             Thread.sleep(1000);
