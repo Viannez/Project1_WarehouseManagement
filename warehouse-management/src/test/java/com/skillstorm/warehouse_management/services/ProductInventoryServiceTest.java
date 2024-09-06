@@ -51,6 +51,8 @@ public class ProductInventoryServiceTest {
         closeable.close();
     }
 
+    // Tests if the mocked productInventory repo successfully return expected response
+    // after service calls findAll() with expected values
     @Test
     public void findAllProductInventorysTest() {
         //Given
@@ -67,6 +69,8 @@ public class ProductInventoryServiceTest {
         Assert.assertEquals(response, expectedProductInventorys);
     }
 
+    // Tests if the mocked productInventory repo successfully return expected response
+    // after service calls findById() for a productInventory id that does exist 
     @Test
     public void findProductInventoryByIdTest() {
         int productInventoryId = 1;
@@ -81,6 +85,8 @@ public class ProductInventoryServiceTest {
         Assert.assertEquals(response, expectedProductInventory);
     }
 
+    // Tests if the mocked productInventory repo successfully return expected response
+    // after service calls save() to create a productInventory
     @Test
     public void createProductInventoryTest() {
         Product product = new Product();
@@ -105,6 +111,8 @@ public class ProductInventoryServiceTest {
         Assert.assertEquals(response, savedProductInventory);
     }
 
+    // Tests if the mocked productInventory repo successfully return expected response
+    // after service calls update()
     @Test
     public void updateProductInventoryTest() {
         Product product = new Product();
@@ -130,6 +138,8 @@ public class ProductInventoryServiceTest {
         Assert.assertEquals(response, inputProductInventory.getId());
     }
 
+    // Tests if the mocked productInventory repo successfully return expected EXCEPTION
+    // after service calls update()
     @Test
     public void updateProductInventoryInvalidTest() {
         Product product = new Product();
@@ -156,6 +166,7 @@ public class ProductInventoryServiceTest {
 
     }
 
+    // Tests if the mocked productInventory repo successfully deletes productInventory with matching id after service calls deleteById()
     @Test
     public void deleteProductInventoryTest() {
         ProductInventory inputProductInventory = new ProductInventory();
