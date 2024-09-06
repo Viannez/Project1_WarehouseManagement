@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class WarehousePage {
     private final WebDriver driver;
@@ -60,6 +61,67 @@ public class WarehousePage {
             e.printStackTrace();
         }
         this.driver.get(url);
+    }
+
+       /**
+     * select sort by warehouse
+     * pause execution for 1000 mili sec before navigating
+     */
+    public void selectSortBy(String selectOption) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Select select = new Select(sortWarehouse);
+        select.selectByVisibleText(selectOption);
+    }
+
+    /**
+     * check if products are sorted
+     */
+    public boolean isOrdered(String sortOption) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(cards.size() == 1)
+        {
+            return true;
+        }
+        // sort by id
+        boolean found = true;
+        int prev = 0;
+        if(sortOption.equals("By ID"))
+        {
+            for(WebElement list:cards){
+                WebElement wID = list.findElement(By.id("warehouse-id"));
+                int current = Integer.parseInt(wID.getText().substring(wID.getText().lastIndexOf(":") + 2));
+                if(current <= prev){
+                    return false;
+                }
+                else{
+                    prev = current;
+                }
+            }
+        }
+        // sort by capacity
+        else if(sortOption.equals("By Capacity"))
+        {
+            for(WebElement list:cards){
+                WebElement wCapacity = list.findElement(By.id("warehouse-capacity"));
+                int current = Integer.parseInt(wCapacity.getText().substring(wCapacity.getText().lastIndexOf(":") + 1));
+                if(current < prev){
+                    return false;
+                }
+                else{
+                    prev = current;
+                }
+            }
+        }
+        
+        return found;
     }
 
     /**

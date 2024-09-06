@@ -17,7 +17,7 @@ import io.cucumber.java.en.When;
 public class AddProductInventorySteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
-
+    private String warehouseDetailsUrl;
     // Setup cucumber ChromeOptions and instantiate a ChromeDriver and WarehouseDetailsPage
     @Before("@add-productinventory")
     public void before() {
@@ -38,7 +38,8 @@ public class AddProductInventorySteps {
     // Navigate to the warehouse with matching name parameter
     @Given("ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get("Greenish");
+        this.warehouseDetailsUrl = this.warehouseDetailsPage.get("Greenish");
+        this.warehouseDetailsPage.getUrl(warehouseDetailsUrl);
     }
 
     // Call method to simulate a click on the button to add a product to a warehouse
@@ -57,7 +58,8 @@ public class AddProductInventorySteps {
     // checks if the form modal for adding a product to a warehouse is displayed 
     @Given("I have the add product to warehouse form modal open")
     public void iAmOnTheAddProductToWarehouseFormModal() {
-        this.warehouseDetailsPage.get("Greenish");
+        this.warehouseDetailsUrl = this.warehouseDetailsPage.get("Greenish");
+        this.warehouseDetailsPage.getUrl(warehouseDetailsUrl);
         this.warehouseDetailsPage.clickAddProductToWarehouse();
         assertTrue(this.warehouseDetailsPage.addProductToWarehouseModalDisplayed());
     }
