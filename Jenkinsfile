@@ -137,7 +137,7 @@ pipeline {
                 dir("testing"){
                     withCredentials([string(credentialsId: 'CUCUMBER_PUBLISH_TOKEN', variable: 'CUCUMBER_TOKEN')]) {
                         sh '''
-                            mvn clean verify -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
+                            mvn clean test -Dheadless=true -Dcucumber.publish.token=${CUCUMBER_TOKEN}
                         '''
                     }
                 } 
