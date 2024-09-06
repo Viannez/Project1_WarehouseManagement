@@ -318,6 +318,9 @@ public class WarehouseDetailsPage {
         }
     }
 
+    /**
+    * returns true if the warehouse was successfully updated with the updatedName, updatedAddress, and updatedCapacity
+    */
     public boolean updatedWarehouseIsDisplayed(String updatedName, String updatedAddress, String updatedCapacity){
         try {
             Thread.sleep(1000);
