@@ -15,4 +15,3 @@ Feature: Add a product to a warehouse
     Examples:
         |productName              |productStock        |
         |miscellaneous            |35                  |
-        |dishware                 |11                  |
