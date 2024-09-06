@@ -125,6 +125,7 @@
 					</execution>
 				</executions>
 					<configuration>
+                        <generateReports>true</generateReports>    
 						<resultsFileFormat>xml</resultsFileFormat>                    
                     </configuration>
 			</plugin>

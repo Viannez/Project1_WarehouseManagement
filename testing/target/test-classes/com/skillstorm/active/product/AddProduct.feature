@@ -16,14 +16,4 @@ Feature: Add a product to the products page
     |productName  |productPrice  |category  |
     |testName     |100           |M         |
     |testName2    |300           |XL        |
-
-# add invalid 
-# Scenario: Unsuccessfully add product 
-#     Given I have product modal open
-#     When I enter invalid <productName and "40" and select "<S>"
-#     And I click the submit button
-#     Then I should see a message "Product name already taken."
-#  Examples:
-#     |productName  |productPrice  |category  |
-#     |knicknacks   |0             |M         |
-#     |normaladd    |-1            |XL        |
+    |testName3    |45            |S         |

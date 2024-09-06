@@ -17,16 +17,3 @@ Feature: Add a warehouse to the warehouses page
     |testName       |Orlando, FLorida   |500       |
     |testName2      |Atlanta, Georgia   |250       |
 
-# add invalid add warehouse name scenario
-# Scenario: Unsuccessfully add warehouse because of name
-#     Given I have warehouse modal open
-#     When I enter invalid "testName" and "testAddress" and "<400>"
-#     And I click the submit button
-#     Then I should see a message "Warehouse name already taken."
-
-# add invalid add warehouse capacity scenario
-# Scenario: Unsuccessfully add warehouse because of capacity
-#     Given I have warehouse modal open
-#     When I enter invalid "testName" and "testAddress" and "<10>"
-#     And I click the submit button
-#     Then I should see a message "Check inputs."

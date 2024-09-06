@@ -1,12 +1,15 @@
-@navigate
+@navigate @phase2
 Feature: Use navigdation bar
 
-    Scenario Outline: Successfully add product
-    Given I am on the warehouse url
-    When I click on the navigate button "<navigate>"
-    Then I be on the "<navigate>" page
-
-  Examples:
-    |navigate     |
-    |Products     |
-    |Warehouses   |
+    Scenario: Navigate from firstPage to secondPage
+    Given I am currently on the "<firstPage>"
+    When I click on the correct button for the "<secondPage>"
+    Then I be on the "<secondPage>" page
+    Examples:
+      |firstPage           |secondPage |
+      |Products            |Warehouses |
+      |Warehouses          |Products   |
+      # |Warehouse           |Warehouses |
+      # |Warehouse           |Products   |
+      # |Product             |Warehouses |
+      # |Product             |Products   |
