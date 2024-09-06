@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.skillstorm.warehouse_management.models.Category;
 import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.models.ProductInventory;
 import com.skillstorm.warehouse_management.models.Warehouse;
@@ -41,13 +42,19 @@ public class ProductInventoryService {
         // Check if warehouse exists
         Warehouse warehouse = productInventory.getWarehouse();
         if (wRepo.existsById(warehouse.getId())) {
-            warehouse = wRepo.findById(warehouse.getId()).get();
+            Optional<Warehouse> w = wRepo.findById(warehouse.getId());
+            if (!w.isPresent())
+                return null;
+            warehouse = w.get();
             productInventory.setWarehouse(warehouse);
         }
         // Check if product exists
         Product product = productInventory.getProduct();
         if (wRepo.existsById(product.getId())) {
-            product = pRepo.findById(product.getId()).get();
+            Optional<Product> p = pRepo.findById(product.getId());
+            if (!p.isPresent())
+                return null;
+            product = p.get();
             productInventory.setProduct(product);
         }
         return repo.save(productInventory); 

@@ -37,8 +37,9 @@ public class ProductService {
         // Check if category exists
         Category category = product.getCategory();
         if (cRepo.existsById(category.getId())) {
-            category = cRepo.findById(category.getId()).get();
-            product.setCategory(category);
+            Optional<Category> c = cRepo.findById(category.getId());
+        if (!c.isPresent())
+            throw new NoSuchElementException("Category with id " + category.getId() + " does not exist");
         }
         return repo.save(product); 
     }

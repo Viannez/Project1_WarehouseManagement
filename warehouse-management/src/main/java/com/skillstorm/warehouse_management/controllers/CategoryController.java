@@ -37,7 +37,11 @@ public class CategoryController{
 
     @GetMapping("/{id}/products")
     public List<Product> findProductsByCategory(@PathVariable int id) {
-        return repo.findById(id).get().getProduct();
+        Optional<Category> category = repo.findById(id);
+        if (!category.isPresent())
+            return null;
+
+        return category.get().getProduct();
     }
 
     @GetMapping()
