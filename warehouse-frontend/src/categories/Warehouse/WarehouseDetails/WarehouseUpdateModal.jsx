@@ -11,10 +11,10 @@ function WarehouseUpdateModal(inventoryCapacity, capacity) {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+      <Button id="update-warehouse" variant="primary" onClick={handleShow} style={{height:'90px'}}>
         <FaPen/>
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal id="update-warehouse-modal" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update Warehouse</Modal.Title>
         </Modal.Header>

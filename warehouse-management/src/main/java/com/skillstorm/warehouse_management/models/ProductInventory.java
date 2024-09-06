@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -83,7 +82,7 @@ public class ProductInventory {
 
     @Override
     public String toString() {
-        return "Product Inventory [id=" + id + ", stock=" + stock + ", warehouse: " + (warehouse == null ? null : warehouse.getName()) + ", product: " + (product == null ? null : product.getName()) + "]";
+        return "Product Inventory [id=" + id + ", stock=" + stock + ", warehouseName=" + (warehouse == null ? null : warehouse.getName()) + ", productName=" + (product == null ? null : product.getName()) + "]";
     }
 
     

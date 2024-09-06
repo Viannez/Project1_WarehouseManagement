@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetWarehouses from "../../Util/GetWarehouses";
+import GetWarehouses from "../../Utils/GetWarehouses";
 
 //update warehouse details
 export const WarehouseUpdate = () => {
@@ -16,7 +16,7 @@ export const WarehouseUpdate = () => {
 
     // submit data to add new warehouse inventory to 
     function handleSubmit(e) {
-        const url = "http://localhost:8080/warehouse/"+id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse/`+id; 
         e.preventDefault();
 
         const data = new FormData(e.target);

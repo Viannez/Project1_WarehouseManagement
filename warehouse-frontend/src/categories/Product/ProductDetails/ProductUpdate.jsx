@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetCategories from "../../Util/GetCategories";
-import GetProducts from "../../Util/GetProducts";
+import GetCategories from "../../Utils/GetCategories";
+import GetProducts from "../../Utils/GetProducts";
 
 //update product details
 export const ProductUpdate = () => {
@@ -21,7 +21,7 @@ export const ProductUpdate = () => {
 
     // submit data to update product
     function handleSubmit(e) {
-        const url = "http://localhost:8080/product/"+id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/`+id; 
         e.preventDefault();
 
         const data = new FormData(e.target);
@@ -96,7 +96,7 @@ export const ProductUpdate = () => {
                 <option>- Select -</option>
             {
               categories.map( ({id, name}) => 
-                <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                <option key={id} value={id}>{name}</option> )
             }
             </Select>
         <div>

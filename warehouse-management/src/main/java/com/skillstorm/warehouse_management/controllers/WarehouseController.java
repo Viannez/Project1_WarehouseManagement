@@ -1,13 +1,6 @@
 package com.skillstorm.warehouse_management.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.skillstorm.warehouse_management.models.Warehouse;
-import com.skillstorm.warehouse_management.services.WarehouseService;
-
-import jakarta.validation.Valid;
-
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -21,11 +14,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.skillstorm.warehouse_management.models.Warehouse;
+import com.skillstorm.warehouse_management.services.WarehouseService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/warehouse")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174", "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com"})
 public class WarehouseController{
     
     private final Logger logger = LoggerFactory.getLogger(WarehouseController.class);
@@ -36,8 +36,10 @@ public class WarehouseController{
     }
 
     @GetMapping
-    public Iterable<Warehouse> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<Warehouse>> findAll() {
+        List<Warehouse> warehouses = service.findAll();
+
+        return new ResponseEntity<List<Warehouse>>(warehouses, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -51,14 +53,16 @@ public class WarehouseController{
 
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Warehouse create(@Valid @RequestBody Warehouse warehouse) {
+    public ResponseEntity<Warehouse> create(@Valid @RequestBody Warehouse warehouse) {
         logger.debug("=== POST request to /warehouses with Warehouse of " + warehouse + " ===");
-        return service.save(warehouse);
+        Warehouse newWarehouse = service.save(warehouse);
+        return new ResponseEntity<Warehouse>(newWarehouse, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@PathVariable int id, @RequestBody Warehouse warehouse) {
+    public ResponseEntity<Integer> update(@PathVariable int id, @RequestBody Warehouse warehouse) {
         service.update(id, warehouse);
+        return new ResponseEntity<Integer>(id, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

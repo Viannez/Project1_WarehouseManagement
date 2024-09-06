@@ -1,5 +1,5 @@
 import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
-import GetProducts from "../../Util/GetProducts";
+import GetProducts from "../../Utils/GetProducts";
 import ProductInventoryStockModal from "./ProductInventoryStock/ProductInventoryStockModal";
 
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -20,7 +20,7 @@ export const WarehouseProductCard = ({productInventory}) => {
     console.log("info: ", passToStock)
 
     function handleDelete(e) {
-        const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/`+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",
@@ -34,8 +34,10 @@ export const WarehouseProductCard = ({productInventory}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>
@@ -47,18 +49,18 @@ export const WarehouseProductCard = ({productInventory}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
-                    <div className="container">
-                        <div className="container-element"> {product.name} </div>
-                        <div className="container-element"> ${product.price}</div>
-                        <div className="container-element"> Size:{product.categoryName}</div>
-                        <div className="container-element">Stock: {productInventory.stock}</div>
+                    <div id="warehouseproduct-card" className="container">
+                        <div id="warehouseproduct-name" className="container-element"> {product.name} </div>
+                        <div id="warehouseproduct-price" className="container-element"> ${product.price}</div>
+                        <div id="warehouseproduct-size"  className="container-element"> Size:{product.categoryName}</div>
+                        <div id="warehouseproduct-stock"  className="container-element">Stock: {productInventory.stock}</div>
                         <ProductInventoryStockModal info={passToStock}/>
                         <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/product/'+product.id} >
-                            <div className='container-button' style={{textAlign:'left'}}>
+                            <div id='go-to-product' className='container-button' style={{textAlign:'left'}}>
                                 <FaArrowRightToBracket />
                             </div>
                         </Link>
-                        <Button onClick={handleDelete} className="usa-button">
+                        <Button id="delete-warehouseproduct-button" onClick={handleDelete} className="usa-button">
                             <FaRegTrashAlt />
                         </Button>
                     </div>

@@ -1,5 +1,13 @@
 package com.skillstorm.warehouse_management.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,15 +15,9 @@ import com.skillstorm.warehouse_management.models.Category;
 import com.skillstorm.warehouse_management.models.Product;
 import com.skillstorm.warehouse_management.repositories.CategoryRepository;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 @RestController
 @RequestMapping("/category")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174", "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com"})
 public class CategoryController{
     
     private CategoryRepository repo;
@@ -25,8 +27,12 @@ public class CategoryController{
     }
 
     @GetMapping("/{id}")
-    public Category findCategory(@PathVariable int id) {
-        return repo.findById(id).get();
+    public ResponseEntity<Category> findById(@PathVariable int id) {
+        Optional<Category> category = repo.findById(id);
+        if (category.isPresent())
+            return ResponseEntity.ok(category.get());
+        else 
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}/products")
@@ -35,7 +41,8 @@ public class CategoryController{
     }
 
     @GetMapping()
-    public List<Category> findAll() {
-        return repo.findAll();
+    public ResponseEntity<List<Category>> findAll() {
+        List<Category> categories = repo.findAll();
+        return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
     }
 }

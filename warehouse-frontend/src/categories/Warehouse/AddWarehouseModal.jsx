@@ -12,10 +12,10 @@ function AddWarehouseModal
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow} style={{height:'90px'}}>
+      <Button id="add-warehouse" variant="primary" onClick={handleShow} style={{height:'90px'}}>
         <FaRegPlusSquare />
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal id="add-warehouse-modal" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add new Warehouse</Modal.Title>
         </Modal.Header>

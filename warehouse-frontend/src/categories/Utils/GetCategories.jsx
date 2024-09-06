@@ -7,11 +7,11 @@ export default function GetCategories(id){
 
     let url = "";
     if(id!=undefined){
-        url = "http://localhost:8080/category/"+id;
+        url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/category/`+id;
     }
     else{
         console.log("warehouse found no id");
-        url = "http://localhost:8080/category";
+        url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/category`;
     }
 
     useEffect(() => {

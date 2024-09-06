@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { ProductCard } from "./ProductCard";
-import GetProducts from "../Util/GetProducts";
+import GetProducts from "../Utils/GetProducts";
 
 //List of total products
 const ProductList = ({index}) => {

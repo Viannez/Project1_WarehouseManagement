@@ -1,5 +1,5 @@
 import { Card, CardHeader, Link, Button} from '@trussworks/react-uswds';
-import GetWarehouses from "../../Util/GetWarehouses";
+import GetWarehouses from "../../Utils/GetWarehouses";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
@@ -9,7 +9,7 @@ export const ProductWarehouseCard = ({productInventory}) => {
     const warehouse = GetWarehouses(productInventory.warehouse)
 
     function handleClick(e) {
-        const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/`+productInventory.id; 
 
         fetch(url, {
         method: "DELETE",
@@ -23,8 +23,10 @@ export const ProductWarehouseCard = ({productInventory}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>
@@ -36,16 +38,16 @@ export const ProductWarehouseCard = ({productInventory}) => {
                 className: 'border-primary-vivid'
             }}>
                 <CardHeader>
-                    <div className="container">
+                    <div id="productwarehouse-card" className="container">
                     <div className="container-element"> {warehouse.name} </div>
                     <div className="container-element"> ID: {warehouse.id}</div>
                     <div className="container-element">Stock: {productInventory.stock}</div>
                     <Link className="usa-button" variant="unstyled" allowSpacebarActivation href={'/warehouse/'+warehouse.id} >
-                        <div className='container-button' style={{textAlign:'left'}}>
+                        <div id='go-to-warehouse' className='container-button' style={{textAlign:'left'}}>
                             <FaArrowRightToBracket />
                         </div>
                     </Link>
-                    <Button onClick={handleClick} className="usa-button">
+                    <Button id="delete-productwarehouse-button"onClick={handleClick} className="usa-button">
                         <FaRegTrashAlt />
                     </Button>
                 </div>

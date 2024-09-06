@@ -1,5 +1,6 @@
 package com.skillstorm.warehouse_management.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class WarehouseService {
         this.repo = repo;
     }
 
-    public Iterable<Warehouse> findAll() {
+    public List<Warehouse> findAll() {
         return repo.findAll();
     }
 
@@ -33,11 +34,12 @@ public class WarehouseService {
     }
 
     @Transactional
-    public void update(int id, Warehouse warehouse) {
+    public int update(int id, Warehouse warehouse) {
         if (!repo.existsById(id)) 
             throw new NoSuchElementException("Warehouse with id " + id + " does not exist");
         warehouse.setId(id);
         repo.save(warehouse);
+        return id;
     }
 
     public void deleteById(int id) {

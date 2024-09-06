@@ -2,27 +2,28 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 //get all products or one product by id
-export default function GetProductInventories(id){
-    const [productInventories, setProductInventories] = useState([]);
+export default function GetProducts(id){
+    const [products, setProducts] = useState([]);
 
     let url = "";
     if(id!=undefined){
-        url = "http://localhost:8080/product_inventory/"+id;
+        url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product/`+id;
     }
     else{
         console.log("warehouse found no id");
-        url = "http://localhost:8080/product_inventory";
+        url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product`;
     }
+    
     useEffect(() => {
         fetch(url)
             .then(data => data.json()) // arrow function notation rules 
             .then(returnedData => {
-                setProductInventories(returnedData);
+                setProducts(returnedData);
             })
             .catch(err => { alert(err); console.log(err) })
 
     }, []) 
-    
-    console.log(productInventories)
-    return productInventories;
+
+    console.log( products)
+    return products;
 }

@@ -1,5 +1,6 @@
 package com.skillstorm.warehouse_management.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174", "http://mystery-box-warehouses-frontend.s3-website-us-east-1.amazonaws.com"})
 public class ProductController {
 
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
@@ -37,8 +38,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public Iterable<Product> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<Product>> findAll() {
+        List<Product> products = service.findAll();
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -52,14 +54,16 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Product create(@Valid @RequestBody Product product) {
+    public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
         logger.debug("=== POST request to /products with Product of " + product + " ===");
-        return service.save(product);
+        Product newProduct = service.save(product);
+        return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public void putMethodName(@Valid @PathVariable int id, @RequestBody Product product) {
+    public ResponseEntity<Integer> update(@Valid @PathVariable int id, @RequestBody Product product) {
         service.update(id, product);
+        return new ResponseEntity<Integer>(id, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1725549934812" clover="3.2.0">
+  <project timestamp="1725549934813" name="All files">
+    <metrics statements="136" coveredstatements="47" conditionals="26" coveredconditionals="2" methods="56" coveredmethods="10" elements="218" coveredelements="59" complexity="0" loc="136" ncloc="136" packages="4" files="13" classes="13"/>
+    <package name="categories.Product">
+      <metrics statements="46" coveredstatements="12" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="2"/>
+      <file name="AddProduct.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Product\AddProduct.jsx">
+        <metrics statements="21" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+      </file>
+      <file name="AddProductModal.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Product\AddProductModal.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="ProductCard.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Product\ProductCard.jsx">
+        <metrics statements="8" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+      </file>
+      <file name="ProductList.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Product\ProductList.jsx">
+        <metrics statements="13" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="categories.Utils">
+      <metrics statements="40" coveredstatements="19" conditionals="6" coveredconditionals="2" methods="15" coveredmethods="4"/>
+      <file name="GetCategories.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Utils\GetCategories.jsx">
+        <metrics statements="13" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+      </file>
+      <file name="GetProducts.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Utils\GetProducts.jsx">
+        <metrics statements="13" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="2"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+      </file>
+      <file name="GetWarehouses.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Utils\GetWarehouses.jsx">
+        <metrics statements="14" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="2"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="categories.Warehouse">
+      <metrics statements="44" coveredstatements="12" conditionals="10" coveredconditionals="0" methods="18" coveredmethods="2"/>
+      <file name="AddWarehouse.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Warehouse\AddWarehouse.jsx">
+        <metrics statements="19" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+      </file>
+      <file name="AddWarehouseModal.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Warehouse\AddWarehouseModal.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="WarehouseCard.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Warehouse\WarehouseCard.jsx">
+        <metrics statements="8" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+      </file>
+      <file name="WarehouseList.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\categories\Warehouse\WarehouseList.jsx">
+        <metrics statements="13" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <file name="ProductPage.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\pages\ProductPage.jsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="WarehousePage.jsx" path="C:\Users\viann_bo8t5s6\Desktop\Viannez\Project1_WarehouseManagement\warehouse-frontend\src\pages\WarehousePage.jsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

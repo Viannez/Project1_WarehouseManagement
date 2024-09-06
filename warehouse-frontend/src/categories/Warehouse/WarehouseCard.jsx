@@ -10,7 +10,7 @@ export const WarehouseCard = ({warehouse}) => {
     
     //DELETE Warehouse
     function handleClick(e) {
-        const url = "http://localhost:8080/warehouse/"+warehouse.id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/warehouse/`+warehouse.id; 
 
         fetch(url, {
         method: "DELETE",
@@ -24,8 +24,10 @@ export const WarehouseCard = ({warehouse}) => {
         })
         .catch(err => {
             console.log(err);
+        })
+        .then(() => {
+            window.location.reload();
         });
-        window.location.reload();
     }
     return (
         <>
@@ -38,16 +40,16 @@ export const WarehouseCard = ({warehouse}) => {
             }}>
                 <CardHeader>
                     <div className="container">
-                        <div className="container-element">{warehouse.name}</div>
-                        <div className="container-element">ID: {warehouse.id}</div>
-                        <div className="container-element" > {warehouse.address} </div>
-                        <div className="container-element" > {warehouse.inventoryCapacity}/{warehouse.capacity} </div >
+                        <div id="warehouse-name" className="container-element">{warehouse.name}</div>
+                        <div id="warehouse-id"className="container-element">ID: {warehouse.id}</div>
+                        <div id="warehouse-address" className="container-element" > {warehouse.address} </div>
+                        <div id="warehouse-capacity" className="container-element" > {warehouse.inventoryCapacity}/{warehouse.capacity} </div >
                         <Link className="usa-button" variant="unstyled" href={'/warehouse/'+warehouse.id} >
-                        <div className='container-button' style={{textAlign:'left'}}>
+                        <div id="warehouse-details" className='container-button' style={{textAlign:'left'}}>
                             <FaMagnifyingGlass/>
                         </div>
                         </Link>
-                        <Button onClick={handleClick} >
+                        <Button id="delete-warehouse" onClick={handleClick} >
                             <FaRegTrashAlt />
                         </Button>
                     </div>

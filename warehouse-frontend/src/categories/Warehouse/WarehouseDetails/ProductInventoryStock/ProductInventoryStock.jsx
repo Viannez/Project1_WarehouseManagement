@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetWarehouses from "../../../Util/GetWarehouses";
+import GetWarehouses from "../../../Utils/GetWarehouses";
 
 //Update stock of product in warehouse
 export const ProductInventoryStock = ({info}) => {
@@ -28,7 +28,7 @@ export const ProductInventoryStock = ({info}) => {
 
     // submit data to update productInventory
     function handleSubmit(e) {
-        const url = "http://localhost:8080/product_inventory/"+productInventory.id; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory/`+productInventory.id; 
         e.preventDefault();
 
         const data = new FormData(e.target);
@@ -100,9 +100,9 @@ export const ProductInventoryStock = ({info}) => {
       <Form onSubmit={handleSubmit}>
       <div>
           <Label>Stock</Label>
-          <TextInput id="productInventory-price" name="productInventoryStock" type="number"/>
+          <TextInput id="update-product-stock" name="productInventoryStock" type="number"/>
         </div>
-        <Button type="submit">Submit</Button>
+        <Button id='submit-stock-button' type="submit">Submit</Button>
       </Form>
       {
         <Alert type="success" headingLevel="h4">

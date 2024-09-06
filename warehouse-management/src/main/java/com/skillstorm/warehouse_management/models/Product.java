@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -67,12 +66,12 @@ public class Product {
         this.id = id;
     }
 
-    public String setName() {
+    public String getName() {
         return name;
     }
 
-    public String getName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPrice() {
@@ -106,7 +105,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", category: " + (category == null ? null : category.getName()) + "]";
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", categoryName=" + category.getName() + ", productInventories=" + getProductInventories() + "]";
     }
 
     

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 import { useParams } from "react-router-dom";
-import GetProducts from "../../Util/GetProducts";
+import GetProducts from "../../Utils/GetProducts";
 
 //add product to warehouse
 export const WarehouseAddProduct = ({capacityNums}) => {
@@ -15,7 +15,7 @@ export const WarehouseAddProduct = ({capacityNums}) => {
 
     //submit data to add new product inventory to 
     function handleSubmit(e) {
-        const url = "http://localhost:8080/product_inventory"; 
+        const url = `http://mystery-box-warehouses-env.eba-mmmmraim.us-east-1.elasticbeanstalk.com/product_inventory`; 
         e.preventDefault();
         const data = new FormData(e.target);
 
@@ -68,19 +68,19 @@ export const WarehouseAddProduct = ({capacityNums}) => {
     <>
       <Form onSubmit={handleSubmit}>
       <div>
-        <Label>Product ID</Label>
-            <Select id="product-id" name="productID" required>
+        <Label>Product Name</Label>
+            <Select id="product-name" name="productID" required>
                 {
                   products.map( ({id, name}) => 
-                    <option key={id} value={id}>{'(id: ' + id +')  ' + name}</option> )
+                    <option key={id} value={id}>{name}</option> )
                 }
             </Select>
         </div>
         <div>
           <Label>Product Stock in this warehouse</Label>
-          <TextInput id="inputs" name="productInventoryStock" type="number" />
+          <TextInput id="product-stock" name="productInventoryStock" type="number" />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button id="product-submit"type="submit">Submit</Button>
       </Form>
       {
         message && <Alert type="success" headingLevel="h4">
