@@ -38,7 +38,7 @@ public class DeleteProductInventorySteps {
     //Get to modal
     @Given("Delete ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get("Electronics Galore");
+        this.warehouseDetailsPage.get("Greenish");
     }
 
     @And("there exists a product in the warehouse named {string}")

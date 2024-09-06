@@ -37,7 +37,7 @@ public class AddProductInventorySteps {
     //Get to modal
     @Given("ProductInventory: I am on the warehouse details page")
     public void iAmOnTheWarehouseDetailsPage() {
-        this.warehouseDetailsPage.get("Electronics Galore");
+        this.warehouseDetailsPage.get("Greenish");
     }
 
     @When("I click on the add product to warehouse button")
