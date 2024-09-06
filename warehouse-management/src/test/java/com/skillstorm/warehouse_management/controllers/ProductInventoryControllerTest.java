@@ -65,7 +65,7 @@ public class ProductInventoryControllerTest {
     }
 
     // Tests if the mocked productInventory service successfully HTTP 200 OK after controller calls findById()
-    // for a product id that does exist 
+    // for a productInventory id that does exist 
     @Test
     public void findProductInventoryByIdTest() {
         int productInventoryId = 1;
@@ -97,7 +97,7 @@ public class ProductInventoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
-    // Tests if the mocked productInventory service successfully HTTP 201 CREATED after controller calls create() to create a product
+    // Tests if the mocked productInventory service successfully HTTP 201 CREATED after controller calls create() to create a productInventory
     @Test
     public void createProductInventoryTest() {
         ProductInventory inputProductInventory = new ProductInventory();
