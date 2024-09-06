@@ -45,6 +45,7 @@ public class ProductControllerTest {
         closeable.close();
     }
 
+    // Tests if the mocked product service successfully HTTP 200 OK after controller calls findAll() with expected values
     @Test
     public void findAllProductsTest() {
         //Given
@@ -63,6 +64,8 @@ public class ProductControllerTest {
         Assert.assertEquals(response.getBody().size(), 2);
     }
 
+    // Tests if the mocked product service successfully HTTP 200 OK after controller calls findById()
+    // for a product id that does exist 
     @Test
     public void findProductByIdTest() {
         int productId = 1;
@@ -77,6 +80,8 @@ public class ProductControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked product service gets HTTP 404 NOT FOUND after controller calls findById()
+    // for a product id that doesn't exist 
     @Test
     public void findProductByIdInvalidTest() {
         int productId = 1;
@@ -91,6 +96,7 @@ public class ProductControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
+    // Tests if the mocked product service successfully HTTP 201 CREATED after controller calls create() to create a product
     @Test
     public void createProductTest() {
         Category category = new Category();
@@ -107,6 +113,7 @@ public class ProductControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
     }
 
+    // Tests if the mocked product service successfully HTTP 200 OK after controller calls update()
     @Test
     public void updateProductTest() {
         Product inputProduct = new Product();
@@ -118,6 +125,7 @@ public class ProductControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked product service successfully deletes product with matching id after controller calls deleteById()
     @Test
     public void deleteProductTest() {
         Product inputProduct = new Product(1, "testName", 20);

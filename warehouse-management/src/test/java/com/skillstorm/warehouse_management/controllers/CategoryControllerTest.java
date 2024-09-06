@@ -44,6 +44,7 @@ public class CategoryControllerTest {
         closeable.close();
     }
 
+    // Tests if the mocked category repo successfully HTTP 200 OK after controller calls findAll() with expected values
     @Test
     public void findAllCategoriesTest() {
         //Given
@@ -62,6 +63,8 @@ public class CategoryControllerTest {
         Assert.assertEquals(response.getBody().size(), 2);
     }
 
+    // Tests if the mocked category repo successfully HTTP 200 OK after controller calls findById()
+    // for a category id that does exist 
     @Test
     public void findCategoryByIdTest() {
         Category inputCategory = new Category(1, "testname");
@@ -75,6 +78,8 @@ public class CategoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked category repo gets HTTP 404 NOT FOUND after controller calls findById()
+    // for a category id that doesn't exist 
     @Test
     public void findCategoryByIdInvalidTest() {
         Category inputCategory = new Category(1, "testname");
@@ -88,6 +93,8 @@ public class CategoryControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
+    // Tests if the mocked category repo gets expected list of products in response
+    // after controller calls findProductsByCategory()
     @Test
     public void findProductsByCategoryTest() {
         Category inputCategory = new Category(1, "testname");

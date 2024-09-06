@@ -44,6 +44,7 @@ public class WarehouseControllerTest {
         closeable.close();
     }
 
+    // Tests if the mocked warehouse service successfully HTTP 200 OK after controller calls findAll() with expected values
     @Test
     public void findAllWarehousesTest() {
         //Given
@@ -62,6 +63,8 @@ public class WarehouseControllerTest {
         Assert.assertEquals(response.getBody().size(), 2);
     }
 
+    // Tests if the mocked warehouse service successfully HTTP 200 OK after controller calls findById()
+    // for a warehouse id that does exist 
     @Test
     public void findWarehouseByIdTest() {
         int warehouseId = 1;
@@ -76,6 +79,8 @@ public class WarehouseControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked warehouse service gets HTTP 404 NOT FOUND after controller calls findById()
+    // for a warehouse id that doesn't exist 
     @Test
     public void findWarehouseByIdInvalidTest() {
         int warehouseId = 1;
@@ -90,6 +95,7 @@ public class WarehouseControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
+    // Tests if the mocked warehouse service successfully HTTP 201 CREATED after controller calls create() to create a warehouse
     @Test
     public void createWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse();
@@ -102,6 +108,7 @@ public class WarehouseControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
     }
 
+    // Tests if the mocked warehouse service successfully HTTP 200 OK after controller calls update()
     @Test
     public void updateWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse();
@@ -113,6 +120,7 @@ public class WarehouseControllerTest {
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    // Tests if the mocked warehouse service successfully deletes warehouse with matching id after controller calls deleteById()
     @Test
     public void deleteWarehouseTest() {
         Warehouse inputWarehouse = new Warehouse(1, "testName", "testAddress", 300);
