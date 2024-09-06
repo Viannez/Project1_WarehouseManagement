@@ -13,44 +13,38 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.messages.types.Product;
 
 public class UpdateProductInventorySteps {
     private WebDriver driver;
     private WarehouseDetailsPage warehouseDetailsPage;
 
-    @Before("@update-productInventory")
+    @Before("@update-productinventory")
     public void before() {
         ChromeOptions options = new ChromeOptions();
         options.setBrowserVersion("127");
         options.addArguments("--headless", "--disable-dev-shm-usage", "--ignore-ssl-errors=yes", "'--ignore-certificate-errors'");
-
         this.driver = new ChromeDriver(options);
-        
+
+
         this.warehouseDetailsPage = new WarehouseDetailsPage(driver);
     }
-    @After("@update-productInventory")
+    @After("@update-productinventory")
     public void after() {
         if(driver != null) {
             this.driver.quit();
         }
     }
-    
-    Scenario: Successfully update a product
-        Given I have the update product "<productInventoryName>" form modal open
-        When I enter valid update fields with stock = "<updatedStock>
-        And I click the update product form submit button
-        Then I should see the product updated with stock = "<updatedStock>
+
 
     //Get to modal
     @Given("Update Product Inventory: I am on the warehouse {string} details page")
-    public void iAmOnTheWarehouseDetailsPage(String productInventoryName) {
-        this.warehouseDetailsPage.get(productInventoryName);
+    public void iAmOnTheWarehouseDetailsPage(String warehouseName) {
+        this.warehouseDetailsPage.get("Electronics Galore");
     }
 
     @When("I click on the update product inventory button ")
     public void iClickOnTheUpdateProductInventoryButton() {
-        this.warehouseDetailsPage.clickUpdateProduct();
+        this.warehouseDetailsPage.clickUpdateProduct("miscellaneous");
     }
 
     @Then("I should see the update product inventory form modal")
@@ -59,10 +53,10 @@ public class UpdateProductInventorySteps {
     }
 
     //Update product valid
-    @Given(" I have the update product {string} form modal open")
+    @Given(" I have the update product inventory {string} form modal open")
     public void iAmOnTheUpdateProductInventoryFormModal(String productInventoryName) {
-        this.warehouseDetailsPage.get(productInventoryName);
-        this.warehouseDetailsPage.clickUpdateProduct();
+        this.warehouseDetailsPage.get("Electronics Galore");
+        this.warehouseDetailsPage.clickUpdateProduct(productInventoryName);
         assertTrue(this.warehouseDetailsPage.updateProductStockModalDisplayed());
     }
 
@@ -76,12 +70,12 @@ public class UpdateProductInventorySteps {
         this.warehouseDetailsPage.updateProductStock(updateStock);
     }
 
-    @And("I click the update product form submit button")
+    @And("I click the update product inventory form submit button")
     public void iClickTheSubmitButton() {
         this.warehouseDetailsPage.clickSubmitButton();
     }
 
-    @Then("I should see the product {string} updated with stock = {string}")
+    @Then("I should see the product inventory {string} updated with stock = {string}")
     public void iShouldSeeACardWithMatchingInputs(String productName, String productStock) {
         this.driver.navigate().refresh();
         assertTrue(this.warehouseDetailsPage.productIsDisplayed(productName, productStock));

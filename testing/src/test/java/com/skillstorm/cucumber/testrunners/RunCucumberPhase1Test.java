@@ -14,6 +14,6 @@ import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_N
 @SelectClasspathResource("com/skillstorm/active")
 @ConfigurationParameter(key =GLUE_PROPERTY_NAME, value = "com/skillstorm/cucumber/definitions")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
-@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@phase1")
+@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@update-productinventory")
 public class RunCucumberPhase1Test {
 }

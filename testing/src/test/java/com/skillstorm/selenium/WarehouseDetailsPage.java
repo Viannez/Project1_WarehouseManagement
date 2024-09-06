@@ -120,7 +120,7 @@ public class WarehouseDetailsPage {
             }
         }
         else{
-            System.out.println("No warehouses exist!");
+            System.out.println("No products exist!");
         }
 
         try {
@@ -165,13 +165,23 @@ public class WarehouseDetailsPage {
     * clicking the update product stock button
     * pause execution for 1000 mili sec before clicking
     */
-    public void clickUpdateProduct() {
+    public void clickUpdateProduct(String productName) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        updateProductButton.click();
+        WebElement updateProductButton;
+        for(WebElement list:warehouseProductCards){
+            WebElement wName = list.findElement(By.id("warehouseproduct-name"));
+            System.out.println(wName);
+            if(wName.getText().equals(productName)){
+                updateProductButton=list.findElement(By.id("update-product-stock"));
+                Actions actions = new Actions(driver);
+                actions.moveToElement(updateProductButton).click().perform();
+                break;
+            }
+        }
     }
 
     /**
